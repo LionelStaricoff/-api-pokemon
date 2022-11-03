@@ -1,0 +1,42 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>1100</x><y>120</y><w>210</w><h>80</h></coordinates><panel_attributes>Ataque
+--
+-nombre: String
+-puntoAtaque: double
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>500</y><w>210</w><h>130</h></coordinates><panel_attributes>Pikachu
+--
+-tipo: String
+-ataque: List&lt;Ataque&gt;
+- vida : Integer
+--
+aprederataque(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>870</x><y>500</y><w>210</w><h>130</h></coordinates><panel_attributes>Charizard
+--
+-tipo: String
+-ataque: List&lt;Ataque&gt;
+- vida : Integer
+--
+
+aprederataque(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>500</y><w>210</w><h>130</h></coordinates><panel_attributes>Psyduck
+--
+-tipo: String
+-ataque: List&lt;Ataque&gt;
+- vida : Integer
+--
+
+aprederataque(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>100</y><w>210</w><h>130</h></coordinates><panel_attributes>Entrenador
+--
+nombre: String
+Pokebola: List&lt;Pokemon&gt;
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>50</y><w>210</w><h>80</h></coordinates><panel_attributes>&lt;&lt;inteface&gt;&gt;
+IAprendible
+--
++aprenderAtaque(Ataque): void
++atacar(Ataque): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>590</x><y>210</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+Pokemon
+--
+tipo: String
+-ataque: List&lt;Ataque&gt;
+- vida : Integer
+--
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>120</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>740</x><y>390</y><w>220</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;200;110</additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>390</y><w>80</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;60;110</additional_attributes></element><element><id>Relation</id><coordinates><x>460</x><y>370</y><w>150</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>130;10;10;130</additional_attributes></element></diagram>
