@@ -28,7 +28,7 @@ public class MainPokemon {
 		//codigo trabajado en equipo segun profe
 		Client client = ClientBuilder.newClient();
 		
-		WebTarget webTarget = client.target("https://pokeapi.co/api/v2/pokemon/");
+		WebTarget webTarget = client.target("https://pokeapi.co");
 		
 		Invocation.Builder invocation= webTarget.request(MediaType.APPLICATION_JSON);
 		
@@ -45,9 +45,10 @@ public class MainPokemon {
 		
 		System.out.println(responseCode);
 		
+		
 		//nueva clase buscarpokemon
-		buscarpokemon bp = new buscarpokemon("https://pokeapi.co/api/v2/pokemon/");
-		//Conection users =bp.findUsers();
+		buscarpokemon bp = new buscarpokemon("https://pokeapi.co/");
+		
 		Conection b = bp.findUsers();
 		System.out.println(b);
 	}

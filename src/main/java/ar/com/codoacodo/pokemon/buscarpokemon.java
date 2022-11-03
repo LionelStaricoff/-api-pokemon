@@ -24,8 +24,8 @@ public class buscarpokemon {
 		Client client =ClientBuilder.newClient();
 				
 				//https://reqres.in/api/users?page=2
-				WebTarget webTarget = client.target(this.url );
-						//.path("api/v2/pokemon/");//parametros que van despues de/
+				WebTarget webTarget = client.target(getUrl() )
+						.path("/api/v2/pokemon");//parametros que van despues de/
 						//.queryParam("page=2");// parametros que van despues de ? clave=valor & clave=valor
 				
 				//invocation
@@ -38,12 +38,13 @@ public class buscarpokemon {
 				//read
 				
 
-				 // no funciona el response
-				Conection user  =(Conection)response.readEntity(Conection.class);
-				//Conection user  =response.readEntity(Conection.class);
+				Conection user =(Conection) response.readEntity(Conection.class);
 				
-				return user;
+				return (Conection) user;
 			}
+	public String getUrl() {
+		return url;
+	}
 	
 
 }

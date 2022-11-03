@@ -1,62 +1,57 @@
+
 package ar.com.codoacodo.conection;
+
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import jakarta.annotation.Generated;
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-"name",
-"url"
+    "count",
+    "next",
+    "previous",
+    "results"
 })
-@Generated("jsonschema2pojo")
+
 public class Conection {
 
-@JsonProperty("name")
-private String name;
-@JsonProperty("url")
-private String url;
+    @JsonProperty("count")
+    public Integer count;
+    @JsonProperty("next")
+    public String next;
+    @JsonProperty("previous")
+    public Object previous;
+    @JsonProperty("results")
+    public List<Result> results = null;
 
-@JsonProperty("name")
-public String getName() {
-return name;
-}
-
-@JsonProperty("name")
-public void setName(String name) {
-this.name = name;
-}
-
-@JsonProperty("url")
-public String getUrl() {
-return url;
-}
-
-@JsonProperty("url")
-public void setUrl(String url) {
-this.url = url;
-}
-
-@Override
-public String toString() {
-StringBuilder sb = new StringBuilder();
-sb.append(Conection.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-sb.append("name");
-sb.append('=');
-sb.append(((this.name == null)?"<null>":this.name));
-sb.append(',');
-sb.append("url");
-sb.append('=');
-sb.append(((this.url == null)?"<null>":this.url));
-sb.append(',');
-if (sb.charAt((sb.length()- 1)) == ',') {
-sb.setCharAt((sb.length()- 1), ']');
-} else {
-sb.append(']');
-}
-return sb.toString();
-}
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(Conection.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append("count");
+        sb.append('=');
+        sb.append(((this.count == null)?"<null>":this.count));
+        sb.append(',');
+        sb.append("next");
+        sb.append('=');
+        sb.append(((this.next == null)?"<null>":this.next));
+        sb.append(',');
+        sb.append("previous");
+        sb.append('=');
+        sb.append(((this.previous == null)?"<null>":this.previous));
+        sb.append(',');
+        sb.append("results");
+        sb.append('=');
+        sb.append(((this.results == null)?"<null>":this.results));
+        sb.append(',');
+        if (sb.charAt((sb.length()- 1)) == ',') {
+            sb.setCharAt((sb.length()- 1), ']');
+        } else {
+            sb.append(']');
+        }
+        return sb.toString();
+    }
 
 }
