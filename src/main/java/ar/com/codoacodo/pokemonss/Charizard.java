@@ -4,20 +4,21 @@ package ar.com.codoacodo.pokemonss;
 
 import ar.com.codoacodo.pokemons.Ataque;
 
-public class Pikachu extends Pokemon{
+public class Charizard extends Pokemon{
 
-	public Pikachu() {
-		super("electrico", "pikachu", 100);
-		ataques.add(new Ataque("agilidad",10) );
-		ataques.add(new Ataque("cola de hierro" ,15) );
-		ataques.add(new Ataque("rueno",20) );
-	}
+	public Charizard() {
+		super("fuego", "charizard", 150);
+		ataques.add(new Ataque("lanzallamas",5) );
+		}
+	
 
 	@Override
 	public void aprenderAtaque(Ataque ataque) {
+		ataques.clear();
 		ataques.add(ataque);
-	
+		
 	}
+	
 
 	@Override
 	public int atacar() {

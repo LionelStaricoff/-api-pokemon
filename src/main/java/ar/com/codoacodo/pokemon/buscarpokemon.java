@@ -38,9 +38,9 @@ public class buscarpokemon {
 				//read
 				
 
-				Conection user =(Conection) response.readEntity(Conection.class);
+				Conection user = response.readEntity(Conection.class);
 				
-				return (Conection) user;
+				return  user;
 			}
 	public String getUrl() {
 		return url;
