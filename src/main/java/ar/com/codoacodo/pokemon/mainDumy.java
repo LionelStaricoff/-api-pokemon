@@ -1,6 +1,7 @@
 package ar.com.codoacodo.pokemon;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,6 +59,7 @@ public class mainDumy {
 		System.out.println(listaPokemon.get(1).name);
 		//listaPokemon.forEach(System.out:: println);
 		
+		}
 	}
 
-}
+

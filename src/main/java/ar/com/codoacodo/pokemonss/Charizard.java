@@ -2,6 +2,8 @@ package ar.com.codoacodo.pokemonss;
 
 
 
+import java.util.List;
+
 import ar.com.codoacodo.pokemons.Ataque;
 
 public class Charizard extends Pokemon{
@@ -27,6 +29,13 @@ public class Charizard extends Pokemon{
 			contador+=at.getPuntoAtaque();
 		}
 		return contador;
+	}
+
+
+	@Override
+	public void aprenderAtaque(List ataque) {
+		ataques.add((Ataque) ataque);
+		
 	}
    
 	

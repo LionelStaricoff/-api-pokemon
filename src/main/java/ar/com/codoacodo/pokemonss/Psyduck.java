@@ -2,6 +2,8 @@ package ar.com.codoacodo.pokemonss;
 
 
 
+import java.util.List;
+
 import ar.com.codoacodo.pokemons.Ataque;
 
 public class Psyduck extends Pokemon{
@@ -21,6 +23,12 @@ public class Psyduck extends Pokemon{
 	public int atacar() {
 		
 		return 0;
+	}
+
+	@Override
+	public void aprenderAtaque(List ataque) {
+		ataques.add((Ataque) ataque);
+		
 	}
    
 	

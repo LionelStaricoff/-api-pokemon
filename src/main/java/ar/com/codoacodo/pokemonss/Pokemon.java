@@ -10,15 +10,16 @@ public abstract class Pokemon implements Aprendible {
 
 	protected String tipo, nombre;
 	protected Set<Ataque> ataques;
+	//protected Set<t> listaAtaques;
 	protected Integer vida;
 	
 	
 	
 	
 	public Pokemon(String tipo, String nombre, Integer vida) {
-		super();
+	
 		this.tipo = tipo;
-		this.ataques = ataques;
+	
 		this.vida = vida;
 		this.nombre = nombre;
 		iniciarAtaques();
