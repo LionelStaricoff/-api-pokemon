@@ -1,10 +1,16 @@
 package ar.com.codoacodo.pokemonss;
 
+import java.util.Collection;
+
 import java.util.HashSet;
+
+
 import java.util.Set;
 
+import ar.com.codoacodo.pokeapi.Move;
 import ar.com.codoacodo.pokemons.Aprendible;
 import ar.com.codoacodo.pokemons.Ataque;
+
 
 public abstract class Pokemon implements Aprendible {
 
@@ -49,4 +55,17 @@ public abstract class Pokemon implements Aprendible {
 		return nombre;
 	}
 	
-}
+	
+
+	public void aprenderAtaque (Collection<Move> ataque) {
+		
+		for (Move at : ataque) {
+			int random = (int) Math.floor(Math.random() *(150) +1);
+			Ataque objeto = new Ataque(at.move.name, random);
+			this.ataques.add(objeto);
+		}
+	}
+	
+	}
+
+

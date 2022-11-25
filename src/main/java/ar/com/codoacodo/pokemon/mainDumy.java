@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.naming.spi.DirStateFactory.Result;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import ar.com.codoacodo.conection.Conection;
 import ar.com.codoacodo.pokeapi.Move;
 import jakarta.ws.rs.client.Client;
@@ -57,7 +59,11 @@ public class mainDumy {
 			//System.out.println("iterando nombres: "+pi);
 			}
 		System.out.println(listaPokemon.get(1).name);
-		//listaPokemon.forEach(System.out:: println);
+
+
+		ObjectMapper mapper = new ObjectMapper();
+		System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(listaPokemon));
+	
 		
 		}
 	}

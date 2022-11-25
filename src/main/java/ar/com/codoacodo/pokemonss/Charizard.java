@@ -2,7 +2,7 @@ package ar.com.codoacodo.pokemonss;
 
 
 
-import java.util.List;
+
 
 import ar.com.codoacodo.pokemons.Ataque;
 
@@ -15,7 +15,7 @@ public class Charizard extends Pokemon{
 	
 
 	@Override
-	public void aprenderAtaque(Ataque ataque) {
+	public void aprenderUnAtaque(Ataque ataque) {
 		ataques.clear();
 		ataques.add(ataque);
 		
@@ -32,11 +32,7 @@ public class Charizard extends Pokemon{
 	}
 
 
-	@Override
-	public void aprenderAtaque(List ataque) {
-		ataques.add((Ataque) ataque);
-		
-	}
+	
    
 	
 }

@@ -1,12 +1,15 @@
 package ar.com.codoacodo.pokemons;
 
+import java.util.Collection;
 import java.util.List;
 
-public interface Aprendible<t> {
+import ar.com.codoacodo.pokeapi.Move;
 
-	public void aprenderAtaque (Ataque ataque);
+public interface Aprendible {
+
+	public void aprenderUnAtaque (Ataque ataque);
 	
-	public void aprenderAtaque (List<t> ataque);
+	public void aprenderAtaque (Collection<Move> ataque);
 	
 	public int atacar ();
 

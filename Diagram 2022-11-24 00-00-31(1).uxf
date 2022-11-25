@@ -1,0 +1,25 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>20</zoom_level><element><id>UMLClass</id><coordinates><x>380</x><y>100</y><w>420</w><h>440</h></coordinates><panel_attributes>GestionaPokemon 
+--
+-nombre: String
+-tipo: String
+-moves: Collection&lt;Move&gt;
+-imagenes: Collection&lt;String&gt;
+-hp: Integer
+-peso: Integer
+-defence: Integer
+-speed: Integer
+-SpecialAtack: Move
+-SpecialDefence: Integer
+-atack: Integer
+-baseExperiencia: Intgerer</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>920</x><y>160</y><w>420</w><h>200</h></coordinates><panel_attributes>BatallaPokemon
+--
+BatallaPokemon(GestionaPokemon,GestionaPokemon)
+
++atacar: void
++recibirAtaque: void
++intecambio: void
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>920</x><y>500</y><w>420</w><h>200</h></coordinates><panel_attributes>Entrenador
+--
+pokeballs: Collection&lt;Pokemos&gt;
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>
