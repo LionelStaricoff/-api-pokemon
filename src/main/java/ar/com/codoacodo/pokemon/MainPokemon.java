@@ -143,23 +143,27 @@ public class MainPokemon {
 		System.out.println(b.baseExperience);
 		
 		
-		//defensa
+		//attack
 		System.out.println(b.stats.get(1).stat.name+" "+b.stats.get(1).baseStat);
 		//defensa
 		System.out.println(b.stats.get(2).stat.name+" "+b.stats.get(2).baseStat);
-		
+		//hp
 		System.out.println(b.stats.get(0).stat.name+" "+b.stats.get(0).baseStat);
-		
+		//special-attack 
 		System.out.println(b.stats.get(3).stat.name+" "+b.stats.get(3).baseStat);
+		//special-defense
 		System.out.println(b.stats.get(4).stat.name+" "+b.stats.get(4).baseStat);
-		
+		//speed
 		System.out.println(b.stats.get(5).stat.name+" "+b.stats.get(5).baseStat);
+		//tipo electrico
+		System.out.println(b.types.get(0).type.name);
+		//peso
+		System.out.println(b.weight);
 		
-	
 	
 		// convierte el array b que trae los datos de la api pokemon el json
 		//ObjectMapper mapper = new ObjectMapper();
-		//System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(b.stats) );
+	//System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(b.weight) );
 	
 	}
 }
