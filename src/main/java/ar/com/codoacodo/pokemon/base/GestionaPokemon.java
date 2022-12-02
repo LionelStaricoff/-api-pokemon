@@ -1,14 +1,18 @@
 package ar.com.codoacodo.pokemon.base;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import ar.com.codoacodo.pokeapi.Move;
 
 public class GestionaPokemon {
 
 	private String nombre, tipo;
-	private Collection<Move> moves;
+	private List<String> moves = new ArrayList<>();
 	private Collection<String> imagenesFront;
 	private Collection<String> imagenesBack;
 	private Integer hp, peso, defence, speed, specialdefence, atack, baseExperiencia, specialAtack;
@@ -19,7 +23,7 @@ public class GestionaPokemon {
 
 		this.nombre = nombre;
 		this.tipo = tipo;
-		this.moves = moves;
+		this.moves = moves.stream().map(m-> m.move.name).collect(Collectors.toList());
 		this.imagenesFront = imagenesFront;
 		this.imagenesBack = imagenesBack;
 		this.hp = hp;
@@ -47,7 +51,7 @@ public class GestionaPokemon {
 
 		int sum = 0;
 
-		Iterator<Move> it = this.moves.iterator();
+		Iterator<String> it = this.moves.iterator();
 		while (it.hasNext()) {
 
 			imgFront = it.next().toString();
