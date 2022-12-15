@@ -162,7 +162,7 @@ public class MainBatallaPokemon {
 		GestionaPokemon pikachu = new GestionaPokemon(b.name, b.types.get(0).type.name, b.moves, 
 				cargarImagenesFront(b), cargarImagenesBack(b), b.stats.get(0).baseStat, b.weight,
 				b.stats.get(2).baseStat, b.stats.get(5).baseStat, b.stats.get(4).baseStat, 
-				b.stats.get(1).baseStat, b.baseExperience, b.stats.get(1).baseStat);
+				b.stats.get(1).baseStat, b.baseExperience, b.stats.get(3).baseStat);
 
 		//ObjectMapper mapper = new ObjectMapper();
 		//System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(pikachu));
@@ -176,6 +176,8 @@ public class MainBatallaPokemon {
 		System.out.println(pikachu.getMoves(2));
 		System.out.println(pikachu.getMoves(3));
 		System.out.println(pikachu.getMoves(4));
+		System.out.println(pikachu.attack(4));
+		System.out.println(pikachu.specialAttack(4));
 		
 
 	}

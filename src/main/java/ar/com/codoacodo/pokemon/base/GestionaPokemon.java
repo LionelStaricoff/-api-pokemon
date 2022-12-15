@@ -47,21 +47,21 @@ public class GestionaPokemon {
 	//no funca los moves
 
 	public String getMoves(int n) {
-		String imgFront = "";
+		String nameAtack = "";
 
 		int sum = 0;
 
 		Iterator<String> it = this.moves.iterator();
 		while (it.hasNext()) {
 
-			imgFront = it.next().toString();
+			nameAtack = it.next().toString();
 			sum++;
 			if (n == sum) {
 				break;
 			}
 		}
 
-		return imgFront;
+		return nameAtack;
 		}
 
 	public String getImagenesFront(int n) {
@@ -131,6 +131,54 @@ public class GestionaPokemon {
 	public Integer getSpecialAtack() {
 		return specialAtack;
 	}
+	
+	public int attack(int n) {
+		
+		System.out.print("atacando con "+getMoves(n)+" ");
+		
+		return getAtack()+n;
+	
+		
+		
+	}
+public int specialAttack(int n) {
+		
+		System.out.print("atacando con "+getMoves(n)+" ");
+		
+		return getSpecialAtack()+n;
+	
+		
+		
+	}
+
+public void recibirDanio (int danio) {
+	if (this.hp >0) {
+		
+		if(this.defence < danio) {
+	this.hp -= (this.defence - danio);
+		}else {
+			
+		}this.hp -= 1;
+		
+	}else {
+		System.out.println("El pokemon esta inconciente y no puede pelear");
+	}
+}
+
+public void recibirDanioSpecial (int danio) {
+	if (this.hp >0) {
+		
+		if(this.specialdefence < danio) {
+	this.hp -= (this.specialdefence - danio);
+		}else {
+			
+		}this.hp -= 1;
+		
+	}else {
+		System.out.println("El pokemon esta inconciente y no puede pelear");
+	}
+}
+	
 
 	@Override
 	public String toString() {
