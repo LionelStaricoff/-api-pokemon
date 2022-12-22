@@ -5,9 +5,6 @@ package ar.com.codoacodo.pokemon.base;
 
 import java.io.IOException;
 
-import javax.imageio.IIOException;
-
-import ar.com.codoacodo.conection.Conection;
 import ar.com.codoacodo.pokeapi.PokeApi;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
