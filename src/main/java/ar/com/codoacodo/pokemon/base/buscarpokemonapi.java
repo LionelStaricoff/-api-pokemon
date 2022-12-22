@@ -23,7 +23,7 @@ public class buscarpokemonapi {
 		//findUsers();
 	}
 	public PokeApi findUsers() {
-		int random = (int) Math.floor(Math.random() *(150) +1);
+		int random = (int) Math.floor(Math.random() *(905) +1);
 	
 		Client client =ClientBuilder.newClient();
 				
@@ -38,7 +38,7 @@ public class buscarpokemonapi {
 				//get
 				Response response = invocation.get();
 				int responseCode = response.getStatus();
-				System.out.println("conectando"+responseCode);
+				//System.out.println("conectando"+responseCode);
 				//read
 				
 

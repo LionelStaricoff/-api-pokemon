@@ -5,6 +5,7 @@ import java.io.IOException;
 import ar.com.codoacodo.pokeapi.PokeApi;
 import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 import ar.com.codoacodo.pokemon.base.buscarpokemonapi;
+import ar.com.codoacodo.pokemon.entrenador.EntrenadorBase;
 
 
 public class MainBatallaPokemon {
@@ -12,17 +13,26 @@ public class MainBatallaPokemon {
 
 	public static void main(String[] args) throws IOException {
 
-		buscarpokemonapi bp = new buscarpokemonapi("https://pokeapi.co/");
 
-		PokeApi b = bp.findUsers(25);
-
-		GestionaPokemon pikachu = new GestionaPokemon(b);
+		
+		GestionaPokemon pikachu = new GestionaPokemon(25);
+		
 			
+		
 
-		 b = bp.findUsers();
 
-		GestionaPokemon pokeMisterioso = new GestionaPokemon(b);
+		GestionaPokemon pokeMisterioso = new GestionaPokemon(382);
 	
+		
+		
+	
+		
+		EntrenadorBase entrenador = new EntrenadorBase("lio");
+		entrenador.setPokeball(pokeMisterioso);
+		entrenador.setPokeball(pikachu);
+		System.out.println("tengo "+entrenador.cantidadPokemon()+" pokemon");
+		System.out.println(entrenador.getPokeball(0).getNombre());
+		System.out.println(entrenador.getPokeball(1).getNombre());
 
 	}
 

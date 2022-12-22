@@ -1,7 +1,9 @@
 package ar.com.codoacodo.pokemon.base;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collector;
@@ -18,8 +20,35 @@ public class GestionaPokemon {
 	private Collection<String> imagenesBack;
 	private Integer hp, peso, defence, speed, specialdefence, atack, baseExperiencia, specialAtack;
 
-	public GestionaPokemon(PokeApi b) {
+	public GestionaPokemon(int numero) throws IOException {
 
+		buscarpokemonapi bp = new buscarpokemonapi("https://pokeapi.co/");
+
+		PokeApi b = bp.findUsers(numero);
+		
+		this.nombre = b.name;
+		this.tipo = b.types.get(0).type.name;
+		this.moves = b.moves.stream().map(m-> m.move.name).collect(Collectors.toList());
+		this.imagenesFront = cargarImagenesFront(b); 
+		this.imagenesBack = cargarImagenesBack(b);
+		this.hp = b.stats.get(0).baseStat;
+		this.peso =  b.weight;
+		this.defence = b.stats.get(2).baseStat;
+		this.speed = b.stats.get(5).baseStat;
+		this.specialdefence = b.stats.get(4).baseStat;
+		this.atack = b.stats.get(1).baseStat;
+		this.baseExperiencia = b.baseExperience;
+		this.specialAtack = b.stats.get(3).baseStat;
+		
+		
+		
+	}
+	public GestionaPokemon() throws IOException {
+
+		buscarpokemonapi bp = new buscarpokemonapi("https://pokeapi.co/");
+
+		PokeApi b = bp.findUsers();
+		
 		this.nombre = b.name;
 		this.tipo = b.types.get(0).type.name;
 		this.moves = b.moves.stream().map(m-> m.move.name).collect(Collectors.toList());
@@ -181,6 +210,11 @@ public void recibirDanioSpecial (int danio) {
 	}
 }
 	
+public int cantidadImgBack() {
+	
+	return this.imagenesBack.size();
+	
+}
 
 public static List<String> cargarImagenesFront(PokeApi p) {
 	List<String> img = new ArrayList<>();
@@ -266,7 +300,9 @@ public static List<String> cargarImagenesFront(PokeApi p) {
 	img.add( p.sprites.versions.generationVii.ultraSunUltraMoon.frontShiny);
 	img.add( (String) p.sprites.versions.generationVii.ultraSunUltraMoon.frontFemale);
 	img.add( (String) p.sprites.versions.generationVii.ultraSunUltraMoon.frontFemale);
-	return img;
+	
+	img.removeAll(Collections.singletonList(null));
+	return img ;
 }
 
 public static List<String> cargarImagenesBack(PokeApi p) {
@@ -320,9 +356,13 @@ public static List<String> cargarImagenesBack(PokeApi p) {
 	img.add(p.sprites.versions.generationV.blackWhite.backShiny);
 	img.add((String) p.sprites.versions.generationV.blackWhite.backFemale);
 	img.add((String) p.sprites.versions.generationV.blackWhite.backShinyFemale);
+	
+	
 
+	img.removeAll(Collections.singletonList(null));
 	return img;
 }
+
 
 
 	@Override
