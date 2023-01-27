@@ -18,6 +18,7 @@ public class EntrenadorBase {
 	}
 
 	public GestionaPokemon getPokeball(int poke) {
+		// colocar null exception
 		return this.pokeball.get(poke);
 	}
 
@@ -26,6 +27,7 @@ public class EntrenadorBase {
 	}
 
 	public Items getItem(int it) {
+		// colocar null exception
 		return this.item.get(it);
 	}
 
