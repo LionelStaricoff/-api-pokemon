@@ -70,6 +70,8 @@ public class buscarpokemonapi {
 		
 		int responsecode = response.getStatus();
 		
+		
+		
 		PokeApi user = response.readEntity(PokeApi.class);
 		
 		return user;

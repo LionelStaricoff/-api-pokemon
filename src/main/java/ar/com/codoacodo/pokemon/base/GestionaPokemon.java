@@ -6,16 +6,14 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import ar.com.codoacodo.pokeapi.Move;
 import ar.com.codoacodo.pokeapi.PokeApi;
 
 public class GestionaPokemon {
 
 	private String nombre, tipo;
-	private List<String> moves = new ArrayList<>();
+	private List<String> moves = new ArrayList<String>();
 	private Collection<String> imagenesFront;
 	private Collection<String> imagenesBack;
 	private Integer hp, peso, defence, speed, specialdefence, atack, baseExperiencia, specialAtack;
@@ -217,7 +215,7 @@ public int cantidadImgBack() {
 }
 
 public static List<String> cargarImagenesFront(PokeApi p) {
-	List<String> img = new ArrayList<>();
+	List<String> img = new ArrayList<String>();
 	img.add(p.sprites.other.home.frontShiny);
 	img.add(p.sprites.other.home.frontDefault);
 	img.add((String) p.sprites.other.home.frontFemale);
@@ -306,7 +304,7 @@ public static List<String> cargarImagenesFront(PokeApi p) {
 }
 
 public static List<String> cargarImagenesBack(PokeApi p) {
-	List<String> img = new ArrayList<>();
+	List<String> img = new ArrayList<String>();
 	img.add(p.sprites.versions.generationI.redBlue.backDefault);
 	img.add(p.sprites.versions.generationI.redBlue.backGray);
 	img.add(p.sprites.versions.generationI.redBlue.backTransparent);

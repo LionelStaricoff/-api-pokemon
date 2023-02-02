@@ -39,6 +39,11 @@ private EntrenadorBase entrenador1,entrenador2,entrenador3,entrenador4;
 	
 	public void atacar(GestionaPokemon p1,int numero,GestionaPokemon p2) {
 		p2.recibirDanio(p1.attack(numero) );
-		// verificar que pasa si el pokemon no tienen hp
+		System.out.println("atacando "+ p1.getNombre()+ "recive daño "+p2.getNombre());
+		
+	}
+	
+	public boolean verificarVida(GestionaPokemon p) {
+		return (p.getHp()<1)?true :false;
 	}
 }
