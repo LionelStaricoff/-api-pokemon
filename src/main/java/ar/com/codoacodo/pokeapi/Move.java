@@ -2,6 +2,7 @@
 package ar.com.codoacodo.pokeapi;
 
 import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,7 +18,7 @@ public class Move {
     @JsonProperty("move")
     public Move__1 move;
     @JsonProperty("version_group_details")
-    public List<VersionGroupDetail> versionGroupDetails = null;
+    public List<VersionGroupDetail> versionGroupDetails;
 
     @Override
     public String toString() {

@@ -32,17 +32,17 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class PokeApi {
 
     @JsonProperty("abilities")
-    public List<Ability> abilities = null;
+    public List<Ability> abilities;
     @JsonProperty("base_experience")
     public Integer baseExperience;
     @JsonProperty("forms")
-    public List<Form> forms = null;
+    public List<Form> forms;
     @JsonProperty("game_indices")
-    public List<GameIndex> gameIndices = null;
+    public List<GameIndex> gameIndices;
     @JsonProperty("height")
     public Integer height;
     @JsonProperty("held_items")
-    public List<HeldItem> heldItems = null;
+    public List<HeldItem> heldItems;
     @JsonProperty("id")
     public Integer id;
     @JsonProperty("is_default")
@@ -50,21 +50,21 @@ public class PokeApi {
     @JsonProperty("location_area_encounters")
     public String locationAreaEncounters;
     @JsonProperty("moves")
-    public List<Move> moves = null;
+    public List<Move> moves;
     @JsonProperty("name")
     public String name;
     @JsonProperty("order")
     public Integer order;
     @JsonProperty("past_types")
-    public List<Object> pastTypes = null;
+    public List<Object> pastTypes;
     @JsonProperty("species")
     public Species species;
     @JsonProperty("sprites")
     public Sprites sprites;
     @JsonProperty("stats")
-    public List<Stat> stats = null;
+    public List<Stat> stats;
     @JsonProperty("types")
-    public List<Type> types = null;
+    public List<Type> types;
     @JsonProperty("weight")
     public Integer weight;
 
