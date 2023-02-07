@@ -10,13 +10,14 @@ import java.util.stream.Collectors;
 
 import ar.com.codoacodo.pokeapi.PokeApi;
 
-public class GestionaPokemon {
+public class GestionaPokemon  {
 
-	private String nombre, tipo;
-	private List<String> moves = new ArrayList<String>();
-	private Collection<String> imagenesFront;
-	private Collection<String> imagenesBack;
-	private Integer hp, peso, defence, speed, specialdefence, atack, baseExperiencia, specialAtack;
+	protected String nombre, tipo;
+	protected List<String> moves = new ArrayList<String>();
+	protected Collection<String> imagenesFront;
+	protected Collection<String> imagenesBack;
+	protected Integer hp, peso, defence, speed, specialdefence, atack, baseExperiencia;
+	protected Integer specialAtack;
 
 	public GestionaPokemon(int numero) throws IOException {
 
@@ -64,7 +65,27 @@ public class GestionaPokemon {
 		
 		
 	}
+	
 
+	// constructor privado para el build
+	private GestionaPokemon(String nombre, String tipo, List<String> moves, Collection<String> imagenesFront,
+			Collection<String> imagenesBack, Integer hp, Integer peso, Integer defence, Integer speed,
+			Integer specialdefence, Integer atack, Integer baseExperiencia, Integer specialAtack) {
+		
+		this.nombre = nombre;
+		this.tipo = tipo;
+		this.moves = moves;
+		this.imagenesFront = imagenesFront;
+		this.imagenesBack = imagenesBack;
+		this.hp = hp;
+		this.peso = peso;
+		this.defence = defence;
+		this.speed = speed;
+		this.specialdefence = specialdefence;
+		this.atack = atack;
+		this.baseExperiencia = baseExperiencia;
+		this.specialAtack = specialAtack;
+	}
 	public String getNombre() {
 		return nombre;
 	}
@@ -363,6 +384,7 @@ public static List<String> cargarImagenesBack(PokeApi p) {
 
 
 
+
 	@Override
 	public String toString() {
 		return "GestionaPokemon [nombre=" + nombre + ", tipo=" + tipo + ", moves=" + moves + ", imagenesFront="
@@ -372,3 +394,5 @@ public static List<String> cargarImagenesBack(PokeApi p) {
 	}
 
 }
+
+
