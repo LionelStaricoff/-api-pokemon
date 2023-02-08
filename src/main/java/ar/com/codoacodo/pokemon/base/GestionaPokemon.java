@@ -61,6 +61,32 @@ public class GestionaPokemon {
 		this.baseExperiencia = baseExperiencia;
 		this.specialAtack = specialAtack;
 	}
+	
+	public GestionaPokemon(PokemonBuilder builder) {
+		this.nombre = builder.getNombre();
+		this.tipo = builder.getTipo();
+		this.moves = builder.getMoves();
+		this.imagenesFront = builder.getImagenesFront();
+		this.imagenesBack = builder.getImagenesBack();
+		this.hp = builder.getHp();
+		this.peso = builder.getPeso();
+		this.defence = builder.getDefence();
+		this.speed = builder.getSpeed();
+		this.specialdefence = builder.getSpecialdefence();
+		this.atack = builder.getAtack();
+		this.baseExperiencia = builder.getBaseExperiencia();
+		this.specialAtack = builder.getSpecialAtack();
+	}
+	
+	public static PokemonBuilder builder() {
+		return new PokemonBuilder();
+	}
+	
+	
+	
+	
+	
+	
 	private  void armarPokemon(PokeApi b) {
 		this.nombre = b.name;
 		this.tipo = b.types.get(0).type.name;
