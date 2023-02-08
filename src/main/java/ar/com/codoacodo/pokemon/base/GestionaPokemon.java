@@ -24,20 +24,7 @@ public class GestionaPokemon {
 
 		PokeApi b = bp.findUsers(numero);
 		
-		this.nombre = b.name;
-		this.tipo = b.types.get(0).type.name;
-		this.moves = b.moves.stream().map(m-> m.move.name).collect(Collectors.toList());
-		this.imagenesFront = cargarImagenesFront(b); 
-		this.imagenesBack = cargarImagenesBack(b);
-		this.hp = b.stats.get(0).baseStat;
-		this.peso =  b.weight;
-		this.defence = b.stats.get(2).baseStat;
-		this.speed = b.stats.get(5).baseStat;
-		this.specialdefence = b.stats.get(4).baseStat;
-		this.atack = b.stats.get(1).baseStat;
-		this.baseExperiencia = b.baseExperience;
-		this.specialAtack = b.stats.get(3).baseStat;
-		
+		armarPokemon(b);
 		
 		
 	}
@@ -47,6 +34,34 @@ public class GestionaPokemon {
 
 		PokeApi b = bp.findUsers();
 		
+		armarPokemon(b);
+		
+		
+		
+	}
+	
+	
+	
+	
+	public GestionaPokemon(String nombre, String tipo, List<String> moves, Collection<String> imagenesFront,
+			Collection<String> imagenesBack, Integer hp, Integer peso, Integer defence, Integer speed,
+			Integer specialdefence, Integer atack, Integer baseExperiencia, Integer specialAtack) {
+	
+		this.nombre = nombre;
+		this.tipo = tipo;
+		this.moves = moves;
+		this.imagenesFront = imagenesFront;
+		this.imagenesBack = imagenesBack;
+		this.hp = hp;
+		this.peso = peso;
+		this.defence = defence;
+		this.speed = speed;
+		this.specialdefence = specialdefence;
+		this.atack = atack;
+		this.baseExperiencia = baseExperiencia;
+		this.specialAtack = specialAtack;
+	}
+	private  void armarPokemon(PokeApi b) {
 		this.nombre = b.name;
 		this.tipo = b.types.get(0).type.name;
 		this.moves = b.moves.stream().map(m-> m.move.name).collect(Collectors.toList());
@@ -60,9 +75,6 @@ public class GestionaPokemon {
 		this.atack = b.stats.get(1).baseStat;
 		this.baseExperiencia = b.baseExperience;
 		this.specialAtack = b.stats.get(3).baseStat;
-		
-		
-		
 	}
 
 	public String getNombre() {
@@ -214,7 +226,7 @@ public int cantidadImgBack() {
 	
 }
 
-public static List<String> cargarImagenesFront(PokeApi p) {
+private static List<String> cargarImagenesFront(PokeApi p) {
 	List<String> img = new ArrayList<String>();
 	img.add(p.sprites.other.home.frontShiny);
 	img.add(p.sprites.other.home.frontDefault);
@@ -303,7 +315,7 @@ public static List<String> cargarImagenesFront(PokeApi p) {
 	return img ;
 }
 
-public static List<String> cargarImagenesBack(PokeApi p) {
+private static List<String> cargarImagenesBack(PokeApi p) {
 	List<String> img = new ArrayList<String>();
 	img.add(p.sprites.versions.generationI.redBlue.backDefault);
 	img.add(p.sprites.versions.generationI.redBlue.backGray);
@@ -371,4 +383,8 @@ public static List<String> cargarImagenesBack(PokeApi p) {
 				+ ", baseExperiencia=" + baseExperiencia + ", specialAtack=" + specialAtack + "]";
 	}
 
+	
 }
+
+
+       

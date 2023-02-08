@@ -3,6 +3,7 @@ package ar.com.codoacodo.pokemon.main;
 import java.io.IOException;
 
 import ar.com.codoacodo.pokeapi.PokeApi;
+import ar.com.codoacodo.pokemon.base.BuildGestionaPokemonImpl;
 import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 import ar.com.codoacodo.pokemon.base.batallaPokemon;
 import ar.com.codoacodo.pokemon.base.buscarpokemonapi;
@@ -18,8 +19,39 @@ public class MainBatallaPokemon {
 		
 		GestionaPokemon pikachu = new GestionaPokemon(25);
 		GestionaPokemon pokeMisterioso = new GestionaPokemon(382);
-	
 		
+		
+		
+		
+		
+		//provando el BuildGestionaPokemonImpl para construir pokemon
+		System.out.println("pikachu: "+ pikachu.getNombre());
+		System.out.println("pokeMisterioso: "+pokeMisterioso.getNombre()
+		+", atack: "+pokeMisterioso.getAtack() 
+		+", baseExperiencia: "+pokeMisterioso.getBaseExperiencia());
+		
+		
+		
+		BuildGestionaPokemonImpl po = new BuildGestionaPokemonImpl();
+		po.buildInicial();
+		po.nombre("pepe");;
+		po.atack(200);
+		po.baseExperiencia(100);
+		
+		pokeMisterioso =  po.build();
+		System.out.println("pokeMisterioso: "+pokeMisterioso.getNombre()
+		+", atack: "+pokeMisterioso.getAtack() 
+		+", baseExperiencia: "+pokeMisterioso.getBaseExperiencia());	
+		
+		System.out.println(pokeMisterioso);
+		
+		// finaliza la prueba con exito
+		
+		
+		
+		
+		
+				
 		GestionaPokemon pokeMisterioso1 = new GestionaPokemon();
 		GestionaPokemon pokeMisterioso2 = new GestionaPokemon();
 		System.out.println(pokeMisterioso1.getNombre() +" "+pokeMisterioso2.getNombre());
