@@ -37,13 +37,11 @@ private EntrenadorBase entrenador1,entrenador2,entrenador3,entrenador4;
 		return entrenador.getPokeball(numero);
 	}
 	
-	public void atacar(GestionaPokemon p1,int numero,GestionaPokemon p2) {
-		p2.recibirDanio(p1.attack(numero) );
+	public void atacar(GestionaPokemon p1,int numeroDelAtake,GestionaPokemon p2) {
+		p2.recibirDanio(p1.attack(numeroDelAtake) );
 		System.out.println("atacando "+ p1.getNombre()+ "recive daño "+p2.getNombre());
 		
 	}
 	
-	public boolean verificarVida(GestionaPokemon p) {
-		return (p.getHp()<1)?true :false;
-	}
+	
 }

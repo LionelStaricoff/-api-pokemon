@@ -2,6 +2,7 @@ package ar.com.codoacodo.pokemon.entrenador;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 import ar.com.codoacodo.pokemon.base.Items;
@@ -11,6 +12,24 @@ public class EntrenadorBase {
 	private ArrayList <GestionaPokemon> pokeball = new ArrayList<>();
 	private ArrayList <Items> item = new ArrayList<>();
 	private String name;
+	
+	public boolean meQuedanPokemon() {
+		Iterator<GestionaPokemon> lista = this.pokeball.iterator();
+			while(lista.hasNext()) {
+				
+				if(!verificarVida(lista.next())) {
+					return true;
+			}
+			}
+					
+				return false;
+			
+			
+	}
+	
+	public boolean verificarVida(GestionaPokemon p) {
+		return (p.getHp()<1)?true :false;
+	}
 	
 	public EntrenadorBase(String name) {
 	
@@ -37,6 +56,10 @@ public class EntrenadorBase {
 	
 	public int cantidadPokemon() {
 		return this.pokeball.size();
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	
