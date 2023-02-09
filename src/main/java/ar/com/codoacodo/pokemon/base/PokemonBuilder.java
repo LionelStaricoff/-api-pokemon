@@ -4,110 +4,143 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public  class PokemonBuilder {
+import ar.com.codoacodo.user.UsuarioBuilder;
+
+public class PokemonBuilder {
 
 	private String nombre, tipo;
 	private List<String> moves = new ArrayList<String>();
 	private Collection<String> imagenesFront;
 	private Collection<String> imagenesBack;
 	private Integer hp, peso, defence, speed, specialdefence, atack, baseExperiencia, specialAtack;
-	
-	
-	
+	private static PokemonBuilder pokemonBuilder = new PokemonBuilder();
+
 	public PokemonBuilder() {
-		
+
 	}
-	
-	
-	
-	
-	
-	
+
 	public GestionaPokemon build() {
-		GestionaPokemon gestionaPokemon = new GestionaPokemon(this);
+		GestionaPokemon gestionaPokemon = new GestionaPokemon(pokemonBuilder);
 		return gestionaPokemon;
 	}
-	
-	
-	
-	
+
+	public PokemonBuilder nombre(String nombre) {
+		this.pokemonBuilder.nombre = nombre;
+		return this;
+	}
+
+	public PokemonBuilder tipo(String tipo) {
+		this.pokemonBuilder.tipo = tipo;
+		return this;
+	}
+
+	public PokemonBuilder moves(List<String> moves) {
+		this.pokemonBuilder.moves = moves;
+		return this;
+	}
+
+	public PokemonBuilder imagenesFront(List<String> imagenesFront) {
+		this.pokemonBuilder.imagenesFront = imagenesFront;
+		return this;
+	}
+
+	public PokemonBuilder imagenesBack(List<String> imagenesBack) {
+		this.pokemonBuilder.imagenesBack = imagenesBack;
+		return this;
+	}
+
+	public PokemonBuilder hp(int hp) {
+		this.pokemonBuilder.hp = hp;
+		return this;
+	}
+
+	public PokemonBuilder peso(int peso) {
+		this.pokemonBuilder.peso = peso;
+		return this;
+	}
+
+	public PokemonBuilder defence(int defence) {
+		this.pokemonBuilder.defence = defence;
+		return this;
+	}
+
+	public PokemonBuilder speed(int speed) {
+		this.pokemonBuilder.speed = speed;
+		return this;
+	}
+
+	public PokemonBuilder specialdefence(int specialdefence) {
+		this.pokemonBuilder.specialdefence = specialdefence;
+		return this;
+	}
+
+	public PokemonBuilder atack(int atack) {
+		this.pokemonBuilder.atack = atack;
+		return this;
+	}
+
+	public PokemonBuilder baseExperiencia(int baseExperiencia) {
+		this.pokemonBuilder.baseExperiencia = baseExperiencia;
+		return this;
+	}
+
+	public PokemonBuilder specialAtack(int specialAtack) {
+		this.pokemonBuilder.specialAtack = specialAtack;
+		return this;
+	}
+
+	// getters
+
 	public String getNombre() {
 		return nombre;
 	}
-	public  void setNombre(String nombre) {
-	    this.nombre = nombre;
-	}
+
 	public String getTipo() {
 		return tipo;
 	}
-	public  void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+
 	public List<String> getMoves() {
 		return moves;
 	}
-	public void setMoves(List<String> moves) {
-		this.moves = moves;
-	}
+
 	public Collection<String> getImagenesFront() {
 		return imagenesFront;
 	}
-	public void setImagenesFront(Collection<String> imagenesFront) {
-		this.imagenesFront = imagenesFront;
-	}
+
 	public Collection<String> getImagenesBack() {
 		return imagenesBack;
 	}
-	public void setImagenesBack(Collection<String> imagenesBack) {
-		this.imagenesBack = imagenesBack;
-	}
+
 	public Integer getHp() {
 		return hp;
 	}
-	public void setHp(Integer hp) {
-		this.hp = hp;
-	}
+
 	public Integer getPeso() {
 		return peso;
 	}
-	public void setPeso(Integer peso) {
-		this.peso = peso;
-	}
+
 	public Integer getDefence() {
 		return defence;
 	}
-	public void setDefence(Integer defence) {
-		this.defence = defence;
-	}
+
 	public Integer getSpeed() {
 		return speed;
 	}
-	public void setSpeed(Integer speed) {
-		this.speed = speed;
-	}
+
 	public Integer getSpecialdefence() {
 		return specialdefence;
 	}
-	public void setSpecialdefence(Integer specialdefence) {
-		this.specialdefence = specialdefence;
-	}
+
 	public Integer getAtack() {
 		return atack;
 	}
-	public void setAtack(Integer atack) {
-		this.atack = atack;
-	}
+
 	public Integer getBaseExperiencia() {
 		return baseExperiencia;
 	}
-	public void setBaseExperiencia(Integer baseExperiencia) {
-		this.baseExperiencia = baseExperiencia;
-	}
+
 	public Integer getSpecialAtack() {
 		return specialAtack;
-	}
-	public void setSpecialAtack(Integer specialAtack) {
-		this.specialAtack = specialAtack;
 	}
 
 }

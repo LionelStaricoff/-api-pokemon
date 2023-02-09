@@ -1,4 +1,4 @@
-package ar.com.codoacodo.pokemon.base;
+package ar.com.codoacodo.user;
 
 public class Usuario {
 
@@ -21,7 +21,6 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [nombre=" + nombre + ", username=" + username + ", edad=" + edad + ", password=" + password
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
 				+ "]";
 	}
 

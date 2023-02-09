@@ -6,10 +6,10 @@ import ar.com.codoacodo.pokeapi.PokeApi;
 import ar.com.codoacodo.pokemon.base.BuildGestionaPokemonImpl;
 import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 import ar.com.codoacodo.pokemon.base.PokemonBuilder;
-import ar.com.codoacodo.pokemon.base.Usuario;
 import ar.com.codoacodo.pokemon.base.batallaPokemon;
 import ar.com.codoacodo.pokemon.base.buscarpokemonapi;
 import ar.com.codoacodo.pokemon.entrenador.EntrenadorBase;
+import ar.com.codoacodo.user.Usuario;
 
 
 public class MainBatallaPokemon {
@@ -20,24 +20,7 @@ public class MainBatallaPokemon {
 
 		
 		
-		// nuevo usuariobuilder
-				Usuario usuario = Usuario.builder()
-					    .edad(30)
-					    .password("123456789")
-					    .username("javatutoriales")
-					    .nombre("Programador Java")
-					    .build();
-					   
-						System.out.println(usuario);
-						
-		Usuario us = Usuario.builder()
-				.edad(100)
-				.password("555")
-				.username("pedro")
-				.nombre("pablo")
-				.build();
-		System.out.println(us.toString());
-		
+		// 
 		
 		
 		

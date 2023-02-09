@@ -43,25 +43,6 @@ public class GestionaPokemon {
 	
 	
 	
-	public GestionaPokemon(String nombre, String tipo, List<String> moves, Collection<String> imagenesFront,
-			Collection<String> imagenesBack, Integer hp, Integer peso, Integer defence, Integer speed,
-			Integer specialdefence, Integer atack, Integer baseExperiencia, Integer specialAtack) {
-	
-		this.nombre = nombre;
-		this.tipo = tipo;
-		this.moves = moves;
-		this.imagenesFront = imagenesFront;
-		this.imagenesBack = imagenesBack;
-		this.hp = hp;
-		this.peso = peso;
-		this.defence = defence;
-		this.speed = speed;
-		this.specialdefence = specialdefence;
-		this.atack = atack;
-		this.baseExperiencia = baseExperiencia;
-		this.specialAtack = specialAtack;
-	}
-	
 	public GestionaPokemon(PokemonBuilder builder) {
 		this.nombre = builder.getNombre();
 		this.tipo = builder.getTipo();
@@ -78,7 +59,7 @@ public class GestionaPokemon {
 		this.specialAtack = builder.getSpecialAtack();
 	}
 	
-	public static PokemonBuilder builder() {
+	public synchronized static PokemonBuilder builder() {
 		return new PokemonBuilder();
 	}
 	

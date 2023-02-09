@@ -1,4 +1,4 @@
-package ar.com.codoacodo.pokemon.base;
+package ar.com.codoacodo.user;
 
 public class UsuarioBuilder {
 
@@ -10,7 +10,6 @@ public class UsuarioBuilder {
 
 	UsuarioBuilder() {
 
-		//this.usuarioBuilder = new UsuarioBuilder();
 	}
 
 	public Usuario build() {
@@ -18,14 +17,10 @@ public class UsuarioBuilder {
 		return usuario;
 	}
 
-	
-
 	public UsuarioBuilder nombre(String nombre) {
 		this.usuarioBuilder.nombre = nombre;
 		return this;
 	}
-
-	
 
 	public UsuarioBuilder username(String username) {
 		this.usuarioBuilder.username = username;
@@ -58,19 +53,10 @@ public class UsuarioBuilder {
 		return password;
 	}
 
-	public static UsuarioBuilder getUsuarioBuilder() {
-		return usuarioBuilder;
-	}
-
 	@Override
 	public String toString() {
 		return "UsuarioBuilder [nombre=" + nombre + ", username=" + username + ", edad=" + edad + ", password="
-				+ password + ", build()=" + build() + ", getNombre()=" + getNombre() + ", getUsername()="
-				+ getUsername() + ", getEdad()=" + getEdad() + ", getPassword()=" + getPassword() + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+				+ password + "]";
 	}
-	
-	
-	
 
 }
