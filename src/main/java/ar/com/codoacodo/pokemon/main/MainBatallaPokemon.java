@@ -1,15 +1,14 @@
 package ar.com.codoacodo.pokemon.main;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-import ar.com.codoacodo.pokeapi.PokeApi;
-import ar.com.codoacodo.pokemon.base.BuildGestionaPokemonImpl;
 import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 import ar.com.codoacodo.pokemon.base.PokemonBuilder;
 import ar.com.codoacodo.pokemon.base.batallaPokemon;
-import ar.com.codoacodo.pokemon.base.buscarpokemonapi;
 import ar.com.codoacodo.pokemon.entrenador.EntrenadorBase;
-import ar.com.codoacodo.user.Usuario;
 
 
 public class MainBatallaPokemon {
@@ -26,37 +25,53 @@ public class MainBatallaPokemon {
 		
 		
 		GestionaPokemon pikachu = new GestionaPokemon(25);
-		GestionaPokemon pokeMisterioso = new GestionaPokemon(382);
+		GestionaPokemon pokeMisterioso = new GestionaPokemon();
 		
-		
-		
-		
-		
+
 	
-		System.out.println("pikachu: "+ pikachu.getNombre());
-		System.out.println("pokeMisterioso: "+pokeMisterioso.getNombre()
-		+", atack: "+pokeMisterioso.getAtack() 
-		+", baseExperiencia: "+pokeMisterioso.getBaseExperiencia());
-		
-		
-		//provando el BuildGestionaPokemonImpl para construir pokemon
-		BuildGestionaPokemonImpl po = new BuildGestionaPokemonImpl();
-		po.buildInicial();
-		po.nombre("pepe");;
-		po.atack(200);
-		po.baseExperiencia(100);
-		
-		pokeMisterioso =  po.build();
-		System.out.println("pokeMisterioso: "+pokeMisterioso.getNombre()
-		+", atack: "+pokeMisterioso.getAtack() 
-		+", baseExperiencia: "+pokeMisterioso.getBaseExperiencia());	
-		
+		System.out.println( pikachu);
 		System.out.println(pokeMisterioso);
 		
-		// finaliza la prueba con exito
+		
+		//provando el UsuarioBuilder para construir pokemon
 		
 		
+		 List<String> moves = new ArrayList<String>();
+		 List<String> imagenesFront = new ArrayList<String>();
+		 List<String> imagenesBack = new ArrayList<String>();
+		 
+		 moves.add(pikachu.getMoves(5));
+		 moves.add(pikachu.getMoves(10));
+		 moves.add(pikachu.getMoves(15));
+		 
+		 imagenesFront.add(pikachu.getImagenesFront(0));
+		 imagenesFront.add(pikachu.getImagenesFront(2));
+		 imagenesFront.add(pikachu.getImagenesFront(3));
+		 
+		 imagenesBack.add(pikachu.getImagenesBack(0));
+		 imagenesBack.add(pikachu.getImagenesBack(2));
+		 imagenesBack.add(pikachu.getImagenesBack(3));
+		 
+	
+		pokeMisterioso = GestionaPokemon.builder()
+				.atack(pikachu.getAtack())
+				.nombre(pikachu.getNombre())
+				.tipo(pikachu.getTipo())
+				.hp(pikachu.getHp())
+				.peso(pikachu.getPeso())
+				.defence(pikachu.getDefence())
+				.speed(pikachu.getSpeed())
+				.specialdefence(pikachu.getSpecialdefence())
+				.atack(pikachu.getAtack())
+				.baseExperiencia(pikachu.getBaseExperiencia())
+				.specialAtack(pikachu.getSpecialAtack())
+				.moves(moves)
+				.imagenesFront(imagenesFront)
+				.imagenesBack(imagenesBack)
+				.build();
 		
+		
+		System.out.println(pokeMisterioso);
 		
 		
 	

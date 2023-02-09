@@ -42,7 +42,7 @@ public class GestionaPokemon {
 	
 	
 	
-	
+	//PokemonBuilder polimorfismo
 	public GestionaPokemon(PokemonBuilder builder) {
 		this.nombre = builder.getNombre();
 		this.tipo = builder.getTipo();
@@ -92,7 +92,7 @@ public class GestionaPokemon {
 		return tipo;
 	}
 	
-	//no funca los moves
+	
 
 	public String getMoves(int n) {
 		String nameAtack = "";
