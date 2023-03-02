@@ -42,6 +42,19 @@ private EntrenadorBase entrenador1,entrenador2,entrenador3,entrenador4;
 		System.out.println("atacando "+ p1.getNombre()+ "recive daño "+p2.getNombre());
 		
 	}
+
+	
+	public EntrenadorBase getEntrenador1() {
+		return entrenador1;
+	}
+
+	
+	public EntrenadorBase getEntrenador2() {
+		return entrenador2;
+	}
+
+	
+
 	
 	
 }

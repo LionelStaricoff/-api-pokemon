@@ -20,6 +20,7 @@ public class MainBatallaPokemon {
 
 		
 		
+		
 		// 
 		
 		
@@ -110,47 +111,10 @@ public class MainBatallaPokemon {
 		
 		batallaPokemon bp = new batallaPokemon(entrenador, entrenador2);
 		
-		
-		GestionaPokemon poke2 =bp.elegirPokemon(entrenador2, 0);
-		bp.atacar(poke2, 30, poke1);
-		System.out.println(entrenador.verificarVida(poke1) );
+	
 		
 		
-		
-		//menu batalla
-		Scanner sc = new Scanner (System.in);
-		do {
-			
-			System.out.println("opción 1: elegir pokemon");
-			int opcion = sc.nextInt();
-			
-			System.out.println("opción 2: atacar");
-			opcion = sc.nextInt();
-			
-			System.out.println("opción 3: elegir cambiar pokemon");
-			opcion = sc.nextInt();
-			
-			System.out.println("opción 3: elegir item");
-			opcion = sc.nextInt();
-			
-			
-			switch (opcion) {
-			case 1:
-				System.out.println(entrenador.getName()+": introduce el numero de pokemon a pelear");
-				opcion = sc.nextInt();
-				GestionaPokemon poke1 =bp.elegirPokemon(entrenador, opcion);
-				
-				System.out.println(entrenador2.getName()+": introduce el numero de pokemon a pelear");
-				opcion = sc.nextInt();
-				GestionaPokemon poke21 =bp.elegirPokemon(entrenador, opcion);
-				
-				break;
-
-			default:
-				System.out.println("opción incorrecta");
-			}
-			
-		} while (entrenador.meQuedanPokemon() && entrenador2.meQuedanPokemon() );
 	}
+	
 
 }

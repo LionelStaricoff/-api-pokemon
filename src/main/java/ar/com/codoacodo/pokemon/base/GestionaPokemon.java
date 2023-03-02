@@ -151,6 +151,10 @@ public class GestionaPokemon {
 	public Integer getHp() {
 		return hp;
 	}
+	
+	public boolean estaMuerto() {
+		return (getHp()<1)?true :false;
+	}
 
 	public Integer getPeso() {
 		return peso;

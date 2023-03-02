@@ -3,6 +3,8 @@ package ar.com.codoacodo.pokemon.entrenador;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 import ar.com.codoacodo.pokemon.base.Items;
@@ -25,6 +27,11 @@ public class EntrenadorBase {
 				return false;
 			
 			
+	}
+	public boolean verificarVidaDeTodosLosPokemon() {
+		List<GestionaPokemon> po = this.pokeball.stream().filter(p -> p.estaMuerto()!=true).collect(Collectors.toList());
+	
+		return po.isEmpty();
 	}
 	
 	public boolean verificarVida(GestionaPokemon p) {
