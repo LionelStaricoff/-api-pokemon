@@ -207,7 +207,7 @@ public void recibirDanio (int danio) {
 	if (this.hp >0) {
 		
 		if(this.defence < danio) {
-	this.hp -= (this.defence - danio);
+	this.hp -=  Math.abs(this.defence - danio);
 		}else {
 			
 		}this.hp -= 1;

@@ -44,9 +44,13 @@ public class simuladorDeVentana {
 			int pokemon;
 			
 			do {
-		System.out.println(" numero de pokemon a sacar,/n verifica que este vivo");
+				System.out.println("");
+		System.out.println(" numero de pokemon a sacar,\n verifica que este vivo");
 		System.out.println(this.entrenadorActivo.getName()+" tiene "+this.entrenadorActivo.cantidadPokemon()+" pokemon");
 		    pokemon = sc.nextInt()-1;
+		    
+		    if(pokemon<0) pokemon=0;
+		    
 			}while(this.entrenadorActivo.cantidadPokemon() <= pokemon );
 		
 		this.pokemonActivo = this.bp.elegirPokemon(this.entrenadorActivo,pokemon);
@@ -60,12 +64,21 @@ public class simuladorDeVentana {
 		
 		
 		do {
-			if(this.entrenadorActivo.verificarVidaDeTodosLosPokemon() ) {
+			if(this.entrenadorPasivo.verificarVidaDeTodosLosPokemon() ) {
 				System.out.println("game over, gano el jugador"+ this.entrenadorPasivo.getName());
 				return;
 			}
-		System.out.println(this.entrenadorPasivo.getName()+" numero de pokemon a sacar, verifica que este vivo");
-		int pokemon = sc.nextInt();
+			int pokemon;
+			do {
+				System.out.println("");
+				System.out.println(" numero de pokemon a sacar,\n verifica que este vivo");
+				System.out.println(this.entrenadorPasivo.getName()+" tiene "+this.entrenadorPasivo.cantidadPokemon()+" pokemon");
+				   pokemon = sc.nextInt()-1;
+		    
+		    if(pokemon<0) pokemon=0;
+		    
+			}while(this.entrenadorPasivo.cantidadPokemon() <= pokemon && pokemon<0);
+			
 		this.pokemonPasivo = this.bp.elegirPokemon(this.entrenadorPasivo,pokemon);
 		}while(this.pokemonPasivo.estaMuerto());
 		System.out.println(this.entrenadorPasivo.getName()+" llama a " 
@@ -79,6 +92,7 @@ public class simuladorDeVentana {
 		entrenadorAux = this.entrenadorActivo;
 		this.entrenadorActivo = this.entrenadorPasivo;
 		this.entrenadorPasivo = entrenadorAux;
+		intercambiarPokemon();
 	}
 	
 	public void intercambiarPokemon() {
@@ -95,9 +109,9 @@ public class simuladorDeVentana {
 			
 			System.out.println("");
 			System.out.println("Entrenador activo: "+this.entrenadorActivo.getName());
-			System.out.println("pokemon activo: "+this.pokemonActivo.getHp()+" hp");
+			System.out.println("pokemon activo: "+this.pokemonActivo.getNombre()+" "+this.pokemonActivo.getHp()+" hp");
 			System.out.println("Entrenador pasivo: "+this.entrenadorPasivo.getName());
-			System.out.println("pokemon pasivo: "+this.pokemonPasivo.getHp()+" hp");
+			System.out.println("pokemon pasivo: "+this.pokemonPasivo.getNombre()+" "+this.pokemonPasivo.getHp()+" hp");
 			System.out.println("");
 			
 			System.out.println("opsion 1: Atacar");
