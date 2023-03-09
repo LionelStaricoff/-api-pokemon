@@ -10,6 +10,7 @@ import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 import ar.com.codoacodo.pokemon.base.PokemonBuilder;
 import ar.com.codoacodo.pokemon.base.batallaPokemon;
 import ar.com.codoacodo.pokemon.entrenador.EntrenadorBase;
+import ar.com.codoacodo.pokemon.view.simuladorDeVentana;
 
 
 public class MainBatallaPokemon {
@@ -112,7 +113,11 @@ public class MainBatallaPokemon {
 		batallaPokemon bp = new batallaPokemon(entrenador, entrenador2);
 		
 	
-		
+		simuladorDeVentana ventana = new simuladorDeVentana(bp);
+		ventana.elegirEntrenador();
+		ventana.elegirPokemonActivo();
+		ventana.elegirPokemonPasivo();
+		ventana.menu();
 		
 	}
 	

@@ -39,7 +39,7 @@ private EntrenadorBase entrenador1,entrenador2,entrenador3,entrenador4;
 	
 	public void atacar(GestionaPokemon p1,int numeroDelAtake,GestionaPokemon p2) {
 		p2.recibirDanio(p1.attack(numeroDelAtake) );
-		System.out.println("atacando "+ p1.getNombre()+ "recive daño "+p2.getNombre());
+		System.out.println("atacando "+ p1.getNombre()+ " recive daño "+p2.getNombre());
 		
 	}
 

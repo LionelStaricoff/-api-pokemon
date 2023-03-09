@@ -68,6 +68,10 @@ public class EntrenadorBase {
 	public String getName() {
 		return name;
 	}
+	@Override
+	public String toString() {
+		return "EntrenadorBase [pokeball=" + pokeball + ", item=" + item + ", name=" + name + "]";
+	}
 
 	
 }
