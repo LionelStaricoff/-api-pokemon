@@ -110,9 +110,9 @@ public class MainBatallaPokemon {
 		
 	
 		simuladorDeVentana ventana = new simuladorDeVentana(bp);
-		ventana.elegirEntrenador();
+		/*ventana.elegirEntrenador();
 		ventana.elegirPokemonActivo();
-		ventana.elegirPokemonPasivo();
+		ventana.elegirPokemonPasivo();*/
 		ventana.menu();
 		
 	}
