@@ -38,7 +38,7 @@ public class simuladorDeVentana {
 	public void elegirPokemonActivo() {
 		do {
 			if(this.entrenadorActivo.verificarVidaDeTodosLosPokemon() ) {
-				System.out.println("game over, gano el jugador"+ this.entrenadorPasivo.getName());
+				System.out.println("game over");
 				return;
 			}
 			int pokemon;
@@ -65,7 +65,7 @@ public class simuladorDeVentana {
 		
 		do {
 			if(this.entrenadorPasivo.verificarVidaDeTodosLosPokemon() ) {
-				System.out.println("game over, gano el jugador"+ this.entrenadorPasivo.getName());
+				System.out.println("game over, gano el jugador "+ this.entrenadorPasivo.getName());
 				return;
 			}
 			int pokemon;
@@ -138,6 +138,14 @@ public class simuladorDeVentana {
 		default:
 			System.out.println("opsion incorrecta ");
 			break;
+		}
+		if(this.entrenadorActivo.verificarVidaDeTodosLosPokemon()) {
+			opcionMenu=4;
+			System.out.println("gano el entrenador "+this.entrenadorPasivo.getName());
+		}
+		if(this.entrenadorPasivo.verificarVidaDeTodosLosPokemon()) {
+			opcionMenu=4;
+			System.out.println("gano el entrenador "+this.entrenadorActivo.getName());
 		}
 		intercambiarEntrenadores();
 		} while (opcionMenu ==1 || opcionMenu ==2 || opcionMenu ==3 );

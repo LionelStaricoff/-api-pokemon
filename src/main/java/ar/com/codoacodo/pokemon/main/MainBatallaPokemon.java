@@ -1,16 +1,12 @@
 package ar.com.codoacodo.pokemon.main;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Scanner;
 
 import ar.com.codoacodo.pokemon.base.GestionaPokemon;
-import ar.com.codoacodo.pokemon.base.PokemonBuilder;
 import ar.com.codoacodo.pokemon.base.batallaPokemon;
 import ar.com.codoacodo.pokemon.entrenador.EntrenadorBase;
 import ar.com.codoacodo.pokemon.view.simuladorDeVentana;
+
 
 
 public class MainBatallaPokemon {
