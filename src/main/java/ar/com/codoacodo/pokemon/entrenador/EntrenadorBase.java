@@ -1,18 +1,17 @@
 package ar.com.codoacodo.pokemon.entrenador;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import ar.com.codoacodo.pokemon.base.GestionaPokemon;
-import ar.com.codoacodo.pokemon.base.Items;
+import ar.com.codoacodo.pokemon.items.Items;
 
 public class EntrenadorBase {
 	
 	private ArrayList <GestionaPokemon> pokeball = new ArrayList<>();
-	private ArrayList <Items> item = new ArrayList<>();
+	private List <Items> Items = new ArrayList<>();
 	private String name;
 	
 	public boolean meQuedanPokemon() {
@@ -54,11 +53,11 @@ public class EntrenadorBase {
 
 	public Items getItem(int it) {
 		// colocar null exception
-		return this.item.get(it);
+		return this.Items.get(it);
 	}
 
 	public void setItem(Items item) {
-		this.item.add(item);
+		this.Items.add(item);
 	}
 	
 	public int cantidadPokemon() {
@@ -70,7 +69,7 @@ public class EntrenadorBase {
 	}
 	@Override
 	public String toString() {
-		return "EntrenadorBase [pokeball=" + pokeball + ", item=" + item + ", name=" + name + "]";
+		return "EntrenadorBase [pokeball=" + pokeball + ", item=" + Items + ", name=" + name + "]";
 	}
 
 	

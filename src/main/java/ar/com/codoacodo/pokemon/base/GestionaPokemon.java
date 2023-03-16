@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import ar.com.codoacodo.pokeapi.PokeApi;
+import ar.com.codoacodo.pokemon.items.Items;
 
 public class GestionaPokemon {
 
@@ -83,6 +84,8 @@ public class GestionaPokemon {
 		this.baseExperiencia = b.baseExperience;
 		this.specialAtack = b.stats.get(3).baseStat;
 	}
+	
+	
 
 	public String getNombre() {
 		return nombre;
