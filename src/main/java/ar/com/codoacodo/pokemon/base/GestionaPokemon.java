@@ -84,6 +84,8 @@ public class GestionaPokemon {
 		this.baseExperiencia = b.baseExperience;
 		this.specialAtack = b.stats.get(3).baseStat;
 	}
+	
+	
 
 	public String getNombre() {
 		return nombre;

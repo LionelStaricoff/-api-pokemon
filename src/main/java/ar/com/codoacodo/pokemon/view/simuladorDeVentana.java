@@ -18,7 +18,9 @@ public class simuladorDeVentana {
 	public simuladorDeVentana(batallaPokemon p) {
 	
 		this.bp = p;
-		
+		elegirEntrenador();
+		elegirPokemonActivo();
+		elegirPokemonPasivo();
 	}
 
 	
@@ -65,7 +67,7 @@ public class simuladorDeVentana {
 		
 		do {
 			if(this.entrenadorPasivo.verificarVidaDeTodosLosPokemon() ) {
-				System.out.println("game over, gano el jugador "+ this.entrenadorPasivo.getName());
+				System.out.println("game over");
 				return;
 			}
 			int pokemon;
@@ -77,7 +79,7 @@ public class simuladorDeVentana {
 		    
 		    if(pokemon<0) pokemon=0;
 		    
-			}while(this.entrenadorPasivo.cantidadPokemon() <= pokemon && pokemon<0);
+			}while(this.entrenadorPasivo.cantidadPokemon() <= pokemon );
 			
 		this.pokemonPasivo = this.bp.elegirPokemon(this.entrenadorPasivo,pokemon);
 		}while(this.pokemonPasivo.estaMuerto());
