@@ -79,7 +79,7 @@ public class simuladorDeVentana {
 		    
 		    if(pokemon<0) pokemon=0;
 		    
-			}while(this.entrenadorPasivo.cantidadPokemon() <= pokemon && pokemon<0);
+			}while(this.entrenadorPasivo.cantidadPokemon() <= pokemon );
 			
 		this.pokemonPasivo = this.bp.elegirPokemon(this.entrenadorPasivo,pokemon);
 		}while(this.pokemonPasivo.estaMuerto());
