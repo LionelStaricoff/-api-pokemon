@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 import ar.com.codoacodo.pokeapi.PokeApi;
 
+
 public class GestionaPokemon {
 
 	private String nombre, tipo;
