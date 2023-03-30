@@ -1,6 +1,8 @@
+package ar.com.codoacodo.pokemon.items;
 
 
-import ar.com.codoacodo.Item;
+
+import ar.com.codoacodo.item.Item;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Invocation;
@@ -46,10 +48,14 @@ public class BuscaItem {
 			}
 	
 	public static void main (String args[]) {
-		BuscaItem bp = new BuscaItem(17);
+		BuscaItem bp = new BuscaItem(28);
 	Item pocion =	bp.findItem();
 	System.out.println(pocion.name);
-	System.out.println(pocion.url);
+	System.out.println(pocion.cost);
+	//cura Restores 20 HP.
+	System.out.println(pocion.effectEntries.get(0).shortEffect);
+	//img
+	System.out.println(pocion.sprites._default);
 	}
 	
 }
