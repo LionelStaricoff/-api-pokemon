@@ -1,6 +1,6 @@
-package ar.com.codoacodo.pokemon.items;
 
-import ar.com.codoacodo.pokeapi.Item;
+
+import ar.com.codoacodo.Item;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Invocation;
@@ -37,6 +37,8 @@ public class BuscaItem {
 				//System.out.println("conectando"+responseCode);
 				//read
 				
+			//	String users = response.readEntity(String.class);
+			//	System.out.println(users);
 // problema creando el user, volver a bajara el 2pojo
 				Item user = response.readEntity(Item.class);
 				
