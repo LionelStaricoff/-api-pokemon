@@ -2,16 +2,17 @@ package ar.com.codoacodo.pokemon.items;
 
 import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 
-public class Posion extends Items implements Curable {
+public class Revive extends Items implements Curable {
 	
-	public Posion() {
-		super(EnumItem.POCION.getKey());
+	public Revive() {
+		super(EnumItem.REVIVE.getKey());
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void curar(GestionaPokemon Pokemon) {
-		Pokemon.setHp(20);
+		
+		Pokemon.setHp(Pokemon.getVidaTotal()/2);
 		
 	}
 

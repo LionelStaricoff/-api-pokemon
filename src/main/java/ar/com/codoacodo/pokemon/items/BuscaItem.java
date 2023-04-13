@@ -46,9 +46,9 @@ public class BuscaItem {
 				
 				return  user;
 			}
-	
+	/*
 	public static void main (String args[]) {
-		BuscaItem bp = new BuscaItem(28);
+		BuscaItem bp = new BuscaItem(58);
 	Item pocion =	bp.findItem();
 	System.out.println(pocion.name);
 	System.out.println(pocion.cost);
@@ -57,5 +57,5 @@ public class BuscaItem {
 	//img
 	System.out.println(pocion.sprites._default);
 	}
-	
+	*/
 }

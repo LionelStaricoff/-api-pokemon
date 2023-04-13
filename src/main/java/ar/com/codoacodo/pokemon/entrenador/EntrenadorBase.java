@@ -52,7 +52,6 @@ public class EntrenadorBase {
 	}
 
 	public Items getItem(int it) {
-		// colocar null exception
 		return this.Items.get(it);
 	}
 
@@ -71,6 +70,19 @@ public class EntrenadorBase {
 	public String toString() {
 		return "EntrenadorBase [pokeball=" + pokeball + ", item=" + Items + ", name=" + name + "]";
 	}
+	public void imprimirItems() {
+		if(this.Items.isEmpty()) {
+			System.out.println("no tenes items");
+		}else {
+			 this.Items.forEach(System.out::println);
+        	 }
+		}
+	public boolean tieneItems() {
+		
+		return !this.Items.isEmpty();
+	}
+		
+	}
 
 	
-}
+

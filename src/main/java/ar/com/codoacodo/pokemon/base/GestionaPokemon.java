@@ -17,8 +17,9 @@ public class GestionaPokemon {
 	private List<String> moves = new ArrayList<String>();
 	private Collection<String> imagenesFront;
 	private Collection<String> imagenesBack;
-	private Integer hp, peso, defence, speed, specialdefence, atack, baseExperiencia, specialAtack;
-
+	private Integer defencePotenciado= 0,AtkPotenciado=0, hp, peso, defence, speed, specialdefence, atack, baseExperiencia, specialAtack;
+	private int vidaTotal=0;
+	
 	public GestionaPokemon(int numero) throws IOException {
 
 		buscarpokemonapi bp = new buscarpokemonapi("https://pokeapi.co/");
@@ -26,7 +27,7 @@ public class GestionaPokemon {
 		PokeApi b = bp.findUsers(numero);
 		
 		armarPokemon(b);
-		
+		  this.vidaTotal = getHp();
 		
 	}
 	public GestionaPokemon() throws IOException {
@@ -36,7 +37,7 @@ public class GestionaPokemon {
 		PokeApi b = bp.findUsers();
 		
 		armarPokemon(b);
-		
+		this.vidaTotal = getHp();
 		
 		
 	}
@@ -164,7 +165,7 @@ public class GestionaPokemon {
 	}
 
 	public Integer getDefence() {
-		return defence;
+		return this.defence + this.defencePotenciado;
 	}
 
 	public Integer getSpeed() {
@@ -172,19 +173,19 @@ public class GestionaPokemon {
 	}
 
 	public Integer getSpecialdefence() {
-		return specialdefence;
+		return this.specialdefence;
 	}
 
 	public Integer getAtack() {
-		return atack;
+		return this.atack + this.AtkPotenciado;
 	}
 
 	public Integer getBaseExperiencia() {
-		return baseExperiencia;
+		return this.baseExperiencia;
 	}
 
 	public Integer getSpecialAtack() {
-		return specialAtack;
+		return this.specialAtack + this.AtkPotenciado;
 	}
 	
 	public int attack(int n) {
@@ -388,6 +389,10 @@ private static List<String> cargarImagenesBack(PokeApi p) {
 }
 
 
+    public void setHp(int i) {
+	this.hp+=i;
+	
+}
 
 	@Override
 	public String toString() {
@@ -396,6 +401,20 @@ private static List<String> cargarImagenesBack(PokeApi p) {
 				+ defence + ", speed=" + speed + ", specialdefence=" + specialdefence + ", atack=" + atack
 				+ ", baseExperiencia=" + baseExperiencia + ", specialAtack=" + specialAtack + "]";
 	}
+	public int getVidaTotal() {
+	
+		return this.vidaTotal;
+	}
+	public void setAtkPotenciado(int i) {
+		this.AtkPotenciado += getAtack()*i/100;
+		
+	}
+	public void setDefencePotenciado(int i) {
+		this.defencePotenciado += getDefence()*i/100;
+		
+	}
+	
+	
 
 	
 }
