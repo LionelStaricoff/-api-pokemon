@@ -93,6 +93,14 @@ public class EntrenadorBase {
 		
 		return !this.Items.isEmpty();
 	}
+	
+	
+	
+	public void utilizarItem(int numero, GestionaPokemon Pokemon) {
+		Items item = getItem(numero);
+		item.consumirItem();
+		item.utilizar(Pokemon);
+	}
 		
 	}
 

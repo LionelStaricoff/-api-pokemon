@@ -5,7 +5,7 @@ import ar.com.codoacodo.item.Item;
 public abstract class Items implements utilizable {
 
 	protected String name,img;
-	protected int cost,idNumber,cantidad;
+	protected int cost,idNumber,cantidad = 1;
 	
 	
 	

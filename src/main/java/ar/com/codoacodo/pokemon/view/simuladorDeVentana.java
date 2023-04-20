@@ -137,7 +137,7 @@ public class simuladorDeVentana {
         	 System.out.println("elige el numero del item");
  			 opcion = sc.nextInt();
  			 if(this.entrenadorActivo.getItem(opcion)!=null) {
- 			this.entrenadorActivo.getItem(opcion);
+ 			this.entrenadorActivo.utilizarItem(opcion, pokemonActivo);;
  			   }
         	 }
 			break;
