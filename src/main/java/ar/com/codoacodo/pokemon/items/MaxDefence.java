@@ -2,7 +2,7 @@ package ar.com.codoacodo.pokemon.items;
 
 import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 
-public class MaxDefence extends Items implements Potenciar {
+public class MaxDefence extends Items  {
 	
 	public MaxDefence() {
 		super(EnumItem.MAXDEF.getKey());
@@ -10,7 +10,7 @@ public class MaxDefence extends Items implements Potenciar {
 	}
 
 	@Override
-	public void potenciar(GestionaPokemon Pokemon) {
+	public void utilizar(GestionaPokemon Pokemon) {
 		Pokemon.setDefencePotenciado(20);
 		
 	}

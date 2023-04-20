@@ -66,15 +66,27 @@ public class EntrenadorBase {
 	public String getName() {
 		return name;
 	}
+	
 	@Override
 	public String toString() {
 		return "EntrenadorBase [pokeball=" + pokeball + ", item=" + Items + ", name=" + name + "]";
 	}
+	
+	
+	
+	
 	public void imprimirItems() {
 		if(this.Items.isEmpty()) {
 			System.out.println("no tenes items");
 		}else {
-			 this.Items.forEach(System.out::println);
+			int numero = 0;
+			for ( Items item : this.Items) {
+				System.out.println("opsion "+numero + ": "+ item.getName()+
+						" cantidad: "+ item.getCantidad());
+			numero++;
+			}
+			
+			
         	 }
 		}
 	public boolean tieneItems() {

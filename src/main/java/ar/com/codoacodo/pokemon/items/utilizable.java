@@ -2,7 +2,7 @@ package ar.com.codoacodo.pokemon.items;
 
 import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 
-public interface Curable {
+public interface utilizable {
 
-	public void curar(GestionaPokemon Pokemon);
+	public void utilizar(GestionaPokemon Pokemon);
 }

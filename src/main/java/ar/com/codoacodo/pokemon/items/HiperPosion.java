@@ -2,7 +2,7 @@ package ar.com.codoacodo.pokemon.items;
 
 import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 
-public class HiperPosion extends Items implements Curable {
+public class HiperPosion extends Items  {
 	
 	public HiperPosion() {
 		super(EnumItem.HIPERPOCION.getKey());
@@ -10,7 +10,7 @@ public class HiperPosion extends Items implements Curable {
 	}
 
 	@Override
-	public void curar(GestionaPokemon Pokemon) {
+	public void utilizar(GestionaPokemon Pokemon) {
 		Pokemon.setHp(200);
 		
 	}

@@ -5,6 +5,10 @@ import java.io.IOException;
 import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 import ar.com.codoacodo.pokemon.base.batallaPokemon;
 import ar.com.codoacodo.pokemon.entrenador.EntrenadorBase;
+import ar.com.codoacodo.pokemon.items.MaxAttack;
+import ar.com.codoacodo.pokemon.items.Posion;
+import ar.com.codoacodo.pokemon.items.Revive;
+import ar.com.codoacodo.pokemon.items.SuperPosion;
 import ar.com.codoacodo.pokemon.view.simuladorDeVentana;
 
 
@@ -93,26 +97,32 @@ public class MainBatallaPokemon {
 		EntrenadorBase entrenador = new EntrenadorBase("lio");
 		entrenador.setPokeball(pokeMisterioso);
 		entrenador.setPokeball(pikachu);
+		entrenador.setItem(new Posion());
+		entrenador.setItem(new Revive());
+		entrenador.setItem(new MaxAttack());
 		System.out.println("tengo "+entrenador.cantidadPokemon()+" pokemon");
 		System.out.println(entrenador.getPokeball(0).getNombre());
 		System.out.println(entrenador.getPokeball(1).getNombre());
 		
+		
 		EntrenadorBase entrenador2 = new EntrenadorBase("agus");
 		entrenador2.setPokeball(pokeMisterioso1);
 		entrenador2.setPokeball(pokeMisterioso2);
+		entrenador2.setItem(new Revive());
+		entrenador2.setItem(new Posion());
+		entrenador2.setItem(new SuperPosion());
 		System.out.println("tengo "+entrenador2.cantidadPokemon()+" pokemon");
 		System.out.println(entrenador2.getPokeball(0).getNombre());
 		System.out.println(entrenador2.getPokeball(1).getNombre());
 
 		
 		
-		batallaPokemon bp = new batallaPokemon(entrenador, entrenador2);
+		
+		//batallaPokemon bp = new batallaPokemon(entrenador, entrenador2);
 		
 	
-		simuladorDeVentana ventana = new simuladorDeVentana(bp);
-		/*ventana.elegirEntrenador();
-		ventana.elegirPokemonActivo();
-		ventana.elegirPokemonPasivo();*/
+		simuladorDeVentana ventana = new simuladorDeVentana(new batallaPokemon(entrenador, entrenador2));
+		
 		ventana.menu();
 		
 	}

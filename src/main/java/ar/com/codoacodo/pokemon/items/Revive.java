@@ -2,7 +2,7 @@ package ar.com.codoacodo.pokemon.items;
 
 import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 
-public class Revive extends Items implements Curable {
+public class Revive extends Items  {
 	
 	public Revive() {
 		super(EnumItem.REVIVE.getKey());
@@ -10,7 +10,7 @@ public class Revive extends Items implements Curable {
 	}
 
 	@Override
-	public void curar(GestionaPokemon Pokemon) {
+	public void utilizar(GestionaPokemon Pokemon) {
 		
 		Pokemon.setHp(Pokemon.getVidaTotal()/2);
 		
