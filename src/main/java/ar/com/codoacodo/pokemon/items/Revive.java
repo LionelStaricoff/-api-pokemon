@@ -11,9 +11,11 @@ public class Revive extends Items  {
 
 	@Override
 	public void utilizar(GestionaPokemon Pokemon) {
-		
+		if(Pokemon.getHp()<1) {
 		Pokemon.setHp(Pokemon.getVidaTotal()/2);
-		
+		}else {
+			this.cantidad++;
+		}
 	}
 
 }

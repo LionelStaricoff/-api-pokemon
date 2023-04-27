@@ -103,6 +103,9 @@ public class EntrenadorBase {
 	
 	
 	public void utilizarItem(int numeroItem, GestionaPokemon Pokemon) {
+		//manejar el tema del revive que debe buscar un pokemon
+		// no activo
+		
 		Items item = getItem(numeroItem);
 		item.consumirItem();
 		item.utilizar(Pokemon);

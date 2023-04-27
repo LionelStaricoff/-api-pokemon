@@ -12,7 +12,9 @@ public class SuperPosion extends Items  {
 	@Override
 	public void utilizar(GestionaPokemon Pokemon) {
 		Pokemon.setHp(50);
-		
+		if(Pokemon.getHp() > Pokemon.getVidaTotal()) {
+			Pokemon.setHp(Pokemon.getVidaTotal());
+	}
 	}
 
 }
