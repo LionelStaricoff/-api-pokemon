@@ -20,6 +20,7 @@ public abstract class Items implements utilizable {
 		
 	}
 
+
 	public String getName() {
 		return name;
 	}
@@ -52,7 +53,7 @@ public abstract class Items implements utilizable {
 		if(this.cantidad>1) {
 			 this.cantidad--;
 		}else {
-			System.out.println("No tenes item");
+			System.out.println("No te queda mas "+this.name);
 			this.cantidad = 0;
 		}
 		

@@ -51,6 +51,12 @@ public class EntrenadorBase {
 		this.pokeball.add(poke);
 	}
 
+	public boolean getItemExiste(int it) {
+		if(this.Items.size()>=it && it>=0) {
+			return true;
+		}
+		return false;
+	}
 	public Items getItem(int it) {
 		return this.Items.get(it);
 	}
@@ -96,8 +102,8 @@ public class EntrenadorBase {
 	
 	
 	
-	public void utilizarItem(int numero, GestionaPokemon Pokemon) {
-		Items item = getItem(numero);
+	public void utilizarItem(int numeroItem, GestionaPokemon Pokemon) {
+		Items item = getItem(numeroItem);
 		item.consumirItem();
 		item.utilizar(Pokemon);
 	}
