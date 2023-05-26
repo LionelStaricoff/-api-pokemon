@@ -20,7 +20,17 @@ public abstract class Items implements utilizable {
 		
 	}
 
-
+	//para comprar varios itmes
+	public Items(int id, int compra) {
+		
+		this.idNumber = id;
+		BuscaItem bi = new BuscaItem (this.idNumber);
+		Item i = bi.findItem();
+		 this.name = i.name;
+		 this.img = i.sprites._default;
+		 this.cost = i.cost;
+		this.cantidad += compra - 1;
+	}
 
 	public String getName() {
 		return name;

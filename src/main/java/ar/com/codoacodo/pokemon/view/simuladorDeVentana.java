@@ -1,10 +1,13 @@
 package ar.com.codoacodo.pokemon.view;
 
+import java.util.List;
 import java.util.Scanner;
 
 import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 import ar.com.codoacodo.pokemon.base.batallaPokemon;
 import ar.com.codoacodo.pokemon.entrenador.EntrenadorBase;
+import ar.com.codoacodo.pokemon.items.Items;
+import ar.com.codoacodo.pokemon.items.Revive;
 
 public class simuladorDeVentana {
 
@@ -138,6 +141,21 @@ public class simuladorDeVentana {
  			 opcion = sc.nextInt();
  			
  			 if(this.entrenadorActivo.getItemExiste(opcion)) {
+ 				 
+ 				 //verificar si es revive 
+ 				 if(entrenadorActivo.getItem(opcion).getClass().equals(Revive.class)) {
+ 					
+ 					 //se agrega verificacion para saber si teine cantidad para usar
+ 					 if(entrenadorActivo.getItem(opcion).getCantidad()==0) {
+ 						 System.out.println("Compra mas Revive porque ya no ten quedan.");
+ 					     break;
+ 					 }
+ 					 usarRevive(opcion);
+ 					
+ 					break;
+ 				 }
+ 				 
+ 				 // usa los otros items menos revive
  			this.entrenadorActivo.utilizarItem(opcion, pokemonActivo);
  			   }else {
  				   System.out.println("opsion incorrecta");
@@ -162,6 +180,49 @@ public class simuladorDeVentana {
 		} while (opcionMenu ==1 || opcionMenu ==2 || opcionMenu ==3 );
 	}
 
+	private void usarRevive(int numeroItem) {
+	// imprime los pokemon muertos
+		
+		this.entrenadorActivo.listarPokemonMuertos().forEach((p)->{
+			int count = 0;
+			System.out.println("opción: "+ count++ +" " +p.getNombre());
+		
+		});
+		//verificar que la lista no este vacia
+		boolean pokemonMuertos = this.entrenadorActivo.listarPokemonMuertos().isEmpty() ;
+		int key = 0;	
+		if (pokemonMuertos == true) {
+			key=1;
+			}
+		
+		switch (key) {
+		case 1:
+			System.out.println("No tenes pokemon muertos.");
+			break;
+
+		default:
+			System.out.println("elija el pokemon a revivir");
+			int opsion = sc.nextInt();
+			if(this.entrenadorActivo.getPokeball(opsion)!=null) {
+				
+				// cuando instanciamos el revive nave otra vez con 1 verificar
+			/*	Revive rev = new Revive();
+				rev.utilizar(this.entrenadorActivo.getPokeball(opsion)); 
+				*/
+				entrenadorActivo.getItem(numeroItem).utilizar(this.entrenadorActivo.getPokeball(opsion));
+			  
+			}else {
+				System.out.println("opsion no valida");
+				usarRevive(numeroItem);
+		}
+		
+		
+		}
+		
+		
+		
+		
+	}
 
 
 	@Override

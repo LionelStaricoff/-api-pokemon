@@ -110,8 +110,31 @@ public class EntrenadorBase {
 		item.consumirItem();
 		item.utilizar(Pokemon);
 	}
-		
+	
+ 
+	public void listarPokemon(){
+		int numero = 0;
+		for(GestionaPokemon poke : this.pokeball) {
+			System.out.println("opsion n "+numero+poke.getNombre()+ poke.getHp());
+		numero ++;
+		}
+   }
+
+
+
+	public List<GestionaPokemon> listarPokemonMuertos(){
+	List<GestionaPokemon> pokeMuertos = new ArrayList<>();
+	for(GestionaPokemon poke : this.pokeball) {
+		if(poke.getHp() <= 0) {
+			pokeMuertos.add(poke);
+			return pokeMuertos;
 	}
+	
+  }
+	return pokeMuertos;
+}
+		
+}
 
 	
 

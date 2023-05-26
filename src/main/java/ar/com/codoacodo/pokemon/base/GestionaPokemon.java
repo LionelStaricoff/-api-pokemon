@@ -218,6 +218,13 @@ public void recibirDanio (int danio) {
 		
 	}else {
 		System.out.println("El pokemon esta inconciente y no puede pelear");
+	
+	}
+	
+	
+	//verificar si el hp  o para dejar el hp en 0 y no en negativo
+	if (this.hp < 0) {
+		this.hp=0;
 	}
 }
 
@@ -388,9 +395,10 @@ private static List<String> cargarImagenesBack(PokeApi p) {
 	return img;
 }
 
-
-    public void setHp(int i) {
+//cambiando el metodo para hacer el syso
+    public GestionaPokemon setHp(int i) {
 	this.hp+=i;
+	return this;
 	
 }
 
