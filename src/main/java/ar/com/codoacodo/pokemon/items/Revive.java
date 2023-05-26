@@ -9,7 +9,10 @@ public class Revive extends Items  {
 	
 	}
 
-	
+	//comprar varios items
+	public Revive(int cantidad) {
+		super(EnumItem.REVIVE.getKey(), cantidad);
+	}
 	@Override
 	public void utilizar(GestionaPokemon Pokemon) {
 		if(Pokemon.getHp()<1) {
