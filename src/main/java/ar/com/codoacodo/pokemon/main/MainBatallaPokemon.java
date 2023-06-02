@@ -125,6 +125,7 @@ public class MainBatallaPokemon {
 		
 		ventana.menu();
 		
+		
 	}
 	
 
