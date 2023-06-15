@@ -106,17 +106,12 @@ public class EntrenadorBase {
 	
 	
 	public void utilizarItem(int numeroItem, GestionaPokemon Pokemon) {
-		//manejar el tema del revive que debe buscar un pokemon
-		// no activo
-		/*
-		Items item = getItem(numeroItem);
-		item.consumirItem();
-		item.utilizar(Pokemon);    */
+		
 		Items item = getItem(numeroItem);
 		if(item.getCantidad() > 0) {
 			item.consumirItem();
 			item.utilizar(Pokemon);
-//no descuenta el item cuando lo usa
+//elimina el item si es menor a 1
 			
 			 System.out.println(item.getName()+" cantidas: "+item.getCantidad());
 			 if (item.getCantidad() <= 0){

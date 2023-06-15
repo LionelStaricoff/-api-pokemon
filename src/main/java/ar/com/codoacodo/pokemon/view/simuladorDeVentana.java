@@ -205,7 +205,7 @@ public class simuladorDeVentana {
 			if(this.entrenadorActivo.getPokeball(opsion)!=null) {
 				
 		        entrenadorActivo.utilizarItem(numeroItem, this.entrenadorActivo.getPokeball(opsion));
-				//entrenadorActivo.getItem(numeroItem).utilizar(this.entrenadorActivo.getPokeball(opsion));
+			
 			  
 			}else {
 				System.out.println("opsion no valida");
