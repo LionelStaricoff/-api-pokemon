@@ -9,6 +9,9 @@ public class Posion extends Items  {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Posion(int num) {
+		super(EnumItem.POCION.getKey(), num);
+	}
 	@Override
 	public void utilizar(GestionaPokemon Pokemon) {
 		Pokemon.setHp(20);

@@ -61,7 +61,7 @@ public abstract class Items implements utilizable {
 	
 	
 	public void consumirItem(){
-		if(this.cantidad>1) {
+		if(this.cantidad>0) {
 			 this.cantidad--;
 		}else {
 			System.out.println("No te queda mas "+this.name);

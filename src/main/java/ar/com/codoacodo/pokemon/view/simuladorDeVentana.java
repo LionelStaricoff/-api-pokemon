@@ -151,7 +151,6 @@ public class simuladorDeVentana {
  					     break;
  					 }
  					 usarRevive(opcion);
- 					
  					break;
  				 }
  				 
@@ -205,11 +204,8 @@ public class simuladorDeVentana {
 			int opsion = sc.nextInt();
 			if(this.entrenadorActivo.getPokeball(opsion)!=null) {
 				
-				// cuando instanciamos el revive nave otra vez con 1 verificar
-			/*	Revive rev = new Revive();
-				rev.utilizar(this.entrenadorActivo.getPokeball(opsion)); 
-				*/
-				entrenadorActivo.getItem(numeroItem).utilizar(this.entrenadorActivo.getPokeball(opsion));
+		        entrenadorActivo.utilizarItem(numeroItem, this.entrenadorActivo.getPokeball(opsion));
+			
 			  
 			}else {
 				System.out.println("opsion no valida");

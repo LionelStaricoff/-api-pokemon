@@ -19,9 +19,10 @@ public class Revive extends Items  {
 		GestionaPokemon poke = Pokemon.setHp(Pokemon.getVidaTotal()/2);
 		System.out.println("pokemon curado");
 	    System.out.println(poke.getNombre()+" hp: "+ poke.getHp());
-		this.cantidad--;
+		//this.cantidad--;  ya esta esta accion en items.consumir()
 		}else {
 			this.cantidad++;
+			
 		}
 	}
 
