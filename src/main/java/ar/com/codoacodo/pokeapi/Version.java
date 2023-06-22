@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "name",
     "url"
 })
-	
+
 public class Version {
 
     @JsonProperty("name")
