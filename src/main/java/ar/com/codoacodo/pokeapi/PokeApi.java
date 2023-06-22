@@ -2,13 +2,13 @@
 package ar.com.codoacodo.pokeapi;
 
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
+	"past_abilities",
     "abilities",
     "base_experience",
     "forms",
@@ -31,6 +31,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class PokeApi {
 
+	@JsonProperty("past_abilities")
+    public List<past_abilities> past_abilities;
     @JsonProperty("abilities")
     public List<Ability> abilities;
     @JsonProperty("base_experience")

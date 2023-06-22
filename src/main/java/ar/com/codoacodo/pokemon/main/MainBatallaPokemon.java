@@ -30,7 +30,20 @@ public class MainBatallaPokemon {
 		GestionaPokemon pikachu = new GestionaPokemon(25);
 		GestionaPokemon pokeMisterioso = new GestionaPokemon();
 		
-
+		/*
+		private List<String> moves = new ArrayList<String>();
+		private Collection<String> imagenesFront;
+		private Collection<String> imagenesBack;
+		private Integer defencePotenciado= 0,AtkPotenciado=0, hp, peso, defence, speed, specialdefence, atack, baseExperiencia, specialAtack;
+		
+	
+		GestionaPokemon pikachu = GestionaPokemon.builder().atack(25)
+				.baseExperiencia(10)
+				.defence(25)
+				.nombre("pikachu")
+				.tipo("electrico")
+				.moves(null)
+*/
 		/*
 		System.out.println( pikachu);
 		System.out.println(pokeMisterioso);

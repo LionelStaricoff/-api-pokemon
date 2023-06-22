@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "url"
 })
 
-public class Ability__1 {
+public class past_abilities {
+
 
     @JsonProperty("name")
     public String name;
@@ -38,5 +39,4 @@ public class Ability__1 {
         }
         return sb.toString();
     }
-
 }

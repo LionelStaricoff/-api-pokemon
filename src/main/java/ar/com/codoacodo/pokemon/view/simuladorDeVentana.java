@@ -135,9 +135,10 @@ public class simuladorDeVentana {
         	elegirPokemonActivo();
 			break;
          case 3:
-        	 this.entrenadorActivo.imprimirItems();
+        	 
         	 if( this.entrenadorActivo.tieneItems()) {
-        	 System.out.println("elige el numero del item");
+        		 this.entrenadorActivo.imprimirItems();
+        		 System.out.println("elige el numero del item");
  			 opcion = sc.nextInt();
  			
  			 if(this.entrenadorActivo.getItemExiste(opcion)) {
