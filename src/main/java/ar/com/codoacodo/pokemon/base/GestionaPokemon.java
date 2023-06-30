@@ -422,7 +422,9 @@ private static List<String> cargarImagenesBack(PokeApi p) {
 		
 	}
 	
-	
+	public boolean checkVidaTotal() {
+		return this.vidaTotal == getHp();
+	}
 
 	
 }

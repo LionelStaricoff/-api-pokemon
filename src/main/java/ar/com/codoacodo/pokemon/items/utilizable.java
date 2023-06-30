@@ -5,4 +5,6 @@ import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 public interface utilizable {
 
 	public void utilizar(GestionaPokemon Pokemon);
+
+	boolean equals(Items item);
 }
