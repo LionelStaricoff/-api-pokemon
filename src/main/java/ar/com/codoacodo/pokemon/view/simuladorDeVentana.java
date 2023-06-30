@@ -16,6 +16,7 @@ public class simuladorDeVentana {
 	private int turno = (int)(Math.random()*2)+1;
 	private EntrenadorBase  entrenadorActivo, entrenadorPasivo;
 	private GestionaPokemon pokemonActivo, pokemonPasivo;
+	public boolean itemUtilizado;
 	
 	
 	public simuladorDeVentana(batallaPokemon p) {
@@ -52,8 +53,12 @@ public class simuladorDeVentana {
 				System.out.println("");
 		System.out.println(" numero de pokemon a sacar,\n verifica que este vivo");
 		System.out.println(this.entrenadorActivo.getName()+" tiene "+this.entrenadorActivo.cantidadPokemon()+" pokemon");
-		    pokemon = sc.nextInt()-1;
-		    
+		this.entrenadorActivo.listarPokemon();
+		//volver al menu
+		System.out.println("presiona -1 para volver al menu"); 
+		pokemon = sc.nextInt();
+		volverAlMenu(pokemon); 
+		
 		    if(pokemon<0) pokemon=0;
 		    
 			}while(this.entrenadorActivo.cantidadPokemon() <= pokemon );
@@ -93,11 +98,14 @@ public class simuladorDeVentana {
 		
 	
 	public void intercambiarEntrenadores() {
+		if (this.itemUtilizado) {
 		EntrenadorBase entrenadorAux;
 		entrenadorAux = this.entrenadorActivo;
 		this.entrenadorActivo = this.entrenadorPasivo;
 		this.entrenadorPasivo = entrenadorAux;
 		intercambiarPokemon();
+		}
+		
 	}
 	
 	public void intercambiarPokemon() {
@@ -111,7 +119,7 @@ public class simuladorDeVentana {
 			int opcion;
 			int opcionMenu;
 		do {
-			
+		    this.itemUtilizado = true;
 			System.out.println("");
 			System.out.println("Entrenador activo: "+this.entrenadorActivo.getName());
 			System.out.println("pokemon activo: "+this.pokemonActivo.getNombre()+" "+this.pokemonActivo.getHp()+" hp");
@@ -126,7 +134,12 @@ public class simuladorDeVentana {
 		switch (opcionMenu) {
 		case 1:
 			System.out.println("Elige un numero de ataque");
+		
+			//volver al menu
+			System.out.println("presiona -1 para volver al menu"); 
 			opcion = sc.nextInt();
+			volverAlMenu(opcion);
+		
 			bp.atacar(this.pokemonActivo, opcion, this.pokemonPasivo);
 			if ( this.pokemonPasivo.estaMuerto() ) {
 				elegirPokemonPasivo(); }
@@ -139,12 +152,16 @@ public class simuladorDeVentana {
         	 if( this.entrenadorActivo.tieneItems()) {
         		 this.entrenadorActivo.imprimirItems();
         		 System.out.println("elige el numero del item");
- 			 opcion = sc.nextInt();
+        		
+        		 //volver al menu
+     			System.out.println("presiona -1 para volver al menu"); 
+     			opcion = sc.nextInt();
+     			volverAlMenu(opcion);
  			
  			 if(this.entrenadorActivo.getItemExiste(opcion)) {
  				 
  				 //verificar si es revive 
- 				 if(entrenadorActivo.getItem(opcion).getClass().equals(Revive.class)) {
+ 				 if(entrenadorActivo.getItem(opcion).equals(new Revive())) {
  					
  					 //se agrega verificacion para saber si teine cantidad para usar
  					 if(entrenadorActivo.getItem(opcion).getCantidad()==0) {
@@ -156,18 +173,25 @@ public class simuladorDeVentana {
  				 }
  				 
  				 // usa los otros items menos revive
- 			this.entrenadorActivo.utilizarItem(opcion, pokemonActivo);
+ 				this.entrenadorActivo.listarPokemon();
+ 				System.out.println("Elige el pokemon ");
+ 				opcion = sc.nextInt();
+ 			this.entrenadorActivo.utilizarItem(opcion, pokemonActivo,this.itemUtilizado);
  			   }else {
  				   System.out.println("opsion incorrecta");
  				  menu();
  			   }
         	 }
 			break;
-
+        	
 		default:
 			System.out.println("opsion incorrecta ");
 			break;
 		}
+		
+		
+		
+		
 		if(this.entrenadorActivo.verificarVidaDeTodosLosPokemon()) {
 			opcionMenu=4;
 			System.out.println("gano el entrenador "+this.entrenadorPasivo.getName());
@@ -176,8 +200,10 @@ public class simuladorDeVentana {
 			opcionMenu=4;
 			System.out.println("gano el entrenador "+this.entrenadorActivo.getName());
 		}
+		 
 		intercambiarEntrenadores();
-		} while (opcionMenu ==1 || opcionMenu ==2 || opcionMenu ==3 );
+		
+		} while (opcionMenu ==1 || opcionMenu ==2 || opcionMenu ==3);
 	}
 
 	private void usarRevive(int numeroItem) {
@@ -198,6 +224,7 @@ public class simuladorDeVentana {
 		switch (key) {
 		case 1:
 			System.out.println("No tenes pokemon muertos.");
+			this.itemUtilizado = false;
 			break;
 
 		default:
@@ -205,7 +232,7 @@ public class simuladorDeVentana {
 			int opsion = sc.nextInt();
 			if(this.entrenadorActivo.getPokeball(opsion)!=null) {
 				
-		        entrenadorActivo.utilizarItem(numeroItem, this.entrenadorActivo.getPokeball(opsion));
+		        entrenadorActivo.utilizarItem(numeroItem, this.entrenadorActivo.getPokeball(opsion), this.itemUtilizado);
 			
 			  
 			}else {
@@ -221,6 +248,12 @@ public class simuladorDeVentana {
 		
 	}
 
+	private void volverAlMenu(int numero) {
+		if(numero == -1) {
+		 this.itemUtilizado = false;
+    	 menu();
+		}
+	}
 
 	@Override
 	public String toString() {

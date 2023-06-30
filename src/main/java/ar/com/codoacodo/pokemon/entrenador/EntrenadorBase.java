@@ -105,27 +105,32 @@ public class EntrenadorBase {
 	
 	
 	
-	public void utilizarItem(int numeroItem, GestionaPokemon Pokemon) {
-		
+	public void utilizarItem(int numeroItem, GestionaPokemon Pokemon, boolean itemUtilizado) {
 		Items item = getItem(numeroItem);
-		if(item.getCantidad() > 0) {
-			item.consumirItem();
-			item.utilizar(Pokemon);
-//elimina el item si es menor a 1
+		if (item.equalsCurables() && !Pokemon.checkVidaTotal()) {
 			
-			 System.out.println(item.getName()+" cantidas: "+item.getCantidad());
-			 if (item.getCantidad() <= 0){
-				 this.Items.remove(numeroItem);
-			 }
-		 
-		 }
+			if (item.getCantidad() > 0) {
+				item.consumirItem();
+				item.utilizar(Pokemon);
+				itemUtilizado = true; 
+				
+              //elimina el item si es menor a 1
+				System.out.println(Pokemon.getNombre() + " " + Pokemon.getHp());
+				if (item.getCantidad() <= 0) {
+					this.Items.remove(numeroItem);
+				}
+
+			}
+		} else {
+			itemUtilizado = false;
+		}
 	}
 	
  
 	public void listarPokemon(){
 		int numero = 0;
 		for(GestionaPokemon poke : this.pokeball) {
-			System.out.println("opsion n "+numero+poke.getNombre()+ poke.getHp());
+			System.out.println("opsion n "+numero+" "+poke.getNombre()+" "+ poke.getHp()+" HP");
 		numero ++;
 		}
    }
