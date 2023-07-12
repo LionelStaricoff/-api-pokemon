@@ -9,6 +9,7 @@ import ar.com.codoacodo.pokemon.items.MaxAttack;
 import ar.com.codoacodo.pokemon.items.Posion;
 import ar.com.codoacodo.pokemon.items.Revive;
 import ar.com.codoacodo.pokemon.items.SuperPosion;
+import ar.com.codoacodo.pokemon.view.ViewBatalla;
 import ar.com.codoacodo.pokemon.view.simuladorDeVentana;
 
 
@@ -19,7 +20,7 @@ public class MainBatallaPokemon {
 	public static void main(String[] args) throws IOException {
 
 
-		
+		ViewBatalla vp = new ViewBatalla();
 		
 		
 		// 
