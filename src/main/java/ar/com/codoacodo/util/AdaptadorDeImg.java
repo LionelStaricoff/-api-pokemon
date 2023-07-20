@@ -8,6 +8,11 @@ import javax.swing.JLabel;
 
 public class AdaptadorDeImg {
 
+	/**
+	 * <p> metodo para adaptar imagenes a los labels</p>
+	 * @param label para adaptar la imagen
+	 * @param root del img
+	 */
 	public static void setImageScale(JLabel label, String root) {
 		ImageIcon img = new ImageIcon(root);
 		ImageIcon icon = new ImageIcon(
@@ -15,11 +20,22 @@ public class AdaptadorDeImg {
 		
 	}
 	
+	
+	/**
+	 * 
+	 * @param with de la imagen
+	 * @return si la ventana no tiene valor de ancho lo ajusta a 300 a la img
+	 */
 	public static int noWidthCero(int with) {
-		return(with==0)? 16<<6 : with ;
+		return(with==0)? 300 : with ;
 	}
 	
+	/**
+	 * 
+	 * @param height de la imagen
+	 * @return si la ventana no tiene valor de alto lo ajusta a 300 a la img
+	 */
 	public static int noHeightCero(int height) {
-		return(height==0)? 16<<6 : height ;
+		return(height==0)? 300 : height ;
 	}
 }

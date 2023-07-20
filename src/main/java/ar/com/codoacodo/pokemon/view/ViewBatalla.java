@@ -1,11 +1,10 @@
 package ar.com.codoacodo.pokemon.view;
 
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,9 +13,9 @@ import ar.com.codoacodo.util.AdaptadorDeImg;
 
 public class ViewBatalla extends JFrame {
 	
-	private JPanel panelSuperior,panelMedio,panelInferior;
-	private JLabel labelPanelSuperior1;
-
+	private JPanel panelSuperior,panelSuperiorIzquierdo,panelSuperMedio,
+	panelMedio,panelInferior;
+    private JLabel JLabelSuperiorFondo, JLabelSuperiorMedio;
 	
 
 	public ViewBatalla() {
@@ -45,19 +44,23 @@ public class ViewBatalla extends JFrame {
 		
 		/**
 		 * <p> setear  panel superior</p>
-		 * <p> primer panel divivdido en 2: hp pokemon1, label vacio y img pokemon2</p>
+		 * <p> primer panel divivdido en 3: hp pokemon1, label vacio y img pokemon2</p>
 		 */
-		this.labelPanelSuperior1 = new JLabel("hp pokemon1");
-		this.labelPanelSuperior1.setIcon(new ImageIcon("C:\\Users\\Lucia\\Documents\\lionel\\spring\\git\\pokemon\\-api-pokemon\\src\\main\\java\\ar\\com\\codoacodo\\img\\fondo1.jpg"));
-		 AdaptadorDeImg.setImageScale(labelPanelSuperior1, labelPanelSuperior1.getIcon().toString());
+		this.panelSuperiorIzquierdo = new JPanel(new FlowLayout());
+		this.panelSuperior.add(this.panelSuperiorIzquierdo);
+		this.JLabelSuperiorFondo = labelHp("80 HP");
+		this.panelSuperiorIzquierdo.add(this.JLabelSuperiorFondo);
 		
+		//lb superior del medio vacio
+		this.panelSuperior.add(this.panelSuperMedio = new JPanel(new FlowLayout()));
+		this.panelSuperMedio.setBackground(Color.RED);
 		
-		this.panelSuperior.add(this.labelPanelSuperior1);
-		this.panelSuperior.add(new JLabel());
-		this.panelSuperior.add(new JLabel("img pokemon2"));
-		this.panelSuperior.setOpaque(false);
-		this.panelSuperior.setBackground(Color.CYAN);
-		
+				
+				//img panel superior derecho
+		this.panelSuperMedio = new JPanel(new FlowLayout());
+		this.panelSuperior.add(this.panelSuperMedio);
+		this.JLabelSuperiorMedio = labelImg("C:\\Users\\Lucia\\Documents\\lionel\\spring\\git\\pokemon\\-api-pokemon\\src\\test\\java\\img\\pikachu.png");
+		this.panelSuperMedio.add(this.JLabelSuperiorMedio);
 		/**
 		 * <p> setear segundo panel </p>
 		 * <p>segundo panel dividido en 3: imp pokemon1, label vacio y hp pokemon2</p>
@@ -89,6 +92,26 @@ public class ViewBatalla extends JFrame {
 		
 	}
 	
+	private JLabel labelImg(String img) {
+		JLabel lbFondo =new JLabel();
+		lbFondo.setOpaque(false);
+		lbFondo.setSize(WIDTH, HEIGHT);
+		
+		JLabel lb =	new JLabel(new ImageIcon(img));
+		lb.setBounds(300, 300, 50, 50);
+		AdaptadorDeImg.setImageScale(lb,lb.getIcon().toString());
+		 lbFondo.add(lb);
+		return lbFondo;
+	}
+
+	private JLabel labelHp(String hp) {
+		
+		JLabel lbHp = new JLabel(hp);
+		lbHp.setBounds(200, 100, 50, 100);
+		
+		return lbHp;
+	}
+
 	public static void main(String[] args) {
 		new ViewBatalla(); 
 	}
