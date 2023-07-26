@@ -1,19 +1,26 @@
 package ar.com.codoacodo.pokemon.view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Insets;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
 
 import ar.com.codoacodo.util.AdaptadorDeImg;
+import ar.com.codoacodo.util.UtilVentana;
 
 public class ViewBatalla extends JFrame {
 	
-	private JPanel panelSuperior,panelSuperiorIzquierdo,panelSuperMedio,
+	private JPanel panelPadre, panelSuperior,panelSuperiorIzquierdo,panelSuperMedio,
 	panelMedio,panelInferior;
     private JLabel JLabelSuperiorFondo, JLabelSuperiorMedio;
 	
@@ -23,21 +30,52 @@ public class ViewBatalla extends JFrame {
 		
 	
 		/**
-		 * <p> Creando las ventanas de la batalla </p>
+		 * <p> Creando las ventanas de la batalla y agregando el panerl padre como
+		 * fondo</p>
 		 * <p> primer panel divivdido en 2: hp pokemon1, label vacio y img pokemon2</p>
 		 */
-		setSize(400,600);
-		setLayout(new GridLayout(3, 0));
-		setVisible(true);
+	
+		//panel padre
+		this.panelPadre = new JPanel (new GridLayout(3,0) );
+		this.panelPadre.setBackground(Color.CYAN);
+		//this.panelPadre.setIconImage(new ImageIcon("C:\\Users\\Lucia\\Documents\\lionel\\spring\\git\\pokemon\\-api-pokemon\\src\\main\\java\\ar\\com\\codoacodo\\img\\fondo1.jpg").getImage());
+		this.panelPadre.setBorder(new Border() {
+			
+			@Override
+			public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public boolean isBorderOpaque() {
+				// TODO Auto-generated method stub
+				return false;
+			}
+			
+			@Override
+			public Insets getBorderInsets(Component c) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+		});
+		
+		
+		//iniciando panel superior
 		this.panelSuperior = new JPanel(new GridLayout(0, 3) );
-		add( this.panelSuperior);
+		this.panelSuperior.setOpaque(false);
+		this.panelPadre.add( this.panelSuperior);
+		//iniciando panel medio
 		this.panelMedio = new JPanel(new GridLayout(0, 3) );
-		add(this.panelMedio);
+		this.panelMedio.setOpaque(false);
+		this.panelPadre.add(this.panelMedio);
+		//panel inferior
 		this.panelInferior = new JPanel(new GridLayout(0, 3) );
-		add(panelInferior);
-		setBackground(Color.CYAN);
-		setIconImage(new ImageIcon("C:\\Users\\Lucia\\Documents\\lionel\\spring\\git\\pokemon\\-api-pokemon\\src\\main\\java\\ar\\com\\codoacodo\\img\\fondo1.jpg").getImage());
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.panelInferior.setOpaque(false);
+		this.panelPadre.add(panelInferior);
+		
+		
+		
 		
 		
 		
@@ -46,14 +84,13 @@ public class ViewBatalla extends JFrame {
 		 * <p> setear  panel superior</p>
 		 * <p> primer panel divivdido en 3: hp pokemon1, label vacio y img pokemon2</p>
 		 */
-		this.panelSuperiorIzquierdo = new JPanel(new FlowLayout());
+		this.panelSuperiorIzquierdo = UtilVentana.ventanaCentrada(new JLabel("80 HP"));
 		this.panelSuperior.add(this.panelSuperiorIzquierdo);
-		this.JLabelSuperiorFondo = labelHp("80 HP");
-		this.panelSuperiorIzquierdo.add(this.JLabelSuperiorFondo);
+		
+		
 		
 		//lb superior del medio vacio
-		this.panelSuperior.add(this.panelSuperMedio = new JPanel(new FlowLayout()));
-		this.panelSuperMedio.setBackground(Color.RED);
+		this.panelSuperior.add( UtilVentana.ventanaVacia());
 		
 				
 				//img panel superior derecho
@@ -84,7 +121,12 @@ public class ViewBatalla extends JFrame {
 		this.panelInferior.setOpaque(false);
 		
 		
-		
+		// frame principal
+		setSize(600,600);
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		add(this.panelPadre);
 		
 		 //icon = new ImageIcon("C:\\Users\\Eber\\git\\Api-Poke\\-api-pokemon\\src\\main\\java\\ar\\com\\codoacodo\\img\\fondoBatalla1.png");
 			
