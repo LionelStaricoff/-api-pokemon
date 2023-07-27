@@ -1,5 +1,6 @@
 package ar.com.codoacodo.util;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
@@ -16,12 +17,70 @@ import javax.swing.JPanel;
 public class UtilVentana  {
 
 	/**
-	 * <p>clase estatica para centrar componenetes dentro de ventanas</p>
+	 * <p>clase estatica para centrar componenetes dentro de ventanas BorderLayout
+	 * para colocar en hp del pokemon y en  nombre</p>
 	 * 
 	 * @param objeto de component
 	 * @return JPanel centrado
 	 */
+	public static JPanel ventanaNombreHp(String hp, String nombre) {
+
+		JPanel panelCentrado = new JPanel(new BorderLayout());
+
+		
+		panelCentrado.add(panelCentrado(nombre),BorderLayout.NORTH);
+		panelCentrado.add(new JLabel("    "),BorderLayout.EAST);
+		panelCentrado.add(panelCentrado(hp), BorderLayout.CENTER);
+		panelCentrado.add(new JLabel("     "),BorderLayout.SOUTH);
+		panelCentrado.add(new JLabel("             "),BorderLayout.WEST);
+
+
+		// crea transparencia al fondo
+		panelCentrado.setOpaque(false);
+
+		return panelCentrado;
+	}
+
+/**
+ * <p>Se coloca un string para pintar en la pantalla el nombre o hp del pokemon
+ * y que este centrado</p>
+ * @param String 
+ * @return JPanel
+ */
+	private static JPanel panelCentrado(String hp) {
+		JPanel panelHp = new JPanel(new FlowLayout());
+		panelHp.setAlignmentX(JPanel.CENTER_ALIGNMENT);
+		panelHp.setOpaque(false);
+		panelHp.add(crearLavelText(hp));
+		return panelHp;
+	}
+	
+	
 	public static JPanel ventanaCentrada(Object objeto) {
+
+		JPanel panelCentrado = new JPanel(new BorderLayout());
+
+		panelCentrado.add(new JLabel("   "),BorderLayout.NORTH);
+		panelCentrado.add(new JLabel("    "),BorderLayout.EAST);
+		panelCentrado.add((Component) objeto, BorderLayout.CENTER);
+		panelCentrado.add(new JLabel("     "),BorderLayout.SOUTH);
+		panelCentrado.add(new JLabel("             "),BorderLayout.WEST);
+
+
+		// crea transparencia al fondo
+		panelCentrado.setOpaque(false);
+
+		return panelCentrado;
+	}
+	
+	
+	/**
+	 * <p>clase estatica para centrar componenetes dentro de ventanas GridLayout</p>
+	 * 
+	 * @param objeto de component
+	 * @return JPanel centrado
+	 */
+	public static JPanel ventanaCentradaGridLayout(Object objeto) {
 
 		JPanel panelCentrado = new JPanel(new GridLayout(3, 3));
 
@@ -40,7 +99,6 @@ public class UtilVentana  {
 
 		return panelCentrado;
 	}
-	
 	
 	/**
 	 * <p> agregando un new ImageIcon("ruta de la imagen"); se carga al panel la imagen escalada</p>

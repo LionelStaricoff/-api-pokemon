@@ -71,7 +71,7 @@ public class ViewBatalla extends JFrame {
 		 * <p> setear  panel superior</p>
 		 * <p> primer panel divivdido en 3: hp pokemon1, label vacio y img pokemon2</p>
 		 */
-		this.panelSuperiorIzquierdo = UtilVentana.ventanaCentrada("80 HP");
+		this.panelSuperiorIzquierdo = UtilVentana.ventanaNombreHp("80 HP", "pikachu");
 		this.panelSuperior.add(this.panelSuperiorIzquierdo);
 		
 		
@@ -94,7 +94,7 @@ public class ViewBatalla extends JFrame {
 		 */
 		this.panelMedio.add(UtilVentana.ventanaCentrada(new ImageIcon("C:\\Users\\Lucia\\Documents\\lionel\\spring\\git\\pokemon\\-api-pokemon\\src\\test\\java\\img\\pikachu.png")));
 		this.panelMedio.add(UtilVentana.ventanaVacia());
-		this.panelMedio.add(UtilVentana.ventanaCentrada("hp pokemon2"));
+		this.panelMedio.add(UtilVentana.ventanaNombreHp("hp pokemon2", "pikachu 2"));
 	
 		
 		
