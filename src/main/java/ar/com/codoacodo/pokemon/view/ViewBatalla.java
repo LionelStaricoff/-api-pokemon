@@ -4,10 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Insets;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,6 +18,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
 import ar.com.codoacodo.util.AdaptadorDeImg;
+import ar.com.codoacodo.util.BgBorder;
 import ar.com.codoacodo.util.UtilVentana;
 
 public class ViewBatalla extends JFrame {
@@ -37,28 +40,12 @@ public class ViewBatalla extends JFrame {
 	
 		//panel padre
 		this.panelPadre = new JPanel (new GridLayout(3,0) );
-		this.panelPadre.setBackground(Color.CYAN);
+		UtilVentana.pintarImagenEnVentana(this.panelPadre,"C:\\Users\\Lucia\\Documents\\lionel\\spring\\git\\pokemon\\-api-pokemon\\src\\main\\java\\ar\\com\\codoacodo\\img\\fondo1.jpg");
+	
+		//this.panelPadre.setBackground(Color.CYAN);
 		//this.panelPadre.setIconImage(new ImageIcon("C:\\Users\\Lucia\\Documents\\lionel\\spring\\git\\pokemon\\-api-pokemon\\src\\main\\java\\ar\\com\\codoacodo\\img\\fondo1.jpg").getImage());
-		this.panelPadre.setBorder(new Border() {
-			
-			@Override
-			public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public boolean isBorderOpaque() {
-				// TODO Auto-generated method stub
-				return false;
-			}
-			
-			@Override
-			public Insets getBorderInsets(Component c) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-		});
+		// BgBorder borde = new BgBorder(ImageIO.read("/recursos/miImagenFondo.png")) ;
+		//this.panelPadre.setBorder(borde);
 		
 		
 		//iniciando panel superior
@@ -84,20 +71,21 @@ public class ViewBatalla extends JFrame {
 		 * <p> setear  panel superior</p>
 		 * <p> primer panel divivdido en 3: hp pokemon1, label vacio y img pokemon2</p>
 		 */
-		this.panelSuperiorIzquierdo = UtilVentana.ventanaCentrada(new JLabel("80 HP"));
+		this.panelSuperiorIzquierdo = UtilVentana.ventanaCentrada("80 HP");
 		this.panelSuperior.add(this.panelSuperiorIzquierdo);
 		
 		
 		
 		//lb superior del medio vacio
 		this.panelSuperior.add( UtilVentana.ventanaVacia());
-		
-				
-				//img panel superior derecho
-		this.panelSuperMedio = new JPanel(new FlowLayout());
+	    this.panelSuperMedio = UtilVentana.ventanaCentrada(new ImageIcon("C:\\Users\\Lucia\\Documents\\lionel\\spring\\git\\pokemon\\-api-pokemon\\src\\test\\java\\img\\pikachu.png"));
 		this.panelSuperior.add(this.panelSuperMedio);
-		this.JLabelSuperiorMedio = labelImg("C:\\Users\\Lucia\\Documents\\lionel\\spring\\git\\pokemon\\-api-pokemon\\src\\test\\java\\img\\pikachu.png");
-		this.panelSuperMedio.add(this.JLabelSuperiorMedio);
+		
+		
+		
+		
+		
+		
 		/**
 		 * <p> setear segundo panel </p>
 		 * <p>segundo panel dividido en 3: imp pokemon1, label vacio y hp pokemon2</p>
@@ -121,11 +109,15 @@ public class ViewBatalla extends JFrame {
 		this.panelInferior.setOpaque(false);
 		
 		
+		
+		
+		
 		// frame principal
-		setSize(600,600);
+		setSize(600,800);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
+		setResizable(false);
 		add(this.panelPadre);
 		
 		 //icon = new ImageIcon("C:\\Users\\Eber\\git\\Api-Poke\\-api-pokemon\\src\\main\\java\\ar\\com\\codoacodo\\img\\fondoBatalla1.png");
@@ -134,28 +126,12 @@ public class ViewBatalla extends JFrame {
 		
 	}
 	
-	private JLabel labelImg(String img) {
-		JLabel lbFondo =new JLabel();
-		lbFondo.setOpaque(false);
-		lbFondo.setSize(WIDTH, HEIGHT);
-		
-		JLabel lb =	new JLabel(new ImageIcon(img));
-		lb.setBounds(300, 300, 50, 50);
-		AdaptadorDeImg.setImageScale(lb,lb.getIcon().toString());
-		 lbFondo.add(lb);
-		return lbFondo;
-	}
 
-	private JLabel labelHp(String hp) {
-		
-		JLabel lbHp = new JLabel(hp);
-		lbHp.setBounds(200, 100, 50, 100);
-		
-		return lbHp;
-	}
 
+	
 	public static void main(String[] args) {
 		new ViewBatalla(); 
+		
 	}
 	
 
