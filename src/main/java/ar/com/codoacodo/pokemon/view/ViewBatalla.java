@@ -78,6 +78,8 @@ public class ViewBatalla extends JFrame {
 		
 		//lb superior del medio vacio
 		this.panelSuperior.add( UtilVentana.ventanaVacia());
+		
+		// agregando panel superior izquierdo con la imagen
 	    this.panelSuperMedio = UtilVentana.ventanaCentrada(new ImageIcon("C:\\Users\\Lucia\\Documents\\lionel\\spring\\git\\pokemon\\-api-pokemon\\src\\test\\java\\img\\pikachu.png"));
 		this.panelSuperior.add(this.panelSuperMedio);
 		
@@ -90,11 +92,10 @@ public class ViewBatalla extends JFrame {
 		 * <p> setear segundo panel </p>
 		 * <p>segundo panel dividido en 3: imp pokemon1, label vacio y hp pokemon2</p>
 		 */
-		this.panelMedio.add(new JLabel("imp pokemon1"));
-		this.panelMedio.add(new JLabel());
-		this.panelMedio.add(new JLabel("hp pokemon2"));
-		this.panelMedio.setOpaque(false);
-		//this.panelMedio.setIsetIconImage(new ImageIcon("C:\\Users\\Lucia\\Documents\\lionel\\spring\\git\\pokemon\\-api-pokemon\\src\\main\\java\\ar\\com\\codoacodo\\img\\fondo1.jpg").getImage());
+		this.panelMedio.add(UtilVentana.ventanaCentrada(new ImageIcon("C:\\Users\\Lucia\\Documents\\lionel\\spring\\git\\pokemon\\-api-pokemon\\src\\test\\java\\img\\pikachu.png")));
+		this.panelMedio.add(UtilVentana.ventanaVacia());
+		this.panelMedio.add(UtilVentana.ventanaCentrada("hp pokemon2"));
+	
 		
 		
 		
