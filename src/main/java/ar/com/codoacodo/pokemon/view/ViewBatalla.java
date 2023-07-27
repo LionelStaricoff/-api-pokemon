@@ -8,9 +8,15 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,11 +27,11 @@ import ar.com.codoacodo.util.AdaptadorDeImg;
 import ar.com.codoacodo.util.BgBorder;
 import ar.com.codoacodo.util.UtilVentana;
 
-public class ViewBatalla extends JFrame {
+public class ViewBatalla extends JFrame implements MouseListener{
 	
-	private JPanel panelPadre, panelSuperior,panelSuperiorIzquierdo,panelSuperMedio,
+	private JPanel panelAbuelo, panelPadre, panelSuperior,panelSuperiorIzquierdo,panelSuperMedio,
 	panelMedio,panelInferior;
-    private JLabel JLabelSuperiorFondo, JLabelSuperiorMedio;
+     private JLabel btnSalir;
 	
 
 	public ViewBatalla() {
@@ -41,11 +47,24 @@ public class ViewBatalla extends JFrame {
 		//panel padre
 		this.panelPadre = new JPanel (new GridLayout(3,0) );
 		UtilVentana.pintarImagenEnVentana(this.panelPadre,"C:\\Users\\Lucia\\Documents\\lionel\\spring\\git\\pokemon\\-api-pokemon\\src\\main\\java\\ar\\com\\codoacodo\\img\\fondo1.jpg");
-	
-		//this.panelPadre.setBackground(Color.CYAN);
-		//this.panelPadre.setIconImage(new ImageIcon("C:\\Users\\Lucia\\Documents\\lionel\\spring\\git\\pokemon\\-api-pokemon\\src\\main\\java\\ar\\com\\codoacodo\\img\\fondo1.jpg").getImage());
-		// BgBorder borde = new BgBorder(ImageIO.read("/recursos/miImagenFondo.png")) ;
-		//this.panelPadre.setBorder(borde);
+	    
+		//panel abuelo
+		this.panelAbuelo = new JPanel(new BorderLayout());
+		JPanel botonCerrar = new JPanel(new GridLayout(0,4));
+		botonCerrar.setBackground(Color.blue);
+		 this.btnSalir = new JLabel("x");
+		 this.btnSalir.setFont(new Font("Verdana", Font.PLAIN, 20));
+		 this.btnSalir.setOpaque(false);
+		 this.btnSalir.setAlignmentX(JLabel.RIGHT_ALIGNMENT);
+		 this.btnSalir.addMouseListener(this);
+		botonCerrar.add(UtilVentana.ventanaVacia());
+		botonCerrar.add(UtilVentana.ventanaVacia());
+		botonCerrar.add(UtilVentana.ventanaVacia());
+		botonCerrar.add(btnSalir);
+		
+		this.panelAbuelo.add(botonCerrar,BorderLayout.NORTH);
+		this.panelAbuelo.add(this.panelPadre,BorderLayout.CENTER);
+		
 		
 		
 		//iniciando panel superior
@@ -119,7 +138,7 @@ public class ViewBatalla extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(false);
-		add(this.panelPadre);
+		add(this.panelAbuelo);
 		
 		 //icon = new ImageIcon("C:\\Users\\Eber\\git\\Api-Poke\\-api-pokemon\\src\\main\\java\\ar\\com\\codoacodo\\img\\fondoBatalla1.png");
 			
@@ -127,13 +146,58 @@ public class ViewBatalla extends JFrame {
 		
 	}
 	
-
-
+	  
+   
 	
+	
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if(	e.getSource() == btnSalir) System.exit(0);
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+	 
+		
+	}
+
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
 	public static void main(String[] args) {
 		new ViewBatalla(); 
 		
 	}
+
+
+
+
+
+
+
+	
 	
 
 	
