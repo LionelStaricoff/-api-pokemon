@@ -1,46 +1,35 @@
 package ar.com.codoacodo.pokemon.view;
 
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.GridLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.border.Border;
 
-import ar.com.codoacodo.util.AdaptadorDeImg;
-import ar.com.codoacodo.util.BgBorder;
 import ar.com.codoacodo.util.UtilVentana;
 
 public class ViewBatalla extends JFrame implements MouseListener{
 	
 	private JPanel panelAbuelo, panelPadre, panelSuperior,panelSuperiorIzquierdo,panelSuperMedio,
 	panelMedio,panelInferior;
-     private JLabel btnSalir;
+     private JLabel btnSalir,batalla,items,cambioDePokemon;
 	
 
 	public ViewBatalla() {
 		
-		
+	
 	
 		/**
-		 * <p> Creando las ventanas de la batalla y agregando el panerl padre como
-		 * fondo</p>
+		 * <p> Creando las ventanas de la batalla y agregando el panel abuelo base y
+		 * padre como fondo</p>
 		 * <p> primer panel divivdido en 2: hp pokemon1, label vacio y img pokemon2</p>
 		 */
 	
@@ -55,6 +44,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		 this.btnSalir = new JLabel("x");
 		 this.btnSalir.setFont(new Font("Verdana", Font.PLAIN, 20));
 		 this.btnSalir.setOpaque(false);
+		 this.btnSalir.setHorizontalAlignment(SwingConstants.RIGHT);
 		 this.btnSalir.setAlignmentX(JLabel.RIGHT_ALIGNMENT);
 		 this.btnSalir.addMouseListener(this);
 		botonCerrar.add(UtilVentana.ventanaVacia());
@@ -83,7 +73,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		
 		
 		
-		
+	
 		
 		
 		/**
@@ -123,9 +113,14 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		 * <p> setear tercer panel </p>
 		 * <p>tercer panel dividido en 3: button batalla, button items y button cambio de pokemon </p>
 		 */
-		this.panelInferior.add(new JLabel("button batalla"));
-		this.panelInferior.add(new JLabel("button items"));
-		this.panelInferior.add(new JLabel("button cambio de pokemon"));
+		this.batalla = UtilVentana.crearLavelCentrado("batalla");
+		this.panelInferior.add(UtilVentana.ventanaCentrada(this.batalla));
+		
+		this.items = UtilVentana.crearLavelCentrado("Items");
+		this.panelInferior.add(UtilVentana.ventanaCentrada(this.items));
+		
+		this.cambioDePokemon = UtilVentana.crearLavelCentrado("Cambio de pokemon");
+		this.panelInferior.add(UtilVentana.ventanaCentrada(this.cambioDePokemon));
 		this.panelInferior.setOpaque(false);
 		
 		
@@ -135,12 +130,9 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		// frame principal
 		setSize(600,800);
 		setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		add(this.panelAbuelo);
-		
-		 //icon = new ImageIcon("C:\\Users\\Eber\\git\\Api-Poke\\-api-pokemon\\src\\main\\java\\ar\\com\\codoacodo\\img\\fondoBatalla1.png");
 			
 		
 		

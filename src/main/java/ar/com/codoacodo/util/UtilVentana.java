@@ -10,9 +10,12 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
 
 public class UtilVentana  {
 
@@ -159,5 +162,16 @@ public class UtilVentana  {
 		lavel.setForeground(Color.RED);
 		lavel.setFont(new Font("Tahoma", Font.BOLD, 20));
 		return lavel;
+	}
+	
+	public static JLabel crearLavelCentrado(String nombre) {
+		JLabel batalla = new JLabel("Batalla");
+		  batalla.setOpaque(false);
+		 Border border = BorderFactory.createLineBorder(Color.RED);
+		 batalla.setForeground(Color.RED);
+		batalla.setBorder(border);
+		batalla.setHorizontalAlignment(SwingConstants.CENTER);
+		batalla.setFont(new Font("Tahoma", Font.BOLD, 20));
+		return batalla;
 	}
 }
