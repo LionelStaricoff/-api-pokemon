@@ -5,15 +5,20 @@ import java.awt.Button;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.LayoutManager;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 
+import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 import ar.com.codoacodo.util.UtilVentana;
 
 public class ViewBatalla extends JFrame implements MouseListener{
@@ -22,11 +27,11 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	panelMedio,panelInferior;
      private JLabel btnSalir,batalla,items,cambioDePokemon;
 	
-
+ 
 	public ViewBatalla() {
 		
 	
-	
+
 		/**
 		 * <p> Creando las ventanas de la batalla y agregando el panel abuelo base y
 		 * padre como fondo</p>
@@ -42,9 +47,9 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		JPanel botonCerrar = new JPanel(new GridLayout(0,4));
 		botonCerrar.setBackground(Color.blue);
 		 this.btnSalir = new JLabel("x");
-		 this.btnSalir.setFont(new Font("Verdana", Font.PLAIN, 20));
+		 this.btnSalir.setFont(new Font("Verdana", Font.PLAIN, 30));
 		 this.btnSalir.setOpaque(false);
-		 this.btnSalir.setHorizontalAlignment(SwingConstants.RIGHT);
+		 this.btnSalir.setHorizontalAlignment(SwingConstants.CENTER);
 		 this.btnSalir.setAlignmentX(JLabel.RIGHT_ALIGNMENT);
 		 this.btnSalir.addMouseListener(this);
 		botonCerrar.add(UtilVentana.ventanaVacia());
@@ -114,27 +119,35 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		 * <p>tercer panel dividido en 3: button batalla, button items y button cambio de pokemon </p>
 		 */
 		this.batalla = UtilVentana.crearLavelCentrado("batalla");
+	    this.batalla.addMouseListener(this);
 		this.panelInferior.add(UtilVentana.ventanaCentrada(this.batalla));
 		
 		this.items = UtilVentana.crearLavelCentrado("Items");
+		this.items.addMouseListener(this);
 		this.panelInferior.add(UtilVentana.ventanaCentrada(this.items));
 		
 		this.cambioDePokemon = UtilVentana.crearLavelCentrado("Cambio de pokemon");
+	    this.cambioDePokemon.addMouseListener(this);
 		this.panelInferior.add(UtilVentana.ventanaCentrada(this.cambioDePokemon));
 		this.panelInferior.setOpaque(false);
 		
 		
 		
 		
+	
 		
+		SwingUtilities.invokeLater(()->{
 		// frame principal
+		//setUndecorated(true);
 		setSize(600,800);
-		setVisible(true);
 		setLocationRelativeTo(null);
 		setResizable(false);
-		add(this.panelAbuelo);
-			
-		
+		setUndecorated(true);
+		setVisible(true);
+		setContentPane(this.panelAbuelo);
+		revalidate();
+		repaint();
+		});
 		
 	}
 	
@@ -145,33 +158,71 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(	e.getSource() == btnSalir) System.exit(0);
+		if(e.getSource() == batalla) {
+			SwingUtilities.invokeLater(()->{
+			this.panelInferior.removeAll(); 
+			this.panelInferior.setLayout(new GridLayout(0, 1));
+			this.panelInferior.add(UtilVentana.viewAtaques());
+			this.panelInferior.revalidate();
+			this.panelInferior.repaint();
+			});
+		}
+		if(e.getSource() == items) System.out.println("item");
+		if(e.getSource() == cambioDePokemon) System.out.println("cambio de pokemon");
+		
 		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-	 
+		
 		
 	}
 
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 
-	@Override
+	//hover
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getSource() == batalla) {
+			this.batalla.setForeground(Color.BLUE);
+			this.batalla.setBorder(BorderFactory.createLineBorder(Color.BLUE));	
+		}
+		if(e.getSource() == items) {
+			this.items.setForeground(Color.BLUE);
+			this.items.setBorder(BorderFactory.createLineBorder(Color.BLUE));	
+		}
+		
+		if(e.getSource() == cambioDePokemon) {
+			this.cambioDePokemon.setForeground(Color.BLUE);
+			this.cambioDePokemon.setBorder(BorderFactory.createLineBorder(Color.BLUE));	
+		}
+		
 		
 	}
 
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getSource() == batalla) {
+			this.batalla.setForeground(Color.RED);
+			this.batalla.setBorder(BorderFactory.createLineBorder(Color.RED));
+		}
+		if(e.getSource() == items) {
+			this.items.setForeground(Color.RED);
+			this.items.setBorder(BorderFactory.createLineBorder(Color.RED));
+			
+		}
+		if(e.getSource() == cambioDePokemon) {
+			this.cambioDePokemon.setForeground(Color.RED);
+			this.cambioDePokemon.setBorder(BorderFactory.createLineBorder(Color.RED));
+			
+		}
 		
 	}
 

@@ -6,16 +6,22 @@ import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Paint;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
+
+import ar.com.codoacodo.item.Pokemon;
+import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 
 public class UtilVentana  {
 
@@ -59,13 +65,13 @@ public class UtilVentana  {
 	}
 	
 	
-	public static JPanel ventanaCentrada(Object objeto) {
+	public static JPanel ventanaCentrada(Component objeto) {
 
 		JPanel panelCentrado = new JPanel(new BorderLayout());
 
 		panelCentrado.add(new JLabel("   "),BorderLayout.NORTH);
 		panelCentrado.add(new JLabel("    "),BorderLayout.EAST);
-		panelCentrado.add((Component) objeto, BorderLayout.CENTER);
+		panelCentrado.add( objeto, BorderLayout.CENTER);
 		panelCentrado.add(new JLabel("     "),BorderLayout.SOUTH);
 		panelCentrado.add(new JLabel("             "),BorderLayout.WEST);
 
@@ -75,6 +81,7 @@ public class UtilVentana  {
 
 		return panelCentrado;
 	}
+	
 	
 	
 	/**
@@ -165,7 +172,7 @@ public class UtilVentana  {
 	}
 	
 	public static JLabel crearLavelCentrado(String nombre) {
-		JLabel batalla = new JLabel("Batalla");
+		JLabel batalla = new JLabel(nombre);
 		  batalla.setOpaque(false);
 		 Border border = BorderFactory.createLineBorder(Color.RED);
 		 batalla.setForeground(Color.RED);
@@ -173,5 +180,33 @@ public class UtilVentana  {
 		batalla.setHorizontalAlignment(SwingConstants.CENTER);
 		batalla.setFont(new Font("Tahoma", Font.BOLD, 20));
 		return batalla;
+	}
+	
+	//ventana que setea los 4 ataques de los pokemon
+	public static JPanel viewAtaques() {
+		JPanel panelPrincipar = new JPanel(new BorderLayout());
+		//crea un margin
+		panelPrincipar.setBorder(BorderFactory.createLoweredBevelBorder());
+		JPanel panelIzquierdo = new JPanel(new GridLayout(2,2,10,10));
+		JPanel panelCerrar = ventanaCentrada("x");
+		panelCerrar.setBorder(BorderFactory.createLineBorder(Color.RED));
+		
+		
+		panelIzquierdo.add(crearLavelCentrado( "1") );
+		panelIzquierdo.add(crearLavelCentrado( "2") );
+		panelIzquierdo.add(crearLavelCentrado( "3") );
+		panelIzquierdo.add(crearLavelCentrado( "4") );
+		
+		panelPrincipar.add(ventanaVacia(),BorderLayout.WEST);
+		panelPrincipar.add(ventanaVacia(),BorderLayout.SOUTH);
+		panelPrincipar.add(ventanaVacia(),BorderLayout.NORTH);
+		panelPrincipar.add(panelIzquierdo,BorderLayout.CENTER);
+		panelPrincipar.add(panelCerrar,BorderLayout.EAST );
+		
+		panelCerrar.setOpaque(false);
+		panelIzquierdo.setOpaque(false);
+		panelPrincipar.setOpaque(false);
+		
+		return panelPrincipar;
 	}
 }
