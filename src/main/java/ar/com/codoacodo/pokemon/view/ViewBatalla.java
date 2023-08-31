@@ -1,5 +1,7 @@
 package ar.com.codoacodo.pokemon.view;
 
+import static java.awt.image.ImageObserver.HEIGHT;
+
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
@@ -14,6 +16,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
@@ -24,7 +27,7 @@ import ar.com.codoacodo.util.UtilVentana;
 public class ViewBatalla extends JFrame implements MouseListener{
 	
 	private JPanel panelAbuelo, panelPadre, panelSuperior,panelSuperiorIzquierdo,panelSuperMedio,
-	panelMedio,panelInferior;
+	panelMedio,panelInferior,panelCerrar;
      private JLabel btnSalir,batalla,items,cambioDePokemon;
 	
  
@@ -137,9 +140,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	
 		
 		SwingUtilities.invokeLater(()->{
-		// frame principal
-		//setUndecorated(true);
-		setSize(600,800);
+		setSize(600,700);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setUndecorated(true);
@@ -151,7 +152,37 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		
 	}
 	
-	  
+	//ventana que setea los 4 ataques de los pokemon
+	public JPanel viewAtaques() {
+		JPanel panelPrincipal = new JPanel(new BorderLayout());
+	
+		
+		//crea un margin
+		panelPrincipal.setBorder(BorderFactory.createLoweredBevelBorder());
+		JPanel panelIzquierdo = new JPanel(new GridLayout(2,2,10,10));
+		this.panelCerrar = UtilVentana.ventanaCentrada("x     ");
+		panelCerrar.addMouseListener(this);
+		panelCerrar.setBorder(BorderFactory.createLineBorder(Color.RED));
+		
+		
+		panelIzquierdo.add(UtilVentana.crearLavelCentrado( "1") );
+		panelIzquierdo.add(UtilVentana.crearLavelCentrado( "2") );
+		panelIzquierdo.add(UtilVentana.crearLavelCentrado( "3") );
+		panelIzquierdo.add(UtilVentana.crearLavelCentrado( "4") );
+		
+		panelPrincipal.add(UtilVentana.ventanaVacia(),BorderLayout.WEST);
+		panelPrincipal.add(UtilVentana.ventanaVacia(),BorderLayout.SOUTH);
+		panelPrincipal.add(UtilVentana.ventanaVacia(),BorderLayout.NORTH);
+		panelPrincipal.add(panelIzquierdo,BorderLayout.CENTER);
+		panelPrincipal.add(panelCerrar,BorderLayout.EAST );
+		
+		panelCerrar.setOpaque(false);
+		panelIzquierdo.setOpaque(false);
+		panelPrincipal.setOpaque(false);
+		
+		return panelPrincipal;
+	}
+	
    
 	
 	
@@ -162,14 +193,24 @@ public class ViewBatalla extends JFrame implements MouseListener{
 			SwingUtilities.invokeLater(()->{
 			this.panelInferior.removeAll(); 
 			this.panelInferior.setLayout(new GridLayout(0, 1));
-			this.panelInferior.add(UtilVentana.viewAtaques());
+			this.panelInferior.add(this.viewAtaques());
 			this.panelInferior.revalidate();
 			this.panelInferior.repaint();
 			});
 		}
 		if(e.getSource() == items) System.out.println("item");
 		if(e.getSource() == cambioDePokemon) System.out.println("cambio de pokemon");
-		
+		if(e.getSource() == this.panelCerrar) {
+			SwingUtilities.invokeLater(()->{
+			this.panelInferior.removeAll(); 
+			this.panelInferior.setLayout(new GridLayout(0, 3));
+			this.panelInferior.add(UtilVentana.ventanaCentrada(this.batalla));
+			this.panelInferior.add(UtilVentana.ventanaCentrada(this.items));
+			this.panelInferior.add(UtilVentana.ventanaCentrada(this.cambioDePokemon));
+			this.panelInferior.revalidate();
+			this.panelInferior.repaint();
+			});
+		}
 		
 	}
 
@@ -224,6 +265,8 @@ public class ViewBatalla extends JFrame implements MouseListener{
 			
 		}
 		
+		
+	
 	}
 
 
@@ -231,7 +274,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 
 	public static void main(String[] args) {
 		new ViewBatalla(); 
-		
+
 	}
 
 

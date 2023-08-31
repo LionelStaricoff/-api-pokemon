@@ -6,22 +6,16 @@ import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Paint;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
-
-import ar.com.codoacodo.item.Pokemon;
-import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 
 public class UtilVentana  {
 
@@ -182,31 +176,9 @@ public class UtilVentana  {
 		return batalla;
 	}
 	
-	//ventana que setea los 4 ataques de los pokemon
-	public static JPanel viewAtaques() {
-		JPanel panelPrincipar = new JPanel(new BorderLayout());
-		//crea un margin
-		panelPrincipar.setBorder(BorderFactory.createLoweredBevelBorder());
-		JPanel panelIzquierdo = new JPanel(new GridLayout(2,2,10,10));
-		JPanel panelCerrar = ventanaCentrada("x");
-		panelCerrar.setBorder(BorderFactory.createLineBorder(Color.RED));
-		
-		
-		panelIzquierdo.add(crearLavelCentrado( "1") );
-		panelIzquierdo.add(crearLavelCentrado( "2") );
-		panelIzquierdo.add(crearLavelCentrado( "3") );
-		panelIzquierdo.add(crearLavelCentrado( "4") );
-		
-		panelPrincipar.add(ventanaVacia(),BorderLayout.WEST);
-		panelPrincipar.add(ventanaVacia(),BorderLayout.SOUTH);
-		panelPrincipar.add(ventanaVacia(),BorderLayout.NORTH);
-		panelPrincipar.add(panelIzquierdo,BorderLayout.CENTER);
-		panelPrincipar.add(panelCerrar,BorderLayout.EAST );
-		
-		panelCerrar.setOpaque(false);
-		panelIzquierdo.setOpaque(false);
-		panelPrincipar.setOpaque(false);
-		
-		return panelPrincipar;
-	}
+	
+	
+
+	
+	
 }
