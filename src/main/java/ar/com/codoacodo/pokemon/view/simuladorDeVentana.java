@@ -1,12 +1,10 @@
 package ar.com.codoacodo.pokemon.view;
 
-import java.util.List;
 import java.util.Scanner;
 
 import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 import ar.com.codoacodo.pokemon.base.batallaPokemon;
 import ar.com.codoacodo.pokemon.entrenador.EntrenadorBase;
-import ar.com.codoacodo.pokemon.items.Items;
 import ar.com.codoacodo.pokemon.items.Revive;
 
 public class simuladorDeVentana {
@@ -17,6 +15,7 @@ public class simuladorDeVentana {
 	private EntrenadorBase  entrenadorActivo, entrenadorPasivo;
 	private GestionaPokemon pokemonActivo, pokemonPasivo;
 	public boolean itemUtilizado;
+	private ViewBatalla viewBatalla;
 	
 	
 	public simuladorDeVentana(batallaPokemon p) {
@@ -25,6 +24,7 @@ public class simuladorDeVentana {
 		elegirEntrenador();
 		elegirPokemonActivo();
 		elegirPokemonPasivo();
+		
 	}
 
 	
@@ -120,17 +120,14 @@ public class simuladorDeVentana {
 			int opcionMenu;
 		do {
 		    this.itemUtilizado = true;
-			System.out.println("");
-			System.out.println("Entrenador activo: "+this.entrenadorActivo.getName());
-			System.out.println("pokemon activo: "+this.pokemonActivo.getNombre()+" "+this.pokemonActivo.getHp()+" hp");
-			System.out.println("Entrenador pasivo: "+this.entrenadorPasivo.getName());
-			System.out.println("pokemon pasivo: "+this.pokemonPasivo.getNombre()+" "+this.pokemonPasivo.getHp()+" hp");
-			System.out.println("");
+		   
+		
 			
 			System.out.println("opsion 1: Atacar");
 			System.out.println("opsion 2: Cambiar polemon");
 			System.out.println("opsion 3: Elegir item");
 			opcionMenu = sc.nextInt();
+			
 		switch (opcionMenu) {
 		case 1:
 			System.out.println("Elige un numero de ataque");

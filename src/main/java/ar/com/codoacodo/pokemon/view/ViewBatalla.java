@@ -18,6 +18,8 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
+import ar.com.codoacodo.enums.Fondos;
+import ar.com.codoacodo.pokemon.entrenador.EntrenadorBase;
 import ar.com.codoacodo.util.UtilVentana;
 
 
@@ -29,7 +31,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
      private JLabel btnSalir,batalla,items,cambioDePokemon;
 	
  
-	public ViewBatalla() {
+	public ViewBatalla(simuladorDeVentana ventana ) {
 		
 	
 
@@ -41,7 +43,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	
 		//panel padre
 		this.panelPadre = new JPanel (new GridLayout(3,0) );
-		UtilVentana.pintarImagenEnVentana(this.panelPadre,"C:/Users/Lucia/Documents/lionel/spring/git/pokemon/-api-pokemon/src/main/java/ar/com/codoacodo/pokemon/img/fondoBatalla1.jpeg");
+		UtilVentana.pintarImagenEnVentana(this.panelPadre,Fondos.CATACUMBA.fondo);
 	    
 		//panel abuelo
 		this.panelAbuelo = new JPanel(new BorderLayout());
@@ -335,9 +337,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 
 
 	public static void main(String[] args) {
-
-		new ViewBatalla(); 
-
-
+	
+new ViewBatalla();
 	}
 }
