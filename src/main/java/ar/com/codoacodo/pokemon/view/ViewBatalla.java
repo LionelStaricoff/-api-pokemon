@@ -3,7 +3,6 @@ package ar.com.codoacodo.pokemon.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
@@ -19,7 +18,6 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 import ar.com.codoacodo.enums.Fondos;
-import ar.com.codoacodo.pokemon.entrenador.EntrenadorBase;
 import ar.com.codoacodo.util.UtilVentana;
 
 
@@ -29,11 +27,11 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	private JPanel panelAbuelo, panelPadre, panelSuperior,panelSuperiorIzquierdo,panelSuperMedio,
 	panelMedio,panelInferior,panelCerrar;
      private JLabel btnSalir,batalla,items,cambioDePokemon;
-	
+	private backend backend;
  
-	public ViewBatalla(simuladorDeVentana ventana ) {
+	public ViewBatalla(backend backend ) {
 		
-	
+	       this.backend = backend;
 
 		/**
 		 * <p> Creando las ventanas de la batalla y agregando el panel abuelo base y
@@ -152,6 +150,8 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		
 	}
 	
+	
+
 	//ventana que setea los 4 ataques de los pokemon
 	public JPanel viewAtaques(String att1,String att2,String att3,String att4) {
 		JPanel panelPrincipal = new JPanel(new BorderLayout());
@@ -217,7 +217,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 			SwingUtilities.invokeLater(()->{
 			this.panelInferior.removeAll(); 
 			this.panelInferior.setLayout(new GridLayout(0, 1));
-			this.panelInferior.add(this.viewAtaques("1","2","3","4"));
+			this.panelInferior.add(this.viewAtaques(this.backend.,"2","3","4"));
 			this.panelInferior.revalidate();
 			this.panelInferior.repaint();
 			});
@@ -336,8 +336,5 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	}
 
 
-	public static void main(String[] args) {
-	
-new ViewBatalla();
-	}
+
 }
