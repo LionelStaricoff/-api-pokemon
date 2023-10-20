@@ -43,34 +43,24 @@ public class backend {
 	}
 	}
 	
+	
+	//primer metodo modificado, falta modificar el resto y desarmar la ligica para que no se ejecute
 	public void elegirPokemonActivo() {
-		do {
+		
 			if(this.entrenadorActivo.verificarVidaDeTodosLosPokemon() ) {
 				JOptionPane.showMessageDialog(null, "perdedor!!!");
 				return;
 			}
-			int pokemon;
-			
-			do {
-				System.out.println("");
-		System.out.println(" numero de pokemon a sacar,\n verifica que este vivo");
-		System.out.println(this.entrenadorActivo.getName()+" tiene "+this.entrenadorActivo.cantidadPokemon()+" pokemon");
-		this.entrenadorActivo.listarPokemon();
-		//volver al menu
-		System.out.println("presiona -1 para volver al menu"); 
-		pokemon = sc.nextInt();
-		volverAlMenu(pokemon); 
 		
-		    if(pokemon<0) pokemon=0;
-		    
-			}while(this.entrenadorActivo.cantidadPokemon() <= pokemon );
+			this.entrenadorActivo.getPokemons().forEach(p->{
+				if(!p.estaMuerto()) {
+					this.pokemonActivo = p;
+					return;
+				}
+			});
 		
-		this.pokemonActivo = this.bp.elegirPokemon(this.entrenadorActivo,pokemon);
-		}while(this.pokemonActivo.estaMuerto());
-		System.out.println(this.entrenadorActivo.getName()+" llama a " 
-		+this.pokemonActivo.getNombre()+" y sale a pelear");
 		
-	}
+		}
 	
 	public void elegirPokemonPasivo() {
 		
