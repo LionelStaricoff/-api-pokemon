@@ -192,6 +192,35 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		return panelPrincipal;
 	}
 	
+	private JPanel vewItems() {
+		JPanel panelPrincipal = new JPanel(new BorderLayout());
+		panelPrincipal.setOpaque(false);
+		
+
+		this.panelCerrar = UtilVentana.ventanaCentrada(" X    ");
+		this.panelCerrar.addMouseListener(this);
+		this.panelCerrar.setOpaque(false);
+		this.panelCerrar.setBorder(BorderFactory.createLineBorder(Color.RED));
+		
+		
+		JPanel panelItems = new JPanel(new GridLayout(3,3));
+		panelItems.setOpaque(false);
+		  JScrollPane scrollPane = new JScrollPane(panelItems);
+		  scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED); 
+		  scrollPane.setOpaque(false);
+
+	        // Agregar los JLabels al JPanel
+	        this.backend.getEntrenadorActivo().getItems().forEach((i)->{
+	            JLabel label = UtilVentana.crearLavelCentrado( String.valueOf(i));
+	            panelItems.add(label);
+	        });
+	        
+	        
+	        panelPrincipal.add(this.panelCerrar,BorderLayout.EAST);
+	        panelPrincipal.add(scrollPane,BorderLayout.CENTER);
+	        return panelPrincipal;
+	}
+	
 	public JPanel viewCambioPokemon() {
 		JPanel panelPrincipal = new JPanel(new BorderLayout());
 		panelPrincipal.setOpaque(false);
@@ -199,12 +228,13 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		// verificar cantidad de pokemon y si es par cambiar el grid 2,2
 		JPanel panelPokemon = new JPanel(new GridLayout());
 		panelPokemon.setOpaque(false);
-		panelPokemon.add(UtilVentana.crearLavelCentrado("poke1"));
-		panelPokemon.add(UtilVentana.crearLavelCentrado("poke2"));
-		panelPokemon.add(UtilVentana.crearLavelCentrado("poke3"));
-		panelPokemon.add(UtilVentana.crearLavelCentrado("poke4"));
-		panelPokemon.add(UtilVentana.crearLavelCentrado("poke5"));
-		panelPokemon.add(UtilVentana.crearLavelCentrado("poke6"));
+		
+		this.backend.getEntrenadorActivo().getPokemons().forEach((p)->{
+			panelPokemon.add(UtilVentana.crearLavelCentrado(p.getNombre()));
+		});
+		
+		
+	
 		
 	
 		this.panelCerrar = UtilVentana.ventanaCentrada("x     ");
@@ -265,35 +295,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		
 	}
 
-	private JPanel vewItems() {
-		JPanel panelPrincipal = new JPanel(new BorderLayout());
-		panelPrincipal.setOpaque(false);
-		
 
-		this.panelCerrar = UtilVentana.ventanaCentrada(" X    ");
-		this.panelCerrar.addMouseListener(this);
-		this.panelCerrar.setOpaque(false);
-		this.panelCerrar.setBorder(BorderFactory.createLineBorder(Color.RED));
-		
-		
-		JPanel panelItems = new JPanel(new GridLayout(3,3));
-		panelItems.setOpaque(false);
-		  JScrollPane scrollPane = new JScrollPane(panelItems);
-		  scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED); 
-		  scrollPane.setOpaque(false);
-
-	        // Agregar los JLabels al JPanel
-	        for (int i = 1; i <= 80; i++) {
-	            JLabel label = UtilVentana.crearLavelCentrado("Etiqueta " + i);
-	          
-	            panelItems.add(label);
-	        }
-	        
-	        
-	        panelPrincipal.add(this.panelCerrar,BorderLayout.EAST);
-	        panelPrincipal.add(scrollPane,BorderLayout.CENTER);
-	        return panelPrincipal;
-	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {

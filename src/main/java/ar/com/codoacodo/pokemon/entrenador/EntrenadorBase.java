@@ -148,6 +148,16 @@ public class EntrenadorBase {
   }
 	return pokeMuertos;
 }
+	
+	
+	public List<Items> getItems() {
+		
+		return this.Items;
+	}
+	public List<GestionaPokemon> getPokemons() {
+		return this.pokeball;
+		
+	}
 		
 }
 
