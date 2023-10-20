@@ -248,10 +248,24 @@ public class backend {
 	}
 
 	private void volverAlMenu(int numero) {
+
 		if(numero == -1) {
 		 this.itemUtilizado = false;
     	 menu();
 		}
+	}
+	
+	public EntrenadorBase getEntrenadorActivo() {
+		return this.entrenadorActivo;
+	}
+	
+	public GestionaPokemon getPOkemonActivo() {
+		return this.pokemonActivo;
+	}
+	
+	public GestionaPokemon getPokemonPasivo() {
+		
+		return this.pokemonPasivo;
 	}
 
 	@Override
@@ -260,6 +274,10 @@ public class backend {
 				+ entrenadorActivo + ", entrenadorPasivo=" + entrenadorPasivo + ", pokemonActivo=" + pokemonActivo
 				+ ", pokemonPasivo=" + pokemonPasivo + "]";
 	}
+
+
+
+
 	
 	
 }

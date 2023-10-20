@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 import ar.com.codoacodo.enums.Fondos;
+import ar.com.codoacodo.pokemon.entrenador.EntrenadorBase;
 import ar.com.codoacodo.util.UtilVentana;
 
 
@@ -25,7 +26,7 @@ import ar.com.codoacodo.util.UtilVentana;
 public class ViewBatalla extends JFrame implements MouseListener{
 	
 	private JPanel panelAbuelo, panelPadre, panelSuperior,panelSuperiorIzquierdo,panelSuperMedio,
-	panelMedio,panelInferior,panelCerrar;
+	panelMedio,panelInferior,panelCerrar,panelEntrenadorActivo;
      private JLabel btnSalir,batalla,items,cambioDePokemon;
 	private backend backend;
  
@@ -46,6 +47,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		//panel abuelo
 		this.panelAbuelo = new JPanel(new BorderLayout());
 		JPanel botonCerrar = new JPanel(new GridLayout(0,4));
+		this.panelEntrenadorActivo = UtilVentana.ventanaCentrada(this.backend.getEntrenadorActivo().getName());
 		botonCerrar.setBackground(Color.blue);
 		 this.btnSalir = new JLabel("x");
 		 this.btnSalir.setFont(new Font("Verdana", Font.PLAIN, 30));
@@ -58,6 +60,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		botonCerrar.add(UtilVentana.ventanaVacia());
 		botonCerrar.add(btnSalir);
 		
+		this.panelAbuelo.add(this.panelEntrenadorActivo,BorderLayout.SOUTH);
 		this.panelAbuelo.add(botonCerrar,BorderLayout.NORTH);
 		this.panelAbuelo.add(this.panelPadre,BorderLayout.CENTER);
 		
@@ -86,7 +89,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		 * <p> setear  panel superior</p>
 		 * <p> primer panel divivdido en 3: hp pokemon1, label vacio y img pokemon2</p>
 		 */
-		this.panelSuperiorIzquierdo = UtilVentana.ventanaNombreHp("80 HP", "pikachu");
+		this.panelSuperiorIzquierdo = UtilVentana.ventanaNombreHp(String.valueOf(this.backend.getPOkemonActivo().getHp()) , this.backend.getPokemonPasivo().getNombre());
 		this.panelSuperior.add(this.panelSuperiorIzquierdo);
 		
 		
@@ -95,7 +98,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		this.panelSuperior.add( UtilVentana.ventanaVacia());
 		
 		// agregando panel superior izquierdo con la imagen
-	    this.panelSuperMedio = UtilVentana.ventanaCentrada(new ImageIcon("C:/Users/Lucia/Documents/lionel/spring/git/pokemon/-api-pokemon/src/test/java/img/pikachu.jpg"));
+	    this.panelSuperMedio = UtilVentana.ventanaCentrada(new ImageIcon(this.backend.getPokemonPasivo().getImagenesFront(0)));
 		this.panelSuperior.add(this.panelSuperMedio);
 		
 		
@@ -107,9 +110,9 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		 * <p> setear segundo panel </p>
 		 * <p>segundo panel dividido en 3: imp pokemon1, label vacio y hp pokemon2</p>
 		 */
-		this.panelMedio.add(UtilVentana.ventanaCentrada(new ImageIcon("C:/Users/Lucia/Documents/lionel/spring/git/pokemon/-api-pokemon/src/test/java/img/pikachu.jpg")));
+		this.panelMedio.add(UtilVentana.ventanaCentrada(new ImageIcon(this.backend.getPOkemonActivo().getImagenesBack(0) )));
 		this.panelMedio.add(UtilVentana.ventanaVacia());
-		this.panelMedio.add(UtilVentana.ventanaNombreHp("hp pokemon2", "pikachu 2"));
+		this.panelMedio.add(UtilVentana.ventanaNombreHp(String.valueOf(this.backend.getPokemonPasivo().getHp()), this.backend.getPokemonPasivo().getNombre()));
 	
 		
 		
@@ -153,22 +156,28 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	
 
 	//ventana que setea los 4 ataques de los pokemon
-	public JPanel viewAtaques(String att1,String att2,String att3,String att4) {
+	public JPanel viewAtaques(EntrenadorBase entrenadorActivo) {
 		JPanel panelPrincipal = new JPanel(new BorderLayout());
 	
 		
 		//crea un margin
 		panelPrincipal.setBorder(BorderFactory.createLoweredBevelBorder());
 		JPanel panelIzquierdo = new JPanel(new GridLayout(2,2,10,10));
+		
 		this.panelCerrar = UtilVentana.ventanaCentrada("x     ");
 		this.panelCerrar.addMouseListener(this);
 		this.panelCerrar.setBorder(BorderFactory.createLineBorder(Color.RED));
 		
+		String pokes[] = new String [4];
+		pokes[0] = ((this.backend.getPOkemonActivo().getMoves(0).getClass().isInstance(pokes.getClass()) ) )? this.backend.getPOkemonActivo().getMoves(0) : "";
+		pokes[1] = ((this.backend.getPOkemonActivo().getMoves(1).getClass().isInstance(pokes.getClass()) ) )? this.backend.getPOkemonActivo().getMoves(1) : "";
+		pokes[2] = ((this.backend.getPOkemonActivo().getMoves(2).getClass().isInstance(pokes.getClass()) ) )? this.backend.getPOkemonActivo().getMoves(2) : "";
+		pokes[3] = ((this.backend.getPOkemonActivo().getMoves(3).getClass().isInstance(pokes.getClass()) ) )? this.backend.getPOkemonActivo().getMoves(3) : "";
 		
-		panelIzquierdo.add(UtilVentana.crearLavelCentrado( att1) );
-		panelIzquierdo.add(UtilVentana.crearLavelCentrado( att2) );
-		panelIzquierdo.add(UtilVentana.crearLavelCentrado( att3) );
-		panelIzquierdo.add(UtilVentana.crearLavelCentrado( att4) );
+		panelIzquierdo.add(UtilVentana.crearLavelCentrado( pokes[0]) );
+		panelIzquierdo.add(UtilVentana.crearLavelCentrado( pokes[1]) );
+		panelIzquierdo.add(UtilVentana.crearLavelCentrado( pokes[2]) );
+		panelIzquierdo.add(UtilVentana.crearLavelCentrado( pokes[3]) );
 		
 		panelPrincipal.add(UtilVentana.ventanaVacia(),BorderLayout.WEST);
 		panelPrincipal.add(UtilVentana.ventanaVacia(),BorderLayout.SOUTH);
@@ -206,6 +215,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		panelPrincipal.add(panelPokemon,BorderLayout.CENTER);
 		panelPrincipal.add(this.panelCerrar,BorderLayout.EAST);
 		
+		
 		return panelPrincipal;
 	}
 	
@@ -214,10 +224,10 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		if(	e.getSource() == btnSalir) System.exit(0);
 		if(e.getSource() == batalla) {
-			SwingUtilities.invokeLater(()->{
+			SwingUtilities.invokeLater(()->{//agregar metodo para devolver el entrenador activo
 			this.panelInferior.removeAll(); 
 			this.panelInferior.setLayout(new GridLayout(0, 1));
-			this.panelInferior.add(this.viewAtaques(this.backend.,"2","3","4"));
+			this.panelInferior.add(this.viewAtaques(this.backend.getEntrenadorActivo()));
 			this.panelInferior.revalidate();
 			this.panelInferior.repaint();
 			});
