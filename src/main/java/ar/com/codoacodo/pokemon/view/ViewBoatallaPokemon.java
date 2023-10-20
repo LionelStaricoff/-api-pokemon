@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class wiewBoatallaPokemon extends JFrame {
+public class ViewBoatallaPokemon extends JFrame {
 
 	private JPanel contentPane;
 
@@ -17,7 +17,7 @@ public class wiewBoatallaPokemon extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					wiewBoatallaPokemon frame = new wiewBoatallaPokemon();
+					ViewBoatallaPokemon frame = new ViewBoatallaPokemon();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -29,7 +29,7 @@ public class wiewBoatallaPokemon extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public wiewBoatallaPokemon() {
+	public ViewBoatallaPokemon() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

@@ -3,7 +3,6 @@ package ar.com.codoacodo.pokemon.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
@@ -18,6 +17,8 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
+import ar.com.codoacodo.enums.Fondos;
+import ar.com.codoacodo.pokemon.entrenador.EntrenadorBase;
 import ar.com.codoacodo.util.UtilVentana;
 
 
@@ -25,13 +26,13 @@ import ar.com.codoacodo.util.UtilVentana;
 public class ViewBatalla extends JFrame implements MouseListener{
 	
 	private JPanel panelAbuelo, panelPadre, panelSuperior,panelSuperiorIzquierdo,panelSuperMedio,
-	panelMedio,panelInferior,panelCerrar;
+	panelMedio,panelInferior,panelCerrar,panelEntrenadorActivo;
      private JLabel btnSalir,batalla,items,cambioDePokemon;
-	
+	private backend backend;
  
-	public ViewBatalla() {
+	public ViewBatalla(backend backend ) {
 		
-	
+	       this.backend = backend;
 
 		/**
 		 * <p> Creando las ventanas de la batalla y agregando el panel abuelo base y
@@ -41,11 +42,12 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	
 		//panel padre
 		this.panelPadre = new JPanel (new GridLayout(3,0) );
-		UtilVentana.pintarImagenEnVentana(this.panelPadre,"C:/Users/Lucia/Documents/lionel/spring/git/pokemon/-api-pokemon/src/main/java/ar/com/codoacodo/pokemon/img/fondoBatalla1.jpeg");
+		UtilVentana.pintarImagenEnVentana(this.panelPadre,Fondos.CATACUMBA.fondo);
 	    
 		//panel abuelo
 		this.panelAbuelo = new JPanel(new BorderLayout());
 		JPanel botonCerrar = new JPanel(new GridLayout(0,4));
+		this.panelEntrenadorActivo = UtilVentana.ventanaCentrada(this.backend.getEntrenadorActivo().getName());
 		botonCerrar.setBackground(Color.blue);
 		 this.btnSalir = new JLabel("x");
 		 this.btnSalir.setFont(new Font("Verdana", Font.PLAIN, 30));
@@ -58,6 +60,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		botonCerrar.add(UtilVentana.ventanaVacia());
 		botonCerrar.add(btnSalir);
 		
+		this.panelAbuelo.add(this.panelEntrenadorActivo,BorderLayout.SOUTH);
 		this.panelAbuelo.add(botonCerrar,BorderLayout.NORTH);
 		this.panelAbuelo.add(this.panelPadre,BorderLayout.CENTER);
 		
@@ -86,7 +89,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		 * <p> setear  panel superior</p>
 		 * <p> primer panel divivdido en 3: hp pokemon1, label vacio y img pokemon2</p>
 		 */
-		this.panelSuperiorIzquierdo = UtilVentana.ventanaNombreHp("80 HP", "pikachu");
+		this.panelSuperiorIzquierdo = UtilVentana.ventanaNombreHp(String.valueOf(this.backend.getPOkemonActivo().getHp()) , this.backend.getPokemonPasivo().getNombre());
 		this.panelSuperior.add(this.panelSuperiorIzquierdo);
 		
 		
@@ -95,7 +98,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		this.panelSuperior.add( UtilVentana.ventanaVacia());
 		
 		// agregando panel superior izquierdo con la imagen
-	    this.panelSuperMedio = UtilVentana.ventanaCentrada(new ImageIcon("C:/Users/Lucia/Documents/lionel/spring/git/pokemon/-api-pokemon/src/test/java/img/pikachu.jpg"));
+	    this.panelSuperMedio = UtilVentana.ventanaCentrada(new ImageIcon(this.backend.getPokemonPasivo().getImagenesFront(0)));
 		this.panelSuperior.add(this.panelSuperMedio);
 		
 		
@@ -107,9 +110,9 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		 * <p> setear segundo panel </p>
 		 * <p>segundo panel dividido en 3: imp pokemon1, label vacio y hp pokemon2</p>
 		 */
-		this.panelMedio.add(UtilVentana.ventanaCentrada(new ImageIcon("C:/Users/Lucia/Documents/lionel/spring/git/pokemon/-api-pokemon/src/test/java/img/pikachu.jpg")));
+		this.panelMedio.add(UtilVentana.ventanaCentrada(new ImageIcon(this.backend.getPOkemonActivo().getImagenesBack(0) )));
 		this.panelMedio.add(UtilVentana.ventanaVacia());
-		this.panelMedio.add(UtilVentana.ventanaNombreHp("hp pokemon2", "pikachu 2"));
+		this.panelMedio.add(UtilVentana.ventanaNombreHp(String.valueOf(this.backend.getPokemonPasivo().getHp()), this.backend.getPokemonPasivo().getNombre()));
 	
 		
 		
@@ -150,23 +153,31 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		
 	}
 	
+	
+
 	//ventana que setea los 4 ataques de los pokemon
-	public JPanel viewAtaques(String att1,String att2,String att3,String att4) {
+	public JPanel viewAtaques(EntrenadorBase entrenadorActivo) {
 		JPanel panelPrincipal = new JPanel(new BorderLayout());
 	
 		
 		//crea un margin
 		panelPrincipal.setBorder(BorderFactory.createLoweredBevelBorder());
 		JPanel panelIzquierdo = new JPanel(new GridLayout(2,2,10,10));
+		
 		this.panelCerrar = UtilVentana.ventanaCentrada("x     ");
 		this.panelCerrar.addMouseListener(this);
 		this.panelCerrar.setBorder(BorderFactory.createLineBorder(Color.RED));
 		
+		String pokes[] = new String [4];
+		pokes[0] = ((this.backend.getPOkemonActivo().getMoves(0).getClass().isInstance(pokes.getClass()) ) )? this.backend.getPOkemonActivo().getMoves(0) : "";
+		pokes[1] = ((this.backend.getPOkemonActivo().getMoves(1).getClass().isInstance(pokes.getClass()) ) )? this.backend.getPOkemonActivo().getMoves(1) : "";
+		pokes[2] = ((this.backend.getPOkemonActivo().getMoves(2).getClass().isInstance(pokes.getClass()) ) )? this.backend.getPOkemonActivo().getMoves(2) : "";
+		pokes[3] = ((this.backend.getPOkemonActivo().getMoves(3).getClass().isInstance(pokes.getClass()) ) )? this.backend.getPOkemonActivo().getMoves(3) : "";
 		
-		panelIzquierdo.add(UtilVentana.crearLavelCentrado( att1) );
-		panelIzquierdo.add(UtilVentana.crearLavelCentrado( att2) );
-		panelIzquierdo.add(UtilVentana.crearLavelCentrado( att3) );
-		panelIzquierdo.add(UtilVentana.crearLavelCentrado( att4) );
+		panelIzquierdo.add(UtilVentana.crearLavelCentrado( pokes[0]) );
+		panelIzquierdo.add(UtilVentana.crearLavelCentrado( pokes[1]) );
+		panelIzquierdo.add(UtilVentana.crearLavelCentrado( pokes[2]) );
+		panelIzquierdo.add(UtilVentana.crearLavelCentrado( pokes[3]) );
 		
 		panelPrincipal.add(UtilVentana.ventanaVacia(),BorderLayout.WEST);
 		panelPrincipal.add(UtilVentana.ventanaVacia(),BorderLayout.SOUTH);
@@ -181,6 +192,35 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		return panelPrincipal;
 	}
 	
+	private JPanel vewItems() {
+		JPanel panelPrincipal = new JPanel(new BorderLayout());
+		panelPrincipal.setOpaque(false);
+		
+
+		this.panelCerrar = UtilVentana.ventanaCentrada(" X    ");
+		this.panelCerrar.addMouseListener(this);
+		this.panelCerrar.setOpaque(false);
+		this.panelCerrar.setBorder(BorderFactory.createLineBorder(Color.RED));
+		
+		
+		JPanel panelItems = new JPanel(new GridLayout(3,3));
+		panelItems.setOpaque(false);
+		  JScrollPane scrollPane = new JScrollPane(panelItems);
+		  scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED); 
+		  scrollPane.setOpaque(false);
+
+	        // Agregar los JLabels al JPanel
+	        this.backend.getEntrenadorActivo().getItems().forEach((i)->{
+	            JLabel label = UtilVentana.crearLavelCentrado( String.valueOf(i));
+	            panelItems.add(label);
+	        });
+	        
+	        
+	        panelPrincipal.add(this.panelCerrar,BorderLayout.EAST);
+	        panelPrincipal.add(scrollPane,BorderLayout.CENTER);
+	        return panelPrincipal;
+	}
+	
 	public JPanel viewCambioPokemon() {
 		JPanel panelPrincipal = new JPanel(new BorderLayout());
 		panelPrincipal.setOpaque(false);
@@ -188,12 +228,13 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		// verificar cantidad de pokemon y si es par cambiar el grid 2,2
 		JPanel panelPokemon = new JPanel(new GridLayout());
 		panelPokemon.setOpaque(false);
-		panelPokemon.add(UtilVentana.crearLavelCentrado("poke1"));
-		panelPokemon.add(UtilVentana.crearLavelCentrado("poke2"));
-		panelPokemon.add(UtilVentana.crearLavelCentrado("poke3"));
-		panelPokemon.add(UtilVentana.crearLavelCentrado("poke4"));
-		panelPokemon.add(UtilVentana.crearLavelCentrado("poke5"));
-		panelPokemon.add(UtilVentana.crearLavelCentrado("poke6"));
+		
+		this.backend.getEntrenadorActivo().getPokemons().forEach((p)->{
+			panelPokemon.add(UtilVentana.crearLavelCentrado(p.getNombre()));
+		});
+		
+		
+	
 		
 	
 		this.panelCerrar = UtilVentana.ventanaCentrada("x     ");
@@ -204,6 +245,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		panelPrincipal.add(panelPokemon,BorderLayout.CENTER);
 		panelPrincipal.add(this.panelCerrar,BorderLayout.EAST);
 		
+		
 		return panelPrincipal;
 	}
 	
@@ -212,10 +254,10 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		if(	e.getSource() == btnSalir) System.exit(0);
 		if(e.getSource() == batalla) {
-			SwingUtilities.invokeLater(()->{
+			SwingUtilities.invokeLater(()->{//agregar metodo para devolver el entrenador activo
 			this.panelInferior.removeAll(); 
 			this.panelInferior.setLayout(new GridLayout(0, 1));
-			this.panelInferior.add(this.viewAtaques("1","2","3","4"));
+			this.panelInferior.add(this.viewAtaques(this.backend.getEntrenadorActivo()));
 			this.panelInferior.revalidate();
 			this.panelInferior.repaint();
 			});
@@ -253,35 +295,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		
 	}
 
-	private JPanel vewItems() {
-		JPanel panelPrincipal = new JPanel(new BorderLayout());
-		panelPrincipal.setOpaque(false);
-		
 
-		this.panelCerrar = UtilVentana.ventanaCentrada(" X    ");
-		this.panelCerrar.addMouseListener(this);
-		this.panelCerrar.setOpaque(false);
-		this.panelCerrar.setBorder(BorderFactory.createLineBorder(Color.RED));
-		
-		
-		JPanel panelItems = new JPanel(new GridLayout(3,3));
-		panelItems.setOpaque(false);
-		  JScrollPane scrollPane = new JScrollPane(panelItems);
-		  scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED); 
-		  scrollPane.setOpaque(false);
-
-	        // Agregar los JLabels al JPanel
-	        for (int i = 1; i <= 80; i++) {
-	            JLabel label = UtilVentana.crearLavelCentrado("Etiqueta " + i);
-	          
-	            panelItems.add(label);
-	        }
-	        
-	        
-	        panelPrincipal.add(this.panelCerrar,BorderLayout.EAST);
-	        panelPrincipal.add(scrollPane,BorderLayout.CENTER);
-	        return panelPrincipal;
-	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
@@ -334,10 +348,5 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	}
 
 
-	public static void main(String[] args) {
 
-		new ViewBatalla(); 
-
-
-	}
 }

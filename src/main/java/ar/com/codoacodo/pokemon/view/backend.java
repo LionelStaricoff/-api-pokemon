@@ -2,12 +2,14 @@ package ar.com.codoacodo.pokemon.view;
 
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 import ar.com.codoacodo.pokemon.base.batallaPokemon;
 import ar.com.codoacodo.pokemon.entrenador.EntrenadorBase;
 import ar.com.codoacodo.pokemon.items.Revive;
 
-public class simuladorDeVentana {
+public class backend {
 
 	private batallaPokemon bp ;
 	private Scanner sc = new Scanner (System.in);
@@ -18,7 +20,7 @@ public class simuladorDeVentana {
 	private ViewBatalla viewBatalla;
 	
 	
-	public simuladorDeVentana(batallaPokemon p) {
+	public backend(batallaPokemon p) {
 	
 		this.bp = p;
 		elegirEntrenador();
@@ -41,34 +43,24 @@ public class simuladorDeVentana {
 	}
 	}
 	
+	
+	//primer metodo modificado, falta modificar el resto y desarmar la ligica para que no se ejecute
 	public void elegirPokemonActivo() {
-		do {
+		
 			if(this.entrenadorActivo.verificarVidaDeTodosLosPokemon() ) {
-				System.out.println("game over");
+				JOptionPane.showMessageDialog(null, "perdedor!!!");
 				return;
 			}
-			int pokemon;
-			
-			do {
-				System.out.println("");
-		System.out.println(" numero de pokemon a sacar,\n verifica que este vivo");
-		System.out.println(this.entrenadorActivo.getName()+" tiene "+this.entrenadorActivo.cantidadPokemon()+" pokemon");
-		this.entrenadorActivo.listarPokemon();
-		//volver al menu
-		System.out.println("presiona -1 para volver al menu"); 
-		pokemon = sc.nextInt();
-		volverAlMenu(pokemon); 
 		
-		    if(pokemon<0) pokemon=0;
-		    
-			}while(this.entrenadorActivo.cantidadPokemon() <= pokemon );
+			this.entrenadorActivo.getPokemons().forEach(p->{
+				if(!p.estaMuerto()) {
+					this.pokemonActivo = p;
+					return;
+				}
+			});
 		
-		this.pokemonActivo = this.bp.elegirPokemon(this.entrenadorActivo,pokemon);
-		}while(this.pokemonActivo.estaMuerto());
-		System.out.println(this.entrenadorActivo.getName()+" llama a " 
-		+this.pokemonActivo.getNombre()+" y sale a pelear");
 		
-	}
+		}
 	
 	public void elegirPokemonPasivo() {
 		
@@ -246,10 +238,24 @@ public class simuladorDeVentana {
 	}
 
 	private void volverAlMenu(int numero) {
+
 		if(numero == -1) {
 		 this.itemUtilizado = false;
     	 menu();
 		}
+	}
+	
+	public EntrenadorBase getEntrenadorActivo() {
+		return this.entrenadorActivo;
+	}
+	
+	public GestionaPokemon getPOkemonActivo() {
+		return this.pokemonActivo;
+	}
+	
+	public GestionaPokemon getPokemonPasivo() {
+		
+		return this.pokemonPasivo;
 	}
 
 	@Override
@@ -258,6 +264,10 @@ public class simuladorDeVentana {
 				+ entrenadorActivo + ", entrenadorPasivo=" + entrenadorPasivo + ", pokemonActivo=" + pokemonActivo
 				+ ", pokemonPasivo=" + pokemonPasivo + "]";
 	}
+
+
+
+
 	
 	
 }
