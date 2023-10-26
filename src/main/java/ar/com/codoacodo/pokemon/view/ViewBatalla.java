@@ -3,6 +3,7 @@ package ar.com.codoacodo.pokemon.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
@@ -202,19 +203,31 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		this.panelCerrar.setOpaque(false);
 		this.panelCerrar.setBorder(BorderFactory.createLineBorder(Color.RED));
 		
-		
+		 if(this.backend.getEntrenadorActivo().getItems().size()< 30) {
+	        	JPanel	panelItems =  new JPanel( new GridLayout(2,2,2,2));
+	        	panelItems.setOpaque(false);
+	        	panelItems.setBorder(BorderFactory.createLineBorder(Color.RED));
+	        	 this.backend.getEntrenadorActivo().getItems().forEach((i)->{
+	        		 panelItems.add(UtilVentana.ventanaImagen(String.valueOf(i.getImg())));
+	 	            });
+	        	
+	        panelPrincipal.add(this.panelCerrar,BorderLayout.EAST);
+	        panelPrincipal.add(panelItems,BorderLayout.CENTER);
+	        return panelPrincipal;
+	        }
+		 
+		 
 		JPanel panelItems = new JPanel(new GridLayout(3,3));
 		panelItems.setOpaque(false);
 		  JScrollPane scrollPane = new JScrollPane(panelItems);
 		  scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED); 
 		  scrollPane.setOpaque(false);
 
-	        // Agregar los JLabels al JPanel
+	        // Agregar las imagenes al JPanel
 	        this.backend.getEntrenadorActivo().getItems().forEach((i)->{
-	            JLabel label = UtilVentana.crearLavelCentrado( String.valueOf(i));
-	            panelItems.add(label);
-	        });
-	        
+	            panelItems.add(UtilVentana.ventanaImagen(String.valueOf(i.getImg())));
+	            });
+	       
 	        
 	        panelPrincipal.add(this.panelCerrar,BorderLayout.EAST);
 	        panelPrincipal.add(scrollPane,BorderLayout.CENTER);
