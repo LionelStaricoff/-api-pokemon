@@ -156,7 +156,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	
 
 	//ventana que setea los 4 ataques de los pokemon
-	public JPanel viewAtaques(EntrenadorBase entrenadorActivo) {
+	public JPanel viewAtaques() {
 		JPanel panelPrincipal = new JPanel(new BorderLayout());
 	
 		
@@ -169,10 +169,10 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		this.panelCerrar.setBorder(BorderFactory.createLineBorder(Color.RED));
 		
 		String pokes[] = new String [4];
-		pokes[0] = ((this.backend.getPOkemonActivo().getMoves(0).getClass().isInstance(pokes.getClass()) ) )? this.backend.getPOkemonActivo().getMoves(0) : "";
-		pokes[1] = ((this.backend.getPOkemonActivo().getMoves(1).getClass().isInstance(pokes.getClass()) ) )? this.backend.getPOkemonActivo().getMoves(1) : "";
-		pokes[2] = ((this.backend.getPOkemonActivo().getMoves(2).getClass().isInstance(pokes.getClass()) ) )? this.backend.getPOkemonActivo().getMoves(2) : "";
-		pokes[3] = ((this.backend.getPOkemonActivo().getMoves(3).getClass().isInstance(pokes.getClass()) ) )? this.backend.getPOkemonActivo().getMoves(3) : "";
+		pokes[0] = ((this.backend.getPOkemonActivo().getMoves(0).getClass() != null ))? this.backend.getPOkemonActivo().getMoves(0) : "atk1";
+		pokes[1] = ((this.backend.getPOkemonActivo().getMoves(1).getClass() != null) )? this.backend.getPOkemonActivo().getMoves(1) : "atk2";
+		pokes[2] = ((this.backend.getPOkemonActivo().getMoves(2).getClass() != null ) )? this.backend.getPOkemonActivo().getMoves(2) : "atk3";
+		pokes[3] = ((this.backend.getPOkemonActivo().getMoves(3).getClass() != null ) )? this.backend.getPOkemonActivo().getMoves(3) : "atk4";
 		
 		panelIzquierdo.add(UtilVentana.crearLavelCentrado( pokes[0]) );
 		panelIzquierdo.add(UtilVentana.crearLavelCentrado( pokes[1]) );
@@ -257,7 +257,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 			SwingUtilities.invokeLater(()->{
 			this.panelInferior.removeAll(); 
 			this.panelInferior.setLayout(new GridLayout(0, 1));
-			this.panelInferior.add(this.viewAtaques(this.backend.getEntrenadorActivo()));
+			this.panelInferior.add(this.viewAtaques());
 			this.panelInferior.revalidate();
 			this.panelInferior.repaint();
 			});
