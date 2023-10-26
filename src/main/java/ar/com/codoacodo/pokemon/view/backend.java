@@ -44,48 +44,38 @@ public class backend {
 	}
 	
 	
-	//primer metodo modificado, falta modificar el resto y desarmar la ligica para que no se ejecute
+	// primer metodo modificado, falta modificar el resto y desarmar la ligica para
+	// que no se ejecute
 	public void elegirPokemonActivo() {
-		
-			if(this.entrenadorActivo.verificarVidaDeTodosLosPokemon() ) {
-				JOptionPane.showMessageDialog(null, "perdedor!!!");
+
+		this.entrenadorActivo.getPokemons().forEach(p -> {
+			if (!p.estaMuerto()) {
+				this.pokemonActivo = p;
 				return;
 			}
-		
-			this.entrenadorActivo.getPokemons().forEach(p->{
-				if(!p.estaMuerto()) {
-					this.pokemonActivo = p;
-					return;
-				}
-			});
-		
-		
+
+		});
+
+		if (this.entrenadorActivo.verificarVidaDeTodosLosPokemon()) {
+			JOptionPane.showMessageDialog(null, "perdedor!!!");
+			return;
 		}
+	}
 	
 	public void elegirPokemonPasivo() {
-		
-		
-		do {
-			if(this.entrenadorPasivo.verificarVidaDeTodosLosPokemon() ) {
-				System.out.println("game over");
+
+		this.entrenadorPasivo.getPokemons().forEach(p -> {
+			if (!p.estaMuerto()) {
+				this.pokemonPasivo = p;
 				return;
 			}
-			int pokemon;
-			do {
-				System.out.println("");
-				System.out.println(" numero de pokemon a sacar,\n verifica que este vivo");
-				System.out.println(this.entrenadorPasivo.getName()+" tiene "+this.entrenadorPasivo.cantidadPokemon()+" pokemon");
-				   pokemon = sc.nextInt()-1;
-		    
-		    if(pokemon<0) pokemon=0;
-		    
-			}while(this.entrenadorPasivo.cantidadPokemon() <= pokemon );
-			
-		this.pokemonPasivo = this.bp.elegirPokemon(this.entrenadorPasivo,pokemon);
-		}while(this.pokemonPasivo.estaMuerto());
-		System.out.println(this.entrenadorPasivo.getName()+" llama a " 
-		+this.pokemonPasivo.getNombre()+" y sale a pelear");
-		
+
+		});
+
+		if (this.entrenadorPasivo.verificarVidaDeTodosLosPokemon()) {
+			JOptionPane.showMessageDialog(null, "perdedor!!!");
+			return;
+		}
 	}
 		
 	
@@ -107,25 +97,22 @@ public class backend {
 		this.pokemonPasivo = pokemonAux;
 		
 	}
+	
+	
 	public void menu() {
 			int opcion;
-			int opcionMenu;
-		do {
+		
+	
 		    this.itemUtilizado = true;
 		   
 		
 			
-			System.out.println("opsion 1: Atacar");
-			System.out.println("opsion 2: Cambiar polemon");
-			System.out.println("opsion 3: Elegir item");
-			opcionMenu = sc.nextInt();
 			
-		switch (opcionMenu) {
+		switch (0) {
 		case 1:
 			System.out.println("Elige un numero de ataque");
 		
-			//volver al menu
-			System.out.println("presiona -1 para volver al menu"); 
+		
 			opcion = sc.nextInt();
 			volverAlMenu(opcion);
 		
@@ -182,17 +169,17 @@ public class backend {
 		
 		
 		if(this.entrenadorActivo.verificarVidaDeTodosLosPokemon()) {
-			opcionMenu=4;
+		
 			System.out.println("gano el entrenador "+this.entrenadorPasivo.getName());
 		}
 		if(this.entrenadorPasivo.verificarVidaDeTodosLosPokemon()) {
-			opcionMenu=4;
+		
 			System.out.println("gano el entrenador "+this.entrenadorActivo.getName());
 		}
 		 
 		intercambiarEntrenadores();
 		
-		} while (opcionMenu ==1 || opcionMenu ==2 || opcionMenu ==3);
+		
 	}
 
 	private void usarRevive(int numeroItem) {

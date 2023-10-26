@@ -89,7 +89,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		 * <p> setear  panel superior</p>
 		 * <p> primer panel divivdido en 3: hp pokemon1, label vacio y img pokemon2</p>
 		 */
-		this.panelSuperiorIzquierdo = UtilVentana.ventanaNombreHp(String.valueOf(this.backend.getPOkemonActivo().getHp()) , this.backend.getPokemonPasivo().getNombre());
+		this.panelSuperiorIzquierdo = UtilVentana.ventanaNombreHp(String.valueOf(this.backend.getPOkemonActivo().getHp()) , this.backend.getPOkemonActivo().getNombre());
 		this.panelSuperior.add(this.panelSuperiorIzquierdo);
 		
 		
@@ -98,7 +98,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		this.panelSuperior.add( UtilVentana.ventanaVacia());
 		
 		// agregando panel superior izquierdo con la imagen
-	    this.panelSuperMedio = UtilVentana.ventanaCentrada(new ImageIcon(this.backend.getPokemonPasivo().getImagenesFront(0)));
+	    this.panelSuperMedio = UtilVentana.ventanaImagen(this.backend.getPokemonPasivo().getImagenesFront(0));
 		this.panelSuperior.add(this.panelSuperMedio);
 		
 		
@@ -110,7 +110,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		 * <p> setear segundo panel </p>
 		 * <p>segundo panel dividido en 3: imp pokemon1, label vacio y hp pokemon2</p>
 		 */
-		this.panelMedio.add(UtilVentana.ventanaCentrada(new ImageIcon(this.backend.getPOkemonActivo().getImagenesBack(0) )));
+		this.panelMedio.add(UtilVentana.ventanaImagen(this.backend.getPOkemonActivo().getImagenesBack(0) ));
 		this.panelMedio.add(UtilVentana.ventanaVacia());
 		this.panelMedio.add(UtilVentana.ventanaNombreHp(String.valueOf(this.backend.getPokemonPasivo().getHp()), this.backend.getPokemonPasivo().getNombre()));
 	
@@ -254,7 +254,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		if(	e.getSource() == btnSalir) System.exit(0);
 		if(e.getSource() == batalla) {
-			SwingUtilities.invokeLater(()->{//agregar metodo para devolver el entrenador activo
+			SwingUtilities.invokeLater(()->{
 			this.panelInferior.removeAll(); 
 			this.panelInferior.setLayout(new GridLayout(0, 1));
 			this.panelInferior.add(this.viewAtaques(this.backend.getEntrenadorActivo()));
