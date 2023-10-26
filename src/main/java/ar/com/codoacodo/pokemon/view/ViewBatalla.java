@@ -203,13 +203,14 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		this.panelCerrar.setOpaque(false);
 		this.panelCerrar.setBorder(BorderFactory.createLineBorder(Color.RED));
 		
-		 if(this.backend.getEntrenadorActivo().getItems().size()< 30) {
-	        	JPanel	panelItems =  new JPanel( new GridLayout(2,2,2,2));
+		 if(this.backend.getEntrenadorActivo().getItems().size()< 13) {
+	        	JPanel	panelItems =  new JPanel( new GridLayout(2,2));
 	        	panelItems.setOpaque(false);
 	        	panelItems.setBorder(BorderFactory.createLineBorder(Color.RED));
 	        	 this.backend.getEntrenadorActivo().getItems().forEach((i)->{
 	        		 panelItems.add(UtilVentana.ventanaImagen(String.valueOf(i.getImg())));
-	 	            });
+	        			  
+	        	 });
 	        	
 	        panelPrincipal.add(this.panelCerrar,BorderLayout.EAST);
 	        panelPrincipal.add(panelItems,BorderLayout.CENTER);
