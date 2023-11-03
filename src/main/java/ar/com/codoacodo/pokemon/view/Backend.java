@@ -9,7 +9,7 @@ import ar.com.codoacodo.pokemon.base.batallaPokemon;
 import ar.com.codoacodo.pokemon.entrenador.EntrenadorBase;
 import ar.com.codoacodo.pokemon.items.Revive;
 
-public class backend {
+public class Backend {
 
 	private batallaPokemon bp ;
 	private Scanner sc = new Scanner (System.in);
@@ -20,11 +20,11 @@ public class backend {
 	private ViewBatalla viewBatalla;
 	
 	
-	public backend(batallaPokemon p) {
+	public Backend(batallaPokemon p) {
 	
 		this.bp = p;
 		elegirEntrenador();
-		elegirPokemonActivo();
+		elegirPokemonActivo(this.entrenadorActivo.getPokeball(0))//verificar si el pokemon esta vivo
 		elegirPokemonPasivo();
 		
 	}
@@ -46,20 +46,17 @@ public class backend {
 	
 	// primer metodo modificado, falta modificar el resto y desarmar la ligica para
 	// que no se ejecute
-	public void elegirPokemonActivo() {
+	public void elegirPokemonActivo(GestionaPokemon pokemon) {
 
-		this.entrenadorActivo.getPokemons().forEach(p -> {
-			if (!p.estaMuerto()) {
-				this.pokemonActivo = p;
+		
+			if(this.entrenadorActivo.verificarVidaDeTodosLosPokemon() ) {
+				JOptionPane.showMessageDialog(null, "perdedor!!!");
 				return;
 			}
-
-		});
-
-		if (this.entrenadorActivo.verificarVidaDeTodosLosPokemon()) {
-			JOptionPane.showMessageDialog(null, "perdedor!!!");
-			return;
-		}
+	
+		
+		this.pokemonActivo = this.bp.elegirPokemon(this.entrenadorActivo,pokemon);
+		
 	}
 	
 	public void elegirPokemonPasivo() {
@@ -121,7 +118,7 @@ public class backend {
 				elegirPokemonPasivo(); }
 			break;
         case 2:
-        	elegirPokemonActivo();
+        	//elegirPokemonActivo();
 			break;
          case 3:
         	 
@@ -161,7 +158,7 @@ public class backend {
 			break;
         	
 		default:
-			System.out.println("opsion incorrecta ");
+			System.out.println("opcion incorrecta ");
 			break;
 		}
 		

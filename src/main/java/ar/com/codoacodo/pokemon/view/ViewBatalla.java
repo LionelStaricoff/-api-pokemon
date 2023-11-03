@@ -29,11 +29,11 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	private JPanel panelAbuelo, panelPadre, panelSuperior,panelSuperiorIzquierdo,panelSuperMedio,
 	panelMedio,panelInferior,panelCerrar,panelEntrenadorActivo;
      private JLabel btnSalir,batalla,items,cambioDePokemon;
-	private backend backend;
+	private Backend Backend;
  
-	public ViewBatalla(backend backend ) {
+	public ViewBatalla(Backend Backend ) {
 		
-	       this.backend = backend;
+	       this.Backend = Backend;
 
 		/**
 		 * <p> Creando las ventanas de la batalla y agregando el panel abuelo base y
@@ -48,7 +48,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		//panel abuelo
 		this.panelAbuelo = new JPanel(new BorderLayout());
 		JPanel botonCerrar = new JPanel(new GridLayout(0,4));
-		this.panelEntrenadorActivo = UtilVentana.ventanaCentrada(this.backend.getEntrenadorActivo().getName());
+		this.panelEntrenadorActivo = UtilVentana.ventanaCentrada(this.Backend.getEntrenadorActivo().getName());
 		botonCerrar.setBackground(Color.blue);
 		 this.btnSalir = new JLabel("x");
 		 this.btnSalir.setFont(new Font("Verdana", Font.PLAIN, 30));
@@ -90,7 +90,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		 * <p> setear  panel superior</p>
 		 * <p> primer panel divivdido en 3: hp pokemon1, label vacio y img pokemon2</p>
 		 */
-		this.panelSuperiorIzquierdo = UtilVentana.ventanaNombreHp(String.valueOf(this.backend.getPOkemonActivo().getHp()) , this.backend.getPOkemonActivo().getNombre());
+		this.panelSuperiorIzquierdo = UtilVentana.ventanaNombreHp(String.valueOf(this.Backend.getPOkemonActivo().getHp()) , this.Backend.getPOkemonActivo().getNombre());
 		this.panelSuperior.add(this.panelSuperiorIzquierdo);
 		
 		
@@ -99,7 +99,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		this.panelSuperior.add( UtilVentana.ventanaVacia());
 		
 		// agregando panel superior izquierdo con la imagen
-	    this.panelSuperMedio = UtilVentana.ventanaImagen(this.backend.getPokemonPasivo().getImagenesFront(0));
+	    this.panelSuperMedio = UtilVentana.ventanaImagen(this.Backend.getPokemonPasivo().getImagenesFront(0));
 		this.panelSuperior.add(this.panelSuperMedio);
 		
 		
@@ -111,9 +111,9 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		 * <p> setear segundo panel </p>
 		 * <p>segundo panel dividido en 3: imp pokemon1, label vacio y hp pokemon2</p>
 		 */
-		this.panelMedio.add(UtilVentana.ventanaImagen(this.backend.getPOkemonActivo().getImagenesBack(0) ));
+		this.panelMedio.add(UtilVentana.ventanaImagen(this.Backend.getPOkemonActivo().getImagenesBack(0) ));
 		this.panelMedio.add(UtilVentana.ventanaVacia());
-		this.panelMedio.add(UtilVentana.ventanaNombreHp(String.valueOf(this.backend.getPokemonPasivo().getHp()), this.backend.getPokemonPasivo().getNombre()));
+		this.panelMedio.add(UtilVentana.ventanaNombreHp(String.valueOf(this.Backend.getPokemonPasivo().getHp()), this.Backend.getPokemonPasivo().getNombre()));
 	
 		
 		
@@ -170,10 +170,10 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		this.panelCerrar.setBorder(BorderFactory.createLineBorder(Color.RED));
 		
 		String pokes[] = new String [4];
-		pokes[0] = ((this.backend.getPOkemonActivo().getMoves(0).getClass() != null ))? this.backend.getPOkemonActivo().getMoves(0) : "atk1";
-		pokes[1] = ((this.backend.getPOkemonActivo().getMoves(1).getClass() != null) )? this.backend.getPOkemonActivo().getMoves(1) : "atk2";
-		pokes[2] = ((this.backend.getPOkemonActivo().getMoves(2).getClass() != null ) )? this.backend.getPOkemonActivo().getMoves(2) : "atk3";
-		pokes[3] = ((this.backend.getPOkemonActivo().getMoves(3).getClass() != null ) )? this.backend.getPOkemonActivo().getMoves(3) : "atk4";
+		pokes[0] = ((this.Backend.getPOkemonActivo().getMoves(0).getClass() != null ))? this.Backend.getPOkemonActivo().getMoves(0) : "atk1";
+		pokes[1] = ((this.Backend.getPOkemonActivo().getMoves(1).getClass() != null) )? this.Backend.getPOkemonActivo().getMoves(1) : "atk2";
+		pokes[2] = ((this.Backend.getPOkemonActivo().getMoves(2).getClass() != null ) )? this.Backend.getPOkemonActivo().getMoves(2) : "atk3";
+		pokes[3] = ((this.Backend.getPOkemonActivo().getMoves(3).getClass() != null ) )? this.Backend.getPOkemonActivo().getMoves(3) : "atk4";
 		
 		panelIzquierdo.add(UtilVentana.crearLavelCentrado( pokes[0]) );
 		panelIzquierdo.add(UtilVentana.crearLavelCentrado( pokes[1]) );
@@ -203,11 +203,11 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		this.panelCerrar.setOpaque(false);
 		this.panelCerrar.setBorder(BorderFactory.createLineBorder(Color.RED));
 		
-		 if(this.backend.getEntrenadorActivo().getItems().size()< 13) {
+		 if(this.Backend.getEntrenadorActivo().getItems().size()< 13) {
 	        	JPanel	panelItems =  new JPanel( new GridLayout(2,2));
 	        	panelItems.setOpaque(false);
 	        	panelItems.setBorder(BorderFactory.createLineBorder(Color.RED));
-	        	 this.backend.getEntrenadorActivo().getItems().forEach((i)->{
+	        	 this.Backend.getEntrenadorActivo().getItems().forEach((i)->{
 	        		 panelItems.add(UtilVentana.ventanaImagen(String.valueOf(i.getImg())));
 	        			  
 	        	 });
@@ -225,7 +225,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		  scrollPane.setOpaque(false);
 
 	        // Agregar las imagenes al JPanel
-	        this.backend.getEntrenadorActivo().getItems().forEach((i)->{
+	        this.Backend.getEntrenadorActivo().getItems().forEach((i)->{
 	            panelItems.add(UtilVentana.ventanaImagen(String.valueOf(i.getImg())));
 	            });
 	       
@@ -243,8 +243,8 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		JPanel panelPokemon = new JPanel(new GridLayout());
 		panelPokemon.setOpaque(false);
 		
-		this.backend.getEntrenadorActivo().getPokemons().forEach((p)->{
-			panelPokemon.add(UtilVentana.crearLavelCentrado(p.getNombre()));
+		this.Backend.getEntrenadorActivo().getPokemons().forEach((p)->{
+			panelPokemon.add(UtilVentana.crearLavelCentrado(p,this.panelInferior,this.Backend));
 		});
 		
 		
@@ -318,7 +318,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	}
 
 
-	@Override
+	@Override 
 	public void mouseReleased(MouseEvent e) {
 		
 		
