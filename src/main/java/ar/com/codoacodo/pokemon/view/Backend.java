@@ -24,7 +24,7 @@ public class Backend {
 	
 		this.bp = p;
 		elegirEntrenador();
-		elegirPokemonActivo(this.entrenadorActivo.getPokeball(0))//verificar si el pokemon esta vivo
+		elegirPokemonActivo(this.entrenadorActivo.getPokeball(0));//verificar si el pokemon esta vivo
 		elegirPokemonPasivo();
 		
 	}

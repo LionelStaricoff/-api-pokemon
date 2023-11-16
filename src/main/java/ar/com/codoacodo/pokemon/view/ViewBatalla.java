@@ -4,6 +4,7 @@ package ar.com.codoacodo.pokemon.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
@@ -19,6 +20,7 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 import ar.com.codoacodo.enums.Fondos;
+import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 import ar.com.codoacodo.pokemon.entrenador.EntrenadorBase;
 import ar.com.codoacodo.util.UtilVentana;
 
@@ -244,7 +246,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		panelPokemon.setOpaque(false);
 		
 		this.Backend.getEntrenadorActivo().getPokemons().forEach((p)->{
-			panelPokemon.add(UtilVentana.crearLavelCentrado(p,this.panelInferior,this.Backend));
+			panelPokemon.add(UtilVentana.crearLavelCentrado(p,this));
 		});
 		
 		
@@ -359,6 +361,55 @@ public class ViewBatalla extends JFrame implements MouseListener{
 			this.cambioDePokemon.setForeground(Color.RED);
 			this.cambioDePokemon.setBorder(BorderFactory.createLineBorder(Color.RED));
 		}
+	}
+
+
+
+	public ar.com.codoacodo.pokemon.view.Backend getBackend() {
+		// TODO Auto-generated method stub
+		return this.Backend;
+	}
+
+
+
+	public Container getPanelInferior() {
+		return this.panelInferior;
+	}
+
+
+
+	public Component getBatalla() {
+		return this.batalla;
+	}
+
+
+
+	public Component getItems() {
+		return this.items;
+	}
+
+
+
+	public Component getCambioDePokemon() {
+		return this.cambioDePokemon;
+	}
+
+
+
+	public Container getPanelSuperior() {
+		return this.panelSuperior;
+	}
+
+
+
+	public GestionaPokemon getPokemonPasivo() {
+		return this.getBackend().getPokemonPasivo();
+	}
+
+
+
+	public Container getPanelMedio() {
+		return this.panelMedio;
 	}
 
 
