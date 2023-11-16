@@ -246,7 +246,9 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		panelPokemon.setOpaque(false);
 		
 		this.Backend.getEntrenadorActivo().getPokemons().forEach((p)->{
+			if(p.getHp()>0 && p != this.Backend.getPOkemonActivo()) {
 			panelPokemon.add(UtilVentana.crearLavelCentrado(p,this));
+			}
 		});
 		
 		
