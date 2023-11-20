@@ -77,13 +77,14 @@ public class Backend {
 		
 	
 	public void intercambiarEntrenadores() {
-		if (this.itemUtilizado) {
+		//if (this.itemUtilizado) {
 		EntrenadorBase entrenadorAux;
 		entrenadorAux = this.entrenadorActivo;
 		this.entrenadorActivo = this.entrenadorPasivo;
 		this.entrenadorPasivo = entrenadorAux;
 		intercambiarPokemon();
-		}
+		System.out.println("intercambiarEntrenadores");
+		//}
 		
 	}
 	

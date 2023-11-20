@@ -416,4 +416,10 @@ public class ViewBatalla extends JFrame implements MouseListener{
 
 
 
+	public GestionaPokemon getPokemonActivo() {
+		return this.Backend.getPOkemonActivo();
+	}
+
+
+
 }
