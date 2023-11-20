@@ -32,8 +32,15 @@ private EntrenadorBase entrenador1,entrenador2,entrenador3,entrenador4;
 	}
 	
 	
-	public GestionaPokemon elegirPokemon(EntrenadorBase entrenador,int numero) {
-		
+	public GestionaPokemon elegirPokemon(EntrenadorBase entrenador,GestionaPokemon pokemonAcambiar) {
+		int numero = 0;
+		var pokemons  = entrenador.getPokemons();
+		for(var p  :pokemons){
+			if(p.getNombre()==pokemonAcambiar.getNombre()) {
+				break;
+			}
+			numero++;
+		};
 		return entrenador.getPokeball(numero);
 	}
 	

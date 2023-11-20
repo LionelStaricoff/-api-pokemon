@@ -6,8 +6,14 @@ import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -15,7 +21,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
+
+import ar.com.codoacodo.pokemon.base.GestionaPokemon;
+import ar.com.codoacodo.pokemon.view.Backend;
+import ar.com.codoacodo.pokemon.view.ViewBatalla;
 
 
 public class UtilVentana  {
@@ -129,6 +140,23 @@ public class UtilVentana  {
 	public static JPanel ventanaCentrada(String nombre) {
 		return ventanaCentrada(crearLavelText( nombre));
 	}
+	
+	/**
+	 * <p> setea una string con  las modificaciones del metodo crearLavelText()</p>
+	 * @param nombre del la etiqueta
+	 * @return JPanel
+	 */
+	public static JPanel ventanaImagen(String icon) {
+		JPanel label = new JPanel();
+		label.setOpaque(false);
+		try {
+			BgBorder borde = new BgBorder(ImageIO.read(new URL(icon)));
+			label.setBorder(borde);
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		return ventanaCentrada(label);
+	}
 
 	
 	
@@ -166,15 +194,114 @@ public class UtilVentana  {
 		return lavel;
 	}
 	
-	public static JLabel crearLavelCentrado(String nombre) {
-		JLabel batalla = new JLabel(nombre);
-		  batalla.setOpaque(false);
+	
+	public static JLabel crearLavelCentrado(String pokemon ) {
+		JLabel LblBatalla = new JLabel(pokemon);
+		  LblBatalla.setOpaque(false);
 		 Border border = BorderFactory.createLineBorder(Color.RED);
-		 batalla.setForeground(Color.RED);
-		batalla.setBorder(border);
-		batalla.setHorizontalAlignment(SwingConstants.CENTER);
-		batalla.setFont(new Font("Tahoma", Font.BOLD, 20));
-		return batalla;
+		 LblBatalla.setForeground(Color.RED);
+		LblBatalla.setBorder(border);
+		
+		
+		LblBatalla.setHorizontalAlignment(SwingConstants.CENTER);
+		LblBatalla.setFont(new Font("Tahoma", Font.BOLD, 20));
+		return LblBatalla;
+	}
+	
+	
+	public static JLabel crearLavelCentrado(GestionaPokemon pokemon, ViewBatalla viewBatalla ) {
+		JLabel LblBatalla = new JLabel(pokemon.getNombre());
+		  LblBatalla.setOpaque(false);
+		 Border border = BorderFactory.createLineBorder(Color.RED);
+		 LblBatalla.setForeground(Color.RED);
+		LblBatalla.setBorder(border);
+		LblBatalla.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				if(e.getSource() == LblBatalla) {
+					
+				
+					viewBatalla.getBackend().elegirPokemonActivo(pokemon);
+					viewBatalla.getBackend().intercambiarPokemon();//cabiar el metodo porque no funciona 
+					viewBatalla.getBackend().intercambiarEntrenadores();//cabiar el metodo porque no funciona 
+					
+					SwingUtilities.invokeLater(()->{
+						viewBatalla.getPanelSuperior().removeAll(); 
+						viewBatalla.getPanelSuperior().setLayout(new GridLayout(0, 3));
+						viewBatalla.getPanelSuperior().add(ventanaNombreHp(String.valueOf(viewBatalla.getBackend().getPOkemonActivo().getHp()) , viewBatalla.getBackend().getPOkemonActivo().getNombre()));
+						viewBatalla.getPanelSuperior().add( UtilVentana.ventanaVacia());
+					    viewBatalla.getPanelSuperior().add(UtilVentana.ventanaImagen(viewBatalla.getBackend().getPokemonPasivo().getImagenesFront(0)));
+						
+					    viewBatalla.getPanelMedio().removeAll(); 
+					    viewBatalla.getPanelMedio().setLayout(new GridLayout(0, 3));
+					    viewBatalla.getPanelMedio().add(UtilVentana.ventanaImagen(viewBatalla.getBackend().getPOkemonActivo().getImagenesBack(0) ));
+					    viewBatalla.getPanelMedio().add(UtilVentana.ventanaVacia());
+					    viewBatalla.getPanelMedio().add(UtilVentana.ventanaNombreHp(String.valueOf(viewBatalla.getBackend().getPokemonPasivo().getHp()), viewBatalla.getPokemonPasivo().getNombre()));
+					
+					    
+						viewBatalla.getPanelInferior().removeAll(); 
+						viewBatalla.getPanelInferior().setLayout(new GridLayout(0, 3));
+						viewBatalla.getPanelInferior().add(UtilVentana.ventanaCentrada(viewBatalla.getBatalla()));
+						viewBatalla.getPanelInferior().add(UtilVentana.ventanaCentrada(viewBatalla.getItems()));
+						viewBatalla.getPanelInferior().add(UtilVentana.ventanaCentrada(viewBatalla.getCambioDePokemon()));
+						viewBatalla.getPanelInferior().revalidate();
+						viewBatalla.getPanelInferior().repaint();
+						
+						
+					
+					});
+				}
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override //over
+			public void mouseClicked(MouseEvent e) {
+				if(e.getSource() == LblBatalla) {
+					LblBatalla.setForeground(Color.BLUE);
+					LblBatalla.setBorder(BorderFactory.createLineBorder(Color.BLUE));	
+				}
+				
+			}
+		});
+		LblBatalla.setHorizontalAlignment(SwingConstants.CENTER);
+		LblBatalla.setFont(new Font("Tahoma", Font.BOLD, 20));
+		return LblBatalla;
+	}
+
+	public static Image traerImagenWeb(String imagenesFront) {
+		BufferedImage image = null;
+		URL url;
+		try {
+			url = new URL(imagenesFront);
+			 image = ImageIO.read(url);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println(image.getGraphics()); 
+		return image;
 	}
 	
 	

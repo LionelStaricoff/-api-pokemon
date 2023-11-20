@@ -10,7 +10,7 @@ import ar.com.codoacodo.pokemon.items.Posion;
 import ar.com.codoacodo.pokemon.items.Revive;
 import ar.com.codoacodo.pokemon.items.SuperPosion;
 import ar.com.codoacodo.pokemon.view.ViewBatalla;
-import ar.com.codoacodo.pokemon.view.backend;
+import ar.com.codoacodo.pokemon.view.Backend;
 import ar.com.codoacodo.pokemon.view.simuladorDeVentana;
 
 
@@ -56,14 +56,16 @@ public class MainBatallaPokemon {
 
 		
 		
-		
-		//batallaPokemon bp = new batallaPokemon(entrenador, entrenador2);
-		
+		/*
+		batallaPokemon bp = new batallaPokemon(entrenador, entrenador2);
+		var ventana = new simuladorDeVentana(bp);
+		ventana.menu();*/
 	
-		var ventana = new backend(new batallaPokemon(entrenador, entrenador2));
+		
+		var ventana = new Backend(new batallaPokemon(entrenador, entrenador2));
 		
 		new ViewBatalla(ventana);
-		//ventana.menu();
+		
 		
 		
 	}
