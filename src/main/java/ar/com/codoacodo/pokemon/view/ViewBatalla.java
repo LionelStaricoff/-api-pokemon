@@ -9,6 +9,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -172,10 +174,60 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		this.panelCerrar.setBorder(BorderFactory.createLineBorder(Color.RED));
 		
 		String pokes[] = new String [4];
-		pokes[0] = ((this.Backend.getPOkemonActivo().getMoves(0).getClass() != null ))? this.Backend.getPOkemonActivo().getMoves(0) : "atk1";
-		pokes[1] = ((this.Backend.getPOkemonActivo().getMoves(1).getClass() != null) )? this.Backend.getPOkemonActivo().getMoves(1) : "atk2";
-		pokes[2] = ((this.Backend.getPOkemonActivo().getMoves(2).getClass() != null ) )? this.Backend.getPOkemonActivo().getMoves(2) : "atk3";
-		pokes[3] = ((this.Backend.getPOkemonActivo().getMoves(3).getClass() != null ) )? this.Backend.getPOkemonActivo().getMoves(3) : "atk4";
+		pokes[0] = ((this.Backend.getPOkemonActivo().getMoves(0).getClass() != null ))? this.Backend.getPOkemonActivo().getMoves(0) : "   ";
+		pokes[1] = ((this.Backend.getPOkemonActivo().getMoves(1).getClass() != null) )? this.Backend.getPOkemonActivo().getMoves(1) : "   ";
+		pokes[2] = ((this.Backend.getPOkemonActivo().getMoves(2).getClass() != null ) )? this.Backend.getPOkemonActivo().getMoves(2) : "   ";
+		pokes[3] = ((this.Backend.getPOkemonActivo().getMoves(3).getClass() != null ) )? this.Backend.getPOkemonActivo().getMoves(3) : "   ";
+		
+		
+		Set<Component> pokeLavel =  Set.of(UtilVentana.crearLavelCentrado( pokes[0]),
+				UtilVentana.crearLavelCentrado( pokes[1]),UtilVentana.crearLavelCentrado( pokes[2]),
+				UtilVentana.crearLavelCentrado( pokes[3]));
+		
+		pokeLavel.forEach(l->{
+			l.addMouseListener(new MouseListener() {
+				
+				/**<h2>Creando linstener de ataque </h2>*/
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					if(e.getSource() == l) {
+						
+					
+						agregar logica del ataque
+					}
+				}
+				
+			
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseExited(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override //over
+				public void mouseClicked(MouseEvent e) {
+					if(e.getSource() == l) {
+						l.setForeground(Color.BLUE);
+						l.setBorder(BorderFactory.createLineBorder(Color.BLUE));	
+					}
+					
+				}
+			});
+		});
+		
+		
 		
 		panelIzquierdo.add(UtilVentana.crearLavelCentrado( pokes[0]) );
 		panelIzquierdo.add(UtilVentana.crearLavelCentrado( pokes[1]) );
@@ -270,7 +322,11 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(	e.getSource() == btnSalir) System.exit(0);
+		
+		if(	e.getSource() == btnSalir) {
+			System.exit(0);
+		}
+		
 		if(e.getSource() == batalla) {
 			SwingUtilities.invokeLater(()->{
 			this.panelInferior.removeAll(); 
