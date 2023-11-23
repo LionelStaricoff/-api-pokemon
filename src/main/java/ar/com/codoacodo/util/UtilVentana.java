@@ -217,26 +217,32 @@ public class UtilVentana  {
 		LblBatalla.setBorder(border);
 		LblBatalla.addMouseListener(new MouseListener() {
 			
+			/**<h2>Creando linstener del cambio de pokemon </h2>*/
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				if(e.getSource() == LblBatalla) {
 					
 				
 					viewBatalla.getBackend().elegirPokemonActivo(pokemon);
-					viewBatalla.getBackend().intercambiarPokemon();//cabiar el metodo porque no funciona 
-					viewBatalla.getBackend().intercambiarEntrenadores();//cabiar el metodo porque no funciona 
+					viewBatalla.getBackend().intercambiarEntrenadores();
 					
 					SwingUtilities.invokeLater(()->{
 						viewBatalla.getPanelSuperior().removeAll(); 
 						viewBatalla.getPanelSuperior().setLayout(new GridLayout(0, 3));
+						/**<p>Cargando Hp y nombre del pokemon activo </p>*/
 						viewBatalla.getPanelSuperior().add(ventanaNombreHp(String.valueOf(viewBatalla.getBackend().getPOkemonActivo().getHp()) , viewBatalla.getBackend().getPOkemonActivo().getNombre()));
+						/**<p>Cargando ventana vacia </p>*/
 						viewBatalla.getPanelSuperior().add( UtilVentana.ventanaVacia());
+						/**<p>Cargando imagen pokeon pasivo </p>*/
 					    viewBatalla.getPanelSuperior().add(UtilVentana.ventanaImagen(viewBatalla.getBackend().getPokemonPasivo().getImagenesFront(0)));
 						
 					    viewBatalla.getPanelMedio().removeAll(); 
 					    viewBatalla.getPanelMedio().setLayout(new GridLayout(0, 3));
+					    /**<p>Cargando imagen pokemon activo </p>*/
 					    viewBatalla.getPanelMedio().add(UtilVentana.ventanaImagen(viewBatalla.getBackend().getPOkemonActivo().getImagenesBack(0) ));
+					    /**<p>Cargando ventana vacia </p>*/
 					    viewBatalla.getPanelMedio().add(UtilVentana.ventanaVacia());
+					    /**<p>Cargando Hp y nombre del pokemon pasivo </p>*/
 					    viewBatalla.getPanelMedio().add(UtilVentana.ventanaNombreHp(String.valueOf(viewBatalla.getBackend().getPokemonPasivo().getHp()), viewBatalla.getPokemonPasivo().getNombre()));
 					
 					    

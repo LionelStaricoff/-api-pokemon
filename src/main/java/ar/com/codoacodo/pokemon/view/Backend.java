@@ -83,17 +83,17 @@ public class Backend {
 		this.entrenadorActivo = this.entrenadorPasivo;
 		this.entrenadorPasivo = entrenadorAux;
 		intercambiarPokemon();
-		System.out.println("intercambiarEntrenadores");
+		
 		//}
 		
 	}
 	
 	public void intercambiarPokemon() {
 		GestionaPokemon pokemonAux;
-		pokemonAux = this.pokemonActivo;
+	    pokemonAux = this.pokemonActivo;
 		this.pokemonActivo = this.pokemonPasivo;
 		this.pokemonPasivo = pokemonAux;
-		
+				
 	}
 	
 	
