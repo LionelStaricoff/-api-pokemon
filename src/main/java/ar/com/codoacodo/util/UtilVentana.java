@@ -224,42 +224,11 @@ public class UtilVentana  {
 					
 				
 					viewBatalla.getBackend().elegirPokemonActivo(pokemon);
-					viewBatalla.getBackend().intercambiarEntrenadores();
-					
-					SwingUtilities.invokeLater(()->{
-						viewBatalla.getPanelSuperior().removeAll(); 
-						viewBatalla.getPanelSuperior().setLayout(new GridLayout(0, 3));
-						/**<p>Cargando Hp y nombre del pokemon activo </p>*/
-						viewBatalla.getPanelSuperior().add(ventanaNombreHp(String.valueOf(viewBatalla.getBackend().getPOkemonActivo().getHp()) , viewBatalla.getBackend().getPOkemonActivo().getNombre()));
-						/**<p>Cargando ventana vacia </p>*/
-						viewBatalla.getPanelSuperior().add( UtilVentana.ventanaVacia());
-						/**<p>Cargando imagen pokeon pasivo </p>*/
-					    viewBatalla.getPanelSuperior().add(UtilVentana.ventanaImagen(viewBatalla.getBackend().getPokemonPasivo().getImagenesFront(0)));
-						
-					    viewBatalla.getPanelMedio().removeAll(); 
-					    viewBatalla.getPanelMedio().setLayout(new GridLayout(0, 3));
-					    /**<p>Cargando imagen pokemon activo </p>*/
-					    viewBatalla.getPanelMedio().add(UtilVentana.ventanaImagen(viewBatalla.getBackend().getPOkemonActivo().getImagenesBack(0) ));
-					    /**<p>Cargando ventana vacia </p>*/
-					    viewBatalla.getPanelMedio().add(UtilVentana.ventanaVacia());
-					    /**<p>Cargando Hp y nombre del pokemon pasivo </p>*/
-					    viewBatalla.getPanelMedio().add(UtilVentana.ventanaNombreHp(String.valueOf(viewBatalla.getBackend().getPokemonPasivo().getHp()), viewBatalla.getPokemonPasivo().getNombre()));
-					
-					    
-						viewBatalla.getPanelInferior().removeAll(); 
-						viewBatalla.getPanelInferior().setLayout(new GridLayout(0, 3));
-						viewBatalla.getPanelInferior().add(UtilVentana.ventanaCentrada(viewBatalla.getBatalla()));
-						viewBatalla.getPanelInferior().add(UtilVentana.ventanaCentrada(viewBatalla.getItems()));
-						viewBatalla.getPanelInferior().add(UtilVentana.ventanaCentrada(viewBatalla.getCambioDePokemon()));
-						viewBatalla.getPanelInferior().revalidate();
-						viewBatalla.getPanelInferior().repaint();
-						
-						
-					
-					});
+				CambioDeTurno(viewBatalla);
 				}
 			}
 			
+		
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
@@ -312,6 +281,42 @@ public class UtilVentana  {
 	
 	
 	
+	private static void CambioDeTurno(ViewBatalla viewBatalla) {
+		viewBatalla.getBackend().intercambiarEntrenadores();
+		
+		SwingUtilities.invokeLater(()->{
+			viewBatalla.getPanelSuperior().removeAll(); 
+			viewBatalla.getPanelSuperior().setLayout(new GridLayout(0, 3));
+			/**<p>Cargando Hp y nombre del pokemon activo </p>*/
+			viewBatalla.getPanelSuperior().add(ventanaNombreHp(String.valueOf(viewBatalla.getBackend().getPOkemonActivo().getHp()) , viewBatalla.getBackend().getPOkemonActivo().getNombre()));
+			/**<p>Cargando ventana vacia </p>*/
+			viewBatalla.getPanelSuperior().add( UtilVentana.ventanaVacia());
+			/**<p>Cargando imagen pokeon pasivo </p>*/
+		    viewBatalla.getPanelSuperior().add(UtilVentana.ventanaImagen(viewBatalla.getBackend().getPokemonPasivo().getImagenesFront(0)));
+			
+		    viewBatalla.getPanelMedio().removeAll(); 
+		    viewBatalla.getPanelMedio().setLayout(new GridLayout(0, 3));
+		    /**<p>Cargando imagen pokemon activo </p>*/
+		    viewBatalla.getPanelMedio().add(UtilVentana.ventanaImagen(viewBatalla.getBackend().getPOkemonActivo().getImagenesBack(0) ));
+		    /**<p>Cargando ventana vacia </p>*/
+		    viewBatalla.getPanelMedio().add(UtilVentana.ventanaVacia());
+		    /**<p>Cargando Hp y nombre del pokemon pasivo </p>*/
+		    viewBatalla.getPanelMedio().add(UtilVentana.ventanaNombreHp(String.valueOf(viewBatalla.getBackend().getPokemonPasivo().getHp()), viewBatalla.getPokemonPasivo().getNombre()));
+		
+		    
+			viewBatalla.getPanelInferior().removeAll(); 
+			viewBatalla.getPanelInferior().setLayout(new GridLayout(0, 3));
+			viewBatalla.getPanelInferior().add(UtilVentana.ventanaCentrada(viewBatalla.getBatalla()));
+			viewBatalla.getPanelInferior().add(UtilVentana.ventanaCentrada(viewBatalla.getItems()));
+			viewBatalla.getPanelInferior().add(UtilVentana.ventanaCentrada(viewBatalla.getCambioDePokemon()));
+			viewBatalla.getPanelInferior().revalidate();
+			viewBatalla.getPanelInferior().repaint();
+			
+			
+		
+		});
+		
+	}
 
 	
 	
