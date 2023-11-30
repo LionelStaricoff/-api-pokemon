@@ -237,22 +237,23 @@ public class UtilVentana  {
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
+				LblBatalla.setForeground(Color.RED);
+				LblBatalla.setBorder(BorderFactory.createLineBorder(Color.RED));
 				
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
+				if(e.getSource() == LblBatalla) {
+					LblBatalla.setForeground(Color.BLUE);
+					LblBatalla.setBorder(BorderFactory.createLineBorder(Color.BLUE));	
+				}
 				
 			}
 			
 			@Override //over
 			public void mouseClicked(MouseEvent e) {
-				if(e.getSource() == LblBatalla) {
-					LblBatalla.setForeground(Color.BLUE);
-					LblBatalla.setBorder(BorderFactory.createLineBorder(Color.BLUE));	
-				}
+				
 				
 			}
 		});

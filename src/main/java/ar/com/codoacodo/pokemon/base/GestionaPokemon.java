@@ -190,13 +190,12 @@ public class GestionaPokemon {
 	
 	public int attack(int n) {
 		
-		System.out.print("atacando con "+getMoves(n)+" ");
+		//System.out.print("atacando con "+getMoves(n)+" ");
 		
 		return getAtack()+n;
-	
-		
 		
 	}
+	
 public int specialAttack(int n) {
 		
 		System.out.print("atacando con "+getMoves(n)+" ");
@@ -402,13 +401,7 @@ private static List<String> cargarImagenesBack(PokeApi p) {
 	
 }
 
-	@Override
-	public String toString() {
-		return "GestionaPokemon [nombre=" + nombre + ", tipo=" + tipo + ", moves=" + moves + ", imagenesFront="
-				+ imagenesFront + ", imagenesBack=" + imagenesBack + ", hp=" + hp + ", peso=" + peso + ", defence="
-				+ defence + ", speed=" + speed + ", specialdefence=" + specialdefence + ", atack=" + atack
-				+ ", baseExperiencia=" + baseExperiencia + ", specialAtack=" + specialAtack + "]";
-	}
+
 	public int getVidaTotal() {
 	
 		return this.vidaTotal;
@@ -424,6 +417,19 @@ private static List<String> cargarImagenesBack(PokeApi p) {
 	
 	public boolean checkVidaTotal() {
 		return this.vidaTotal == getHp();
+	}
+
+	public int objtenerNUmeroDeAtaque(String name) {
+		 
+			return this.moves.indexOf(name);
+	}
+	
+	@Override
+	public String toString() {
+		return "GestionaPokemon [nombre=" + nombre + ", tipo=" + tipo + ", moves=" + moves + ", imagenesFront="
+				+ imagenesFront + ", imagenesBack=" + imagenesBack + ", hp=" + hp + ", peso=" + peso + ", defence="
+				+ defence + ", speed=" + speed + ", specialdefence=" + specialdefence + ", atack=" + atack
+				+ ", baseExperiencia=" + baseExperiencia + ", specialAtack=" + specialAtack + "]";
 	}
 
 	

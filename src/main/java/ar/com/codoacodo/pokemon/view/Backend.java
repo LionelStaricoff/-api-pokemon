@@ -243,6 +243,14 @@ public class Backend {
 		return this.pokemonPasivo;
 	}
 
+	
+	
+	public batallaPokemon getBatallaPokemon() {
+		return bp;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "simuladorDeVentana [bp=" + bp + ", sc=" + sc + ", turno=" + turno + ", entrenadorActivo="

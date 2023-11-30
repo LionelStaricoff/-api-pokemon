@@ -9,9 +9,8 @@ import ar.com.codoacodo.pokemon.items.MaxAttack;
 import ar.com.codoacodo.pokemon.items.Posion;
 import ar.com.codoacodo.pokemon.items.Revive;
 import ar.com.codoacodo.pokemon.items.SuperPosion;
-import ar.com.codoacodo.pokemon.view.ViewBatalla;
 import ar.com.codoacodo.pokemon.view.Backend;
-import ar.com.codoacodo.pokemon.view.simuladorDeVentana;
+import ar.com.codoacodo.pokemon.view.ViewBatalla;
 
 
 
