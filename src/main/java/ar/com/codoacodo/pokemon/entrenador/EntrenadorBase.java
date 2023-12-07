@@ -154,13 +154,26 @@ public class EntrenadorBase {
 		
 		return this.Items;
 	}
+
 	public List<GestionaPokemon> getPokemons() {
 		return this.pokeball;
-		
+
 	}
-	public int getKeyItem(String nombre) {
-		var i = this.Items.indexOf(nombre);trae pition en ves de posion
-		return i;
+
+	public int getKeyItem(Items nombre) {
+		/*String n = nombre;
+		String arr = n.substring(n.lastIndexOf(".") + 1);
+		System.out.println(arr);*/
+		
+
+       int clave = 0;
+       for (Items item : this.Items) {
+    	   
+    	   System.out.println(item.getClass()== nombre.getClass());
+           if (item.getClass()== nombre.getClass()) {  break;}
+           clave++;
+       }
+		return clave;
 	}
 		
 }

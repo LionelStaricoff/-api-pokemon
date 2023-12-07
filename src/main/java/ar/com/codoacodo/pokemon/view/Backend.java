@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import ar.com.codoacodo.pokemon.base.GestionaPokemon;
 import ar.com.codoacodo.pokemon.base.batallaPokemon;
 import ar.com.codoacodo.pokemon.entrenador.EntrenadorBase;
+import ar.com.codoacodo.pokemon.items.Items;
 import ar.com.codoacodo.pokemon.items.Revive;
 
 public class Backend {
@@ -250,8 +251,8 @@ public class Backend {
 	}
 
 
-	public int keyItem(String nombre) {
-		return this.entrenadorActivo.getKeyItem(nombre);
+	public int keyItem(Items i) {
+		return this.entrenadorActivo.getKeyItem(i);
 	}
 
 	@Override

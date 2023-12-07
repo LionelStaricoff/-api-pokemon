@@ -310,7 +310,9 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	     				
 	     				@Override //over
 	     				public void mouseClicked(MouseEvent e) {
-	     					bk.getEntrenadorActivo().utilizarItem(bk.keyItem(i.getName()), bk.getPOkemonActivo(),bk.itemUtilizado);
+	     					bk.getEntrenadorActivo().utilizarItem(bk.keyItem(i), bk.getPOkemonActivo(),bk.itemUtilizado);
+	     			        bk.intercambiarEntrenadores();
+	     			        repintarTodosLosPaneles();
 	     				}
 
 						
