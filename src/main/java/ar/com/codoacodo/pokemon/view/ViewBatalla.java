@@ -72,41 +72,12 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		
 		
 		
-		//iniciando panel superior
-		this.panelSuperior = new JPanel(new GridLayout(0, 3) );
-		this.panelSuperior.setOpaque(false);
-		this.panelPadre.add( this.panelSuperior);
-		//iniciando panel medio
-		this.panelMedio = new JPanel(new GridLayout(0, 3) );
-		this.panelMedio.setOpaque(false);
-		this.panelPadre.add(this.panelMedio);
-		//panel inferior
-		this.panelInferior = new JPanel(new GridLayout(0, 3) );
-		this.panelInferior.setOpaque(false);
-		this.panelPadre.add(panelInferior);
-		
-		
-		
-		
-	
-		
 		
 		/**
 		 * <p> setear  panel superior</p>
 		 * <p> primer panel divivdido en 3: hp pokemon1, label vacio y img pokemon2</p>
 		 */
-		this.panelSuperiorIzquierdo = UtilVentana.ventanaNombreHp(String.valueOf(this.Backend.getPOkemonActivo().getHp()) , this.Backend.getPOkemonActivo().getNombre());
-		this.panelSuperior.add(this.panelSuperiorIzquierdo);
-		
-		
-		
-		//lb superior del medio vacio
-		this.panelSuperior.add( UtilVentana.ventanaVacia());
-		
-		// agregando panel superior izquierdo con la imagen
-	    this.panelSuperMedio = UtilVentana.ventanaImagen(this.Backend.getPokemonPasivo().getImagenesFront(0));
-		this.panelSuperior.add(this.panelSuperMedio);
-		
+		 setearPanelSuperior();
 		
 		
 		
@@ -116,11 +87,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		 * <p> setear segundo panel </p>
 		 * <p>segundo panel dividido en 3: imp pokemon1, label vacio y hp pokemon2</p>
 		 */
-		this.panelMedio.add(UtilVentana.ventanaImagen(this.Backend.getPOkemonActivo().getImagenesBack(0) ));
-		this.panelMedio.add(UtilVentana.ventanaVacia());
-		this.panelMedio.add(UtilVentana.ventanaNombreHp(String.valueOf(this.Backend.getPokemonPasivo().getHp()), this.Backend.getPokemonPasivo().getNombre()));
-	
-		
+	     setearSegndoPanel();
 		
 		
 		
@@ -128,18 +95,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		 * <p> setear tercer panel </p>
 		 * <p>tercer panel dividido en 3: button batalla, button items y button cambio de pokemon </p>
 		 */
-		this.batalla = UtilVentana.crearLavelCentrado("batalla");
-	    this.batalla.addMouseListener(this);
-		this.panelInferior.add(UtilVentana.ventanaCentrada(this.batalla));
-		
-		this.items = UtilVentana.crearLavelCentrado("Items");
-		this.items.addMouseListener(this);
-		this.panelInferior.add(UtilVentana.ventanaCentrada(this.items));
-		
-		this.cambioDePokemon = UtilVentana.crearLavelCentrado("Cambio de pokemon");
-	    this.cambioDePokemon.addMouseListener(this);
-		this.panelInferior.add(UtilVentana.ventanaCentrada(this.cambioDePokemon));
-		this.panelInferior.setOpaque(false);
+		setearTercerPanel();
 		
 		
 		
@@ -160,6 +116,80 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	}
 	
 	
+
+	/**
+	 * <p> setear tercer panel </p>
+	 * <p>tercer panel dividido en 3: button batalla, button items y button cambio de pokemon </p>
+	 */
+	private void setearTercerPanel() {
+		// panel inferior
+		this.panelInferior = new JPanel(new GridLayout(0, 3));
+		this.panelInferior.setOpaque(false);
+		this.panelPadre.add(panelInferior);
+
+		this.batalla = UtilVentana.crearLavelCentrado("batalla");
+		this.batalla.addMouseListener(this);
+		this.panelInferior.add(UtilVentana.ventanaCentrada(this.batalla));
+
+		this.items = UtilVentana.crearLavelCentrado("Items");
+		this.items.addMouseListener(this);
+		this.panelInferior.add(UtilVentana.ventanaCentrada(this.items));
+
+		this.cambioDePokemon = UtilVentana.crearLavelCentrado("Cambio de pokemon");
+		this.cambioDePokemon.addMouseListener(this);
+		this.panelInferior.add(UtilVentana.ventanaCentrada(this.cambioDePokemon));
+		this.panelInferior.setOpaque(false);
+		
+	}
+
+
+
+	/**
+	 * <p> setear segundo panel </p>
+	 * <p>segundo panel dividido en 3: imp pokemon1, label vacio y hp pokemon2</p>
+	 */
+	private void setearSegndoPanel() {
+		//iniciando panel medio
+		this.panelMedio = new JPanel(new GridLayout(0, 3) );
+		this.panelMedio.setOpaque(false);
+		this.panelPadre.add(this.panelMedio);
+		
+		
+		this.panelMedio.add(UtilVentana.ventanaImagen(this.Backend.getPOkemonActivo().getImagenesBack(0) ));
+		this.panelMedio.add(UtilVentana.ventanaVacia());
+		this.panelMedio.add(UtilVentana.ventanaNombreHp(String.valueOf(this.Backend.getPokemonPasivo().getHp()), this.Backend.getPokemonPasivo().getNombre()));
+	}
+
+
+
+	/**
+	 * <p>
+	 * setear panel superior
+	 * </p>
+	 * <p>
+	 * primer panel divivdido en 3: hp pokemon1, label vacio y img pokemon2
+	 * </p>
+	 */
+	private void setearPanelSuperior() {
+		// iniciando panel superior
+		this.panelSuperior = new JPanel(new GridLayout(0, 3));
+		this.panelSuperior.setOpaque(false);
+		this.panelPadre.add(this.panelSuperior);
+
+		this.panelSuperiorIzquierdo = UtilVentana.ventanaNombreHp(
+				String.valueOf(this.Backend.getPOkemonActivo().getHp()), this.Backend.getPOkemonActivo().getNombre());
+		this.panelSuperior.add(this.panelSuperiorIzquierdo);
+
+		// lb superior del medio vacio
+		this.panelSuperior.add(UtilVentana.ventanaVacia());
+
+		// agregando panel superior izquierdo con la imagen
+		this.panelSuperMedio = UtilVentana.ventanaImagen(this.Backend.getPokemonPasivo().getImagenesFront(0));
+		this.panelSuperior.add(this.panelSuperMedio);
+
+	}
+
+
 
 	//ventana que setea los 4 ataques de los pokemon
 	public JPanel viewAtaques() {
@@ -184,20 +214,9 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		Set<JComponent> pokeLavel =  Set.of(UtilVentana.crearLavelCentrado( pokes[0]),
 				UtilVentana.crearLavelCentrado( pokes[1]),UtilVentana.crearLavelCentrado( pokes[2]),
 				UtilVentana.crearLavelCentrado( pokes[3]));
-		for (JComponent label : pokeLavel) {
-		    label.addMouseListener(new MouseAdapter() {
-		        @Override
-		        public void mouseEntered(MouseEvent e) {
-		            label.setBackground(Color.RED);
-		        }
-
-		        @Override
-		        public void mouseExited(MouseEvent e) {
-		            label.setBackground(Color.WHITE);
-		        }
-		    });
-		}
-		/*pokeLavel.forEach(l->{
+		
+		//agregando efectos a los labels
+		pokeLavel.forEach(l->{
 			l.addMouseListener(new MouseAdapter() {
 				
 				
@@ -210,29 +229,35 @@ public class ViewBatalla extends JFrame implements MouseListener{
 					
 				}
 				
+				@Override
+				public void mouseExited(MouseEvent e) {
+					l.setForeground(Color.RED);
+				    l.setBorder(BorderFactory.createLineBorder(Color.RED));
+				}
+				
 				@Override //over
 				public void mouseClicked(MouseEvent e) {
-					if(e.getSource() == l) {
-						System.out.println(l);
+					
+						
 												bk.getBatallaPokemon().atacar(bk.getPOkemonActivo(),bk.getPOkemonActivo().objtenerNUmeroDeAtaque( l.getName()), bk.getPokemonPasivo());
 												if ( bk.getPokemonPasivo().estaMuerto() ) {
 													
-														//panelPokemon.add(UtilVentana.crearLavelCentrado(p,this));
+														
 														}
 												bk.intercambiarEntrenadores();
-													//bk. CambioDeTurno(bk.getBatallaPokemon()); 
+													repintarTodosLosPaneles();
 													}
 					
-				}
+				
 			});
-		});*/
+			
+			//agregar el list con los botones
+			panelIzquierdo.add(( l) );
+		});
 		
 		
-		
-		panelIzquierdo.add(UtilVentana.crearLavelCentrado( pokes[0]) );
-		panelIzquierdo.add(UtilVentana.crearLavelCentrado( pokes[1]) );
-		panelIzquierdo.add(UtilVentana.crearLavelCentrado( pokes[2]) );
-		panelIzquierdo.add(UtilVentana.crearLavelCentrado( pokes[3]) );
+	
+	
 		
 		panelPrincipal.add(UtilVentana.ventanaVacia(),BorderLayout.WEST);
 		panelPrincipal.add(UtilVentana.ventanaVacia(),BorderLayout.SOUTH);
@@ -490,6 +515,33 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		return this.Backend.getPOkemonActivo();
 	}
 
+	
+	/**
+	 * <p>
+	 * funcion para volver a cargar todos los paneles
+	 * </p>
+	 */
+	public void repintarTodosLosPaneles() {
+		Set<JPanel> ventanas = Set.of(this.panelSuperior, this.panelMedio, this.panelInferior, this.panelPadre);
+			
+		
+		
+	
+			SwingUtilities.invokeLater(() -> {
+				this.panelPadre.removeAll();
+				
+				setearPanelSuperior();
+				setearSegndoPanel();
+				setearTercerPanel();
+				
+				this.panelPadre.revalidate();
+				this.panelPadre.repaint();
+			
+
+			
+		});
+	
+	}
 
 
 }
