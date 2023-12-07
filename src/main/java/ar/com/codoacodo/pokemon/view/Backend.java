@@ -250,6 +250,9 @@ public class Backend {
 	}
 
 
+	public int keyItem(String nombre) {
+		return this.entrenadorActivo.getKeyItem(nombre);
+	}
 
 	@Override
 	public String toString() {
@@ -257,6 +260,10 @@ public class Backend {
 				+ entrenadorActivo + ", entrenadorPasivo=" + entrenadorPasivo + ", pokemonActivo=" + pokemonActivo
 				+ ", pokemonPasivo=" + pokemonPasivo + "]";
 	}
+
+
+
+	
 
 
 

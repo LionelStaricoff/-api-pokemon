@@ -158,6 +158,10 @@ public class EntrenadorBase {
 		return this.pokeball;
 		
 	}
+	public int getKeyItem(String nombre) {
+		var i = this.Items.indexOf(nombre);trae pition en ves de posion
+		return i;
+	}
 		
 }
 

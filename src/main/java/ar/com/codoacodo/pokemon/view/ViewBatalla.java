@@ -275,6 +275,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	private JPanel vewItems() {
 		JPanel panelPrincipal = new JPanel(new BorderLayout());
 		panelPrincipal.setOpaque(false);
+		var bk = this.Backend;
 		
 
 		this.panelCerrar = UtilVentana.ventanaCentrada(" X    ");
@@ -286,8 +287,35 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	        	JPanel	panelItems =  new JPanel( new GridLayout(2,2));
 	        	panelItems.setOpaque(false);
 	        	panelItems.setBorder(BorderFactory.createLineBorder(Color.RED));
+	        	
 	        	 this.Backend.getEntrenadorActivo().getItems().forEach((i)->{
-	        		 panelItems.add(UtilVentana.ventanaImagen(String.valueOf(i.getImg())));
+	        		var vi = UtilVentana.ventanaImagen(String.valueOf(i.getImg()));
+	        		 vi.setBorder(BorderFactory.createLineBorder(Color.RED));
+	        		 vi.addMouseListener(new MouseAdapter() {
+
+	     				@Override
+	     				public void mouseEntered(MouseEvent e) {
+	     				
+	     						vi.setForeground(Color.BLUE);
+	     						vi.setBorder(BorderFactory.createLineBorder(Color.BLUE));	
+	     					
+	     					
+	     				}
+	     				
+	     				@Override
+	     				public void mouseExited(MouseEvent e) {
+	     					vi.setForeground(Color.RED);
+	     					vi.setBorder(BorderFactory.createLineBorder(Color.RED));
+	     				}
+	     				
+	     				@Override //over
+	     				public void mouseClicked(MouseEvent e) {
+	     					bk.getEntrenadorActivo().utilizarItem(bk.keyItem(i.getName()), bk.getPOkemonActivo(),bk.itemUtilizado);
+	     				}
+
+						
+					});
+	        		 panelItems.add(vi);
 	        			  
 	        	 });
 	        	
