@@ -7,6 +7,7 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -33,6 +34,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	panelMedio,panelInferior,panelCerrar,panelEntrenadorActivo;
      private JLabel btnSalir,batalla,items,cambioDePokemon;
 	private Backend Backend;
+	private Point initialClick;
  
 	public ViewBatalla(Backend Backend ) {
 		
@@ -70,8 +72,24 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		this.panelAbuelo.add(botonCerrar,BorderLayout.NORTH);
 		this.panelAbuelo.add(this.panelPadre,BorderLayout.CENTER);
 		
+
+		/**
+		 * <p> Evento para mover la ventana</p>
+		 */
+		this.panelAbuelo.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				initialClick = e.getPoint();
+				
+			}	
+		});
 		
-		
+		this.panelAbuelo.addMouseMotionListener(new MouseAdapter() {
+			public void mouseDragged(MouseEvent e) {
+				int deltaX = e.getXOnScreen() - initialClick.x;
+				int deltaY = e.getYOnScreen() - initialClick.y;
+				setLocation(deltaX,deltaY);
+			}
+		});
 		
 		/**
 		 * <p> setear  panel superior</p>
