@@ -239,6 +239,11 @@ public class Backend {
 		return this.pokemonActivo;
 	}
 	
+
+	public EntrenadorBase getEntrenadorPasivo() {
+		return this.entrenadorPasivo;
+	}
+	
 	public GestionaPokemon getPokemonPasivo() {
 		
 		return this.pokemonPasivo;
@@ -261,6 +266,9 @@ public class Backend {
 				+ entrenadorActivo + ", entrenadorPasivo=" + entrenadorPasivo + ", pokemonActivo=" + pokemonActivo
 				+ ", pokemonPasivo=" + pokemonPasivo + "]";
 	}
+
+
+
 
 
 

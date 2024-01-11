@@ -258,8 +258,12 @@ public class ViewBatalla extends JFrame implements MouseListener{
 					
 						
 												bk.getBatallaPokemon().atacar(bk.getPOkemonActivo(),bk.getPOkemonActivo().objtenerNUmeroDeAtaque( l.getName()), bk.getPokemonPasivo());
+												if( bk.getEntrenadorPasivo().verificarVidaDeTodosLosPokemon() ) {
+													UtilVentana.perdiste();
+												}
+												
 												if ( bk.getPokemonPasivo().estaMuerto() ) {
-													
+													UtilVentana.cambiarPokemonMuerto(bk.getEntrenadorPasivo(), panelPadre);
 														
 														}
 												bk.intercambiarEntrenadores();

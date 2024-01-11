@@ -19,12 +19,14 @@ import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 
 import ar.com.codoacodo.pokemon.base.GestionaPokemon;
+import ar.com.codoacodo.pokemon.entrenador.EntrenadorBase;
 import ar.com.codoacodo.pokemon.view.Backend;
 import ar.com.codoacodo.pokemon.view.ViewBatalla;
 
@@ -319,7 +321,26 @@ public class UtilVentana  {
 		
 	}
 
+	/**<p>ventana que liste los pokemon del entrenador pasivo que aun esten vivos para hacer el cambio</p>*/
+	public static void cambiarPokemonMuerto(EntrenadorBase entrenadorBase, JPanel panelPadre) {
+		panelPadre.removeAll(); 
+		panelPadre.setLayout(new GridLayout(0, 3));
+		
+		entrenadorBase.getPokemons().forEach(p->{
+			if(p.getHp()>0) {
+				panelPadre.add(UtilVentana.ventanaCentrada(p.getNombre()));
+			}
+		});
+		panelPadre.revalidate();
+		panelPadre.repaint();
+		
+	}
 
+	/**<p>ventana perdiste</p>*/
+	public static void perdiste() {
+		 JOptionPane.showOptionDialog(null, "perdedor", "Mensaje", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{"Perdiste"}, "default");
+	        System.exit(0);
+	}
 
 	
 	
