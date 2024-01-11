@@ -9,7 +9,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
     "dream_world",
     "home",
-    "official-artwork"
+    "official-artwork",
+    "showdown"
 })
 
 public class Other {
@@ -20,6 +21,8 @@ public class Other {
     public Home home;
     @JsonProperty("official-artwork")
     public OfficialArtwork officialArtwork;
+    @JsonProperty("showdown")
+    public Showdown showdown;
 
     @Override
     public String toString() {
@@ -36,6 +39,10 @@ public class Other {
         sb.append("officialArtwork");
         sb.append('=');
         sb.append(((this.officialArtwork == null)?"<null>":this.officialArtwork));
+        sb.append(',');
+        sb.append("showdown");
+        sb.append('=');
+        sb.append(((this.showdown == null)?"<null>":this.showdown));
         sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');

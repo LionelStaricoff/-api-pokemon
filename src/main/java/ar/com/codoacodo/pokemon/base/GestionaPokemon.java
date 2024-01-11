@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import ar.com.codoacodo.pokeapi.PokeApi;
+import ar.com.codoacodo.pokeapi.Pokeapi;
 
 
 public class GestionaPokemon {
@@ -24,7 +24,7 @@ public class GestionaPokemon {
 
 		buscarpokemonapi bp = new buscarpokemonapi("https://pokeapi.co/");
 
-		PokeApi b = bp.findUsers(numero);
+		Pokeapi b = bp.findUsers(numero);
 		
 		armarPokemon(b);
 		  this.vidaTotal = getHp();
@@ -34,7 +34,7 @@ public class GestionaPokemon {
 
 		buscarpokemonapi bp = new buscarpokemonapi("https://pokeapi.co/");
 
-		PokeApi b = bp.findUsers();
+		Pokeapi b = bp.findUsers();
 		
 		armarPokemon(b);
 		this.vidaTotal = getHp();
@@ -70,7 +70,7 @@ public class GestionaPokemon {
 	
 	
 	
-	private  void armarPokemon(PokeApi b) {
+	private  void armarPokemon(Pokeapi b) {
 		this.nombre = b.name;
 		this.tipo = b.types.get(0).type.name;
 		this.moves = b.moves.stream().map(m-> m.move.name).collect(Collectors.toList());
@@ -247,7 +247,7 @@ public int cantidadImgBack() {
 	
 }
 
-private static List<String> cargarImagenesFront(PokeApi p) {
+private static List<String> cargarImagenesFront(Pokeapi p) {
 	List<String> img = new ArrayList<String>();
 	img.add(p.sprites.other.home.frontShiny);
 	img.add(p.sprites.other.home.frontDefault);
@@ -336,7 +336,7 @@ private static List<String> cargarImagenesFront(PokeApi p) {
 	return img ;
 }
 
-private static List<String> cargarImagenesBack(PokeApi p) {
+private static List<String> cargarImagenesBack(Pokeapi p) {
 	List<String> img = new ArrayList<String>();
 	img.add(p.sprites.versions.generationI.redBlue.backDefault);
 	img.add(p.sprites.versions.generationI.redBlue.backGray);

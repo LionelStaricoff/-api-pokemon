@@ -5,7 +5,7 @@ package ar.com.codoacodo.pokemon.base;
 
 import java.io.IOException;
 
-import ar.com.codoacodo.pokeapi.PokeApi;
+import ar.com.codoacodo.pokeapi.Pokeapi;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Invocation;
@@ -22,7 +22,7 @@ public class buscarpokemonapi {
 		this.url = url;
 		//findUsers();
 	}
-	public PokeApi findUsers() {
+	public Pokeapi findUsers() {
 		int random = (int) Math.floor(Math.random() *(905) +1);
 	
 		Client client =ClientBuilder.newClient();
@@ -42,12 +42,12 @@ public class buscarpokemonapi {
 				//read
 				
 
-				PokeApi user = response.readEntity(PokeApi.class);
+				Pokeapi user = response.readEntity(Pokeapi.class);
 				
 				return  user;
 			}
 	
-	public PokeApi findUsers(int numero) throws IOException {
+	public Pokeapi findUsers(int numero) throws IOException {
 		int random =  numero;
 		
 		if(random >905) {
@@ -72,7 +72,7 @@ public class buscarpokemonapi {
 		
 		
 		
-		PokeApi user = response.readEntity(PokeApi.class);
+		Pokeapi user = response.readEntity(Pokeapi.class);
 		
 		return user;
 			}

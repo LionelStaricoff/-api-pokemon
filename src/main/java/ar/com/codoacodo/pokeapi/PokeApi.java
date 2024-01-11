@@ -2,13 +2,13 @@
 package ar.com.codoacodo.pokeapi;
 
 import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-	"past_abilities",
     "abilities",
     "base_experience",
     "forms",
@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "moves",
     "name",
     "order",
+    "past_abilities",
     "past_types",
     "species",
     "sprites",
@@ -29,10 +30,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "weight"
 })
 
-public class PokeApi {
+public class Pokeapi {
 
-	@JsonProperty("past_abilities")
-    public List<past_abilities> past_abilities;
     @JsonProperty("abilities")
     public List<Ability> abilities;
     @JsonProperty("base_experience")
@@ -57,6 +56,8 @@ public class PokeApi {
     public String name;
     @JsonProperty("order")
     public Integer order;
+    @JsonProperty("past_abilities")
+    public List<Object> pastAbilities;
     @JsonProperty("past_types")
     public List<Object> pastTypes;
     @JsonProperty("species")
@@ -73,7 +74,7 @@ public class PokeApi {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(PokeApi.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(Pokeapi.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("abilities");
         sb.append('=');
         sb.append(((this.abilities == null)?"<null>":this.abilities));
@@ -121,6 +122,10 @@ public class PokeApi {
         sb.append("order");
         sb.append('=');
         sb.append(((this.order == null)?"<null>":this.order));
+        sb.append(',');
+        sb.append("pastAbilities");
+        sb.append('=');
+        sb.append(((this.pastAbilities == null)?"<null>":this.pastAbilities));
         sb.append(',');
         sb.append("pastTypes");
         sb.append('=');
