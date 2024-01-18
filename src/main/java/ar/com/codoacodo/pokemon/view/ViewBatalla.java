@@ -262,10 +262,10 @@ public class ViewBatalla extends JFrame implements MouseListener{
 													UtilVentana.perdiste();
 												}
 												
-												if ( bk.getPokemonPasivo().estaMuerto() ) {
+											/*	if ( bk.getPokemonPasivo().estaMuerto() ) {
 													UtilVentana.cambiarPokemonMuerto(bk.getEntrenadorPasivo(), panelPadre);
 														
-														}
+														}*/
 												bk.intercambiarEntrenadores();
 													repintarTodosLosPaneles();
 													}
@@ -387,8 +387,9 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		this.panelCerrar.setBorder(BorderFactory.createLineBorder(Color.RED));
 		
 		panelPrincipal.add(panelPokemon,BorderLayout.CENTER);
+		if(!this.getPokemonActivo().estaMuerto()) {
 		panelPrincipal.add(this.panelCerrar,BorderLayout.EAST);
-		
+		}
 		
 		return panelPrincipal;
 	}
@@ -421,13 +422,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 				});
 		}
 		if(e.getSource() == cambioDePokemon) {
-			SwingUtilities.invokeLater(()->{
-				this.panelInferior.removeAll(); 
-				this.panelInferior.setLayout(new GridLayout(0, 1));
-				this.panelInferior.add(this.viewCambioPokemon());
-				this.panelInferior.revalidate();
-				this.panelInferior.repaint();
-			});
+		cambioDePokemon();
 		}
 		if(e.getSource() == this.panelCerrar) {
 			SwingUtilities.invokeLater(()->{
@@ -442,6 +437,9 @@ public class ViewBatalla extends JFrame implements MouseListener{
 		}
 		
 	}
+
+
+
 
 
 
@@ -574,10 +572,7 @@ public class ViewBatalla extends JFrame implements MouseListener{
 	 * </p>
 	 */
 	public void repintarTodosLosPaneles() {
-		Set<JPanel> ventanas = Set.of(this.panelSuperior, this.panelMedio, this.panelInferior, this.panelPadre);
-			
-		
-		
+		Set<JPanel> ventanas = Set.of(this.panelSuperior, this.panelMedio, this.panelInferior, this.panelPadre);		
 	
 			SwingUtilities.invokeLater(() -> {
 				this.panelPadre.removeAll();
@@ -588,12 +583,21 @@ public class ViewBatalla extends JFrame implements MouseListener{
 				
 				this.panelPadre.revalidate();
 				this.panelPadre.repaint();
-			
-
-			
 		});
-	
+	if(this.getPokemonActivo().estaMuerto()) {
+		cambioDePokemon();
+	}
 	}
 
+	
+	public void cambioDePokemon() {
+		SwingUtilities.invokeLater(()->{
+			this.panelInferior.removeAll(); 
+			this.panelInferior.setLayout(new GridLayout(0, 1));
+			this.panelInferior.add(this.viewCambioPokemon());
+			this.panelInferior.revalidate();
+			this.panelInferior.repaint();
+		});
+	}
 
 }
